@@ -1,72 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Timers;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace OuhmaniaPeopleRecognizer
 {
     public partial class Form1 : Form
     {
-        private Dictionary<string, List<string>> picturesWithPeople;
-        private List<string> allPeople;
-        private string currentPicturePath;
-        private string directoryPath;
+        private const string VERSION = "1.0";
+        private const string PROGRAM_NAME = "OuhmaniaPeopleRecognizer";
+        private const string FILES_FILTER = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
+
+        public OuhmaniaModel _model;
+        private bool projectLoaded = false;
         private bool unsavedChanges = false;
         private string[] supportedExtensions = { "*.jpg", "*.png", "*.bmp" };
-        private const string PROGRAM_NAME = "OuhmaniaPeopleRecognizer v1.0 ";
+
+        private readonly BindingSource peopleBindingSource;
+        private readonly BindingSource loadedPicturesBindingSource;
+        private bool programLoaded = false;
+
+        private DispatcherTimer AutoSaveTimer;
+        private string getFormTitle()
+        {
+            var basicTitle = $"{PROGRAM_NAME} v{VERSION} ";
+            if (_model.ProjectPath != null)
+                basicTitle += $"({_model.ProjectPath})";
+            return basicTitle;
+        }
+
         public Form1()
         {
-            InitializeComponent();
-            picturesWithPeople = new Dictionary<string, List<string>>();
-            allPeople = new List<string>
+            peopleBindingSource = new BindingSource();
+            loadedPicturesBindingSource = new BindingSource();
+            _model = new OuhmaniaModel
             {
-                "Feliks Wawrzyniak",
-                "Ryszard Kaczmarek",
-                "Zofia Rydzińska",
-                "Małgorzata Bednarek",
-                "Rafaela Brodziak",
-                "Janina Bala",
-                "Genowefa Frąckowiak",
-                "Maria Grabowska",
-                "Lilianna Korzeniewska",
-                "Janina Brzozowska",
-                "Agnieszka Bryk",
-                "Marta Bryk",
-                "Jolanta Grabowska",
-                "Paulina Jagieła-Śliwińska",
-                "Janina Markowicz",
-                "Jan Dunajko",
-                "Marian Fieduk",
-                "Zygmunt Toboła",
-                "Marian Kuncewicz",
-                "Stanisław Przybyszewski",
-                "Edmund Pujanek",
-                "Mirosława Orłowska",
-                "Wanda Rejtan",
-                "Ilona Skoneczna-Kupś",
-                "Halina Strzelecka",
-                "Janina Szews",
-                "Zofia Śliperska",
-                "Marianna Wieczorek",
-                "Jadwiga Prętka",
-                "Helena Nowak",
-                "Agnieszka Szkuciak",
-                "Dominika Szkuciak",
-                "Patryk Sawiński",
-                "Marian Zapała",
-                "Alina Wereszczyńska",
-                "Grażyna Borowik"
+                Version = VERSION,
+                SupportedFileExtensions = new[] { "*.jpg", "*.png", "*.bmp" },
+                PicturesWithPeople = new Dictionary<string, List<string>>(),
+                AllPeople = new List<string>
+                {
+                    "Feliks Wawrzyniak", "Ryszard Kaczmarek", "Zofia Rydzińska",
+                    "Małgorzata Bednarek", "Rafaela Brodziak", "Janina Bala",
+                    "Genowefa Frąckowiak", "Maria Grabowska", "Lilianna Korzeniewska",
+                    "Janina Brzozowska", "Agnieszka Bryk", "Marta Bryk",
+                    "Jolanta Grabowska", "Paulina Jagieła-Śliwińska", "Janina Markowicz",
+                    "Jan Dunajko", "Marian Fieduk", "Zygmunt Toboła",
+                    "Marian Kuncewicz", "Stanisław Przybyszewski", "Edmund Pujanek",
+                    "Mirosława Orłowska", "Wanda Rejtan", "Ilona Skoneczna-Kupś",
+                    "Halina Strzelecka", "Janina Szews", "Zofia Śliperska",
+                    "Marianna Wieczorek", "Jadwiga Prętka", "Helena Nowak",
+                    "Agnieszka Szkuciak", "Dominika Szkuciak", "Patryk Sawiński",
+                    "Marian Zapała", "Alina Wereszczyńska", "Grażyna Borowik"
+                },
+                AutoSave = true,
+                AutoSaveIntervalInMins = 5,
+                DirectoryPath = AppDomain.CurrentDomain.BaseDirectory,
+                CurrentPicturePath = ""
             };
+            peopleBindingSource.DataSource = _model.AllPeople;
+            loadedPicturesBindingSource.DataSource = new List<string>();
+            InitializeComponent();
+            Text = getFormTitle();
             CenterToScreen();
+
+            peopleCheckBoxList.DataSource = peopleBindingSource;
+            loadedPicturesList.DataSource = loadedPicturesBindingSource;
+
             Trace.Listeners["textWriterListener"].Attributes["initializeData"] =
                 AppDomain.CurrentDomain.BaseDirectory + "\\" + DateTime.Now + ".log";
-            currentPicturePath = "";
+            programLoaded = true;
+            pictureBox1.Image = new Bitmap(20, 20);
+            if (_model.AutoSave)
+                SetTimer();
+        }
+
+        private string getAutosaveLabel(bool autosaved=false)
+        {
+            var autosave = _model.AutoSave ? "Włączony" : "Wyłączony";
+            var datetime = autosaved ? DateTime.Now.ToShortTimeString() : "brak";
+            return $"Autozapis: {autosave}, ostatni: {datetime}";
+        }
+
+        private void SetTimer()
+        {
+            // Create a timer with a two second interval.
+            // Hook up the Elapsed event for the timer. 
+            AutoSaveTimer = new DispatcherTimer(DispatcherPriority.SystemIdle);
+            AutoSaveTimer.Tick += OnTimedEvent;
+            AutoSaveTimer.Interval = TimeSpan.FromMilliseconds(_model.AutoSaveIntervalInMins * 1000 * 60);
+            AutoSaveTimer.Start();
+        }
+
+        private void OnTimedEvent(object source, EventArgs e)
+        {
+            autosaveLabel.Text = getAutosaveLabel(true);
+            if (_model.ProjectPath == null) 
+                return;
+
+            var writer = new StreamWriter(_model.ProjectPath);
+            writer.WriteLine(new JavaScriptSerializer().Serialize(_model));
+            writer.Dispose();
+            writer.Close();
+            unsavedChanges = false;
         }
 
         private void LoadPicturesClick(object sender, EventArgs e)
@@ -76,9 +118,8 @@ namespace OuhmaniaPeopleRecognizer
                 DialogResult result = dialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    LoadPictures(dialog.SelectedPath);
-                    dictionaryPathLabel.Text = dialog.SelectedPath;
-                    directoryPath = dialog.SelectedPath;
+                    _model.DirectoryPath = dialog.SelectedPath;
+                    LoadPictures();
                     LoadInitialPicture();
                     unsavedChanges = true;
                 }
@@ -87,60 +128,29 @@ namespace OuhmaniaPeopleRecognizer
 
         private void AddPersonClicked(object sender, EventArgs e)
         {
-            peopleCheckBoxList.Items.AddRange(allPeople.ToArray());
+            peopleCheckBoxList.Items.AddRange(_model.AllPeople.ToArray());
         }
 
-        private void LoadPictures(string folderPath)
+        private void LoadPictures()
         {
-            var loadedPictures = new Dictionary<string, List<string>>();
-            var allLoadedPicturesPaths = new List<string>();
-            var onlyFilenames = new List<string>();
-
             foreach (var extension in supportedExtensions)
             {
-                var loadedFilesForExtension =
-                    new List<string>(Directory.GetFiles(folderPath, extension, SearchOption.AllDirectories));
-                loadedPictures.Add(extension, loadedFilesForExtension);
-                foreach (var filename in loadedFilesForExtension)
-                {
-                    onlyFilenames.Add(filename.Replace($"{folderPath}\\", ""));
-                }
-                allLoadedPicturesPaths.AddRange(loadedFilesForExtension);
+                var loadedFilesForExtension = new List<string>(Directory.GetFiles(_model.DirectoryPath, extension, SearchOption.AllDirectories));
+                loadedFilesForExtension.ForEach(f => _model.PicturesWithPeople.Add(f, new List<string>()));
             }
 
-            loadedPicturesList.Items.Clear();
-            loadedPicturesList.Items.AddRange(onlyFilenames.ToArray());
-            var allFilesCount = new List<string>(Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)).Count;
-            var loadedPicturesCount = loadedPictures.Values.Select(pictures => pictures.Count).Sum();
-            allFilesCountLabel.Text = "Plików w folderze: " + allFilesCount;
-            loadedFilesCountLabel.Text = "Załadowanych plików: " + loadedPicturesCount;
-
-            picturesWithPeople.Clear();
-            foreach (var picture in allLoadedPicturesPaths)
-            {
-                picturesWithPeople.Add(picture, new List<string>());
-            }
+            loadedPicturesBindingSource.ResetBindings(true);
+            loadedPicturesBindingSource.Clear();
+            UpdateFileCountersAndLoadedFileList();
+            loadedFilesInfoTable.Visible = true;
         }
 
         private void LoadInitialPicture()
         {
-            // load new picture
-            currentPicturePath = directoryPath + "\\" + loadedPicturesList.Items[0];
-            using (var stream = File.OpenRead(currentPicturePath))
-            {
-                var currentImage = Image.FromStream(stream);
-                pictureBox1.Image = currentImage;
-            }
-            loadedPicturesList.SelectedIndex = 0;
-
-            // check saved people
-            peopleCheckBoxList.Items.Clear();
-            peopleCheckBoxList.Items.AddRange(allPeople.ToArray());
-            var currentSelectedPeople = picturesWithPeople[currentPicturePath];
-            foreach (var selectedPerson in currentSelectedPeople)
-            {
-                peopleCheckBoxList.SetItemChecked(allPeople.IndexOf(selectedPerson), true);
-            }
+            // load first picture
+            _model.CurrentPicturePath = _model.PicturesWithPeople.First().Key;
+            LoadCurrentPathImage();
+            UpdatePeopleCheckboxes();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -150,24 +160,54 @@ namespace OuhmaniaPeopleRecognizer
 
         private void SaveCurrentPictureState(bool beforeSaveAction = false)
         {
-            if (picturesWithPeople.ContainsKey(currentPicturePath))
+            var selectedPeople = new List<string>();
+            foreach (var selectedPerson in peopleCheckBoxList.CheckedItems)
             {
-                var selectedPeople = new List<string>();
-                foreach (var selectedPerson in peopleCheckBoxList.CheckedItems)
-                {
-                    selectedPeople.Add(selectedPerson.ToString());
-                }
+                selectedPeople.Add(selectedPerson.ToString());
+            }
 
-                if (selectedPeople != picturesWithPeople[currentPicturePath])
-                {
-                    picturesWithPeople[currentPicturePath] = selectedPeople;
-                    unsavedChanges = !beforeSaveAction;
-                }
+            if (selectedPeople != _model.GetSelectedPeopleForCurrentPicture())
+            {
+                _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
+                unsavedChanges = !beforeSaveAction;
+            }
+        }
+
+        private string GetCurrentPicturePath()
+        {
+            return $"{_model.DirectoryPath}\\{loadedPicturesList.SelectedItem}";
+        }
+
+        private void LoadCurrentPathImage()
+        {
+            if (!File.Exists(_model.CurrentPicturePath))
+            {
+                pictureBox1.Image = new Bitmap(20, 20);
+                return;
+            }
+            using (var stream = File.OpenRead(_model.CurrentPicturePath))
+            {
+                pictureBox1.Image = Image.FromStream(stream);
+            }
+
+        }
+
+        private void UpdatePeopleCheckboxes()
+        {
+            // uncheck all
+            for (var i = 0; i < peopleCheckBoxList.Items.Count; i++)
+                peopleCheckBoxList.SetItemCheckState(i, CheckState.Unchecked);
+
+            foreach (var selectedPerson in _model.GetSelectedPeopleForCurrentPicture())
+            {
+                peopleCheckBoxList.SetItemCheckState(peopleCheckBoxList.Items.IndexOf(selectedPerson), CheckState.Checked);
             }
         }
 
         private void PictureSelected(object sender, EventArgs e)
         {
+            if (!programLoaded)
+                return;
             // Add people from previous picture
             SaveCurrentPictureState();
 
@@ -176,47 +216,14 @@ namespace OuhmaniaPeopleRecognizer
             pictureBox1.Image.Dispose();
 
             // load new picture
-            currentPicturePath = directoryPath + "\\" + loadedPicturesList.SelectedItem;
-            if (!File.Exists(currentPicturePath))
-            {
-                pictureBox1.Image = new Bitmap(20, 20);
-                // var result = MessageBox.Show("Ooops! Wygląda na to, że plik został usunięty, lub przeniesiony. Chcesz usunąć plik z listy?", "Brakujący plik",
-                //     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                // if (result == DialogResult.Yes)
-                // {
-                //     picturesWithPeople.Remove(currentPicturePath);
-                //     var newSelectedIndex = loadedPicturesList.SelectedIndex + 1 != loadedPicturesList.Items.Count ?
-                //         loadedPicturesList.SelectedIndex + 1 :
-                //         0;
-                //
-                //     // do not refresh by rand. Do it for all pictures (unfortunately)
-                //     // hand action triggers event
-                //     loadedPicturesList.SelectedItem = loadedPicturesList.Items[newSelectedIndex];
-                //     // loadedPicturesList.Items.Remove(itemToDelete);
-                //     
-                //     
-                // }
-                // else
-                // {
-                //     pictureBox1.Image = new Bitmap(20, 20);
-                // }
-                return;
-            }
-            Image currentImage;
-            using (var stream = File.OpenRead(currentPicturePath))
-            {
-                currentImage = Image.FromStream(stream);
-                pictureBox1.Image = currentImage;
-            }
+            _model.CurrentPicturePath = GetCurrentPicturePath();
+            
 
             // check saved people
-            peopleCheckBoxList.Items.Clear();
-            peopleCheckBoxList.Items.AddRange(allPeople.ToArray());
-            var currentSelectedPeople = picturesWithPeople[currentPicturePath];
-            foreach (var selectedPerson in currentSelectedPeople)
-            {
-                peopleCheckBoxList.SetItemChecked(peopleCheckBoxList.Items.IndexOf(selectedPerson), true);
-            }
+            // not sure if there's a need to repoint datasource
+            // peopleBindingSource.DataSource = _model.AllPeople;
+            LoadCurrentPathImage();
+            UpdatePeopleCheckboxes();
         }
 
         private void pictureBox1_Layout(object sender, LayoutEventArgs e)
@@ -232,18 +239,41 @@ namespace OuhmaniaPeopleRecognizer
 
         private void loadSettingsButton_Click(object sender, EventArgs e)
         {
-            SaveCurrentPictureState();
+            if (projectLoaded)
+                SaveCurrentPictureState();
+
             CheckUnsavedChangesDialog("Czy chcesz je zapisać?", SaveModel);
 
-            var response = Load();
             // user clicked cancel button during file opening
-            if (!response.Item1)
+            if (!LoadModel())
                 return;
 
-            var model = response.Item2;
-            allPeople = model.AllPeople;
+            peopleBindingSource.ResetBindings(true);
+            peopleBindingSource.DataSource = _model.AllPeople;
+            if (_model.AutoSave)
+            {
+                AutoSaveTimer.Stop();
+                SetTimer();
+                autosaveLabel.Text = getAutosaveLabel();
+            }
+            //////// IO section
+            CheckMissingFiles();
+            /////////////
+
+            UpdateFileCountersAndLoadedFileList();
+            LoadCurrentPathImage();
+            UpdatePeopleCheckboxes();
+
+            Text = getFormTitle();
+            loadedFilesInfoTable.Visible = true;
+            unsavedChanges = false;
+            projectLoaded = true;
+        }
+
+        private void CheckMissingFiles()
+        {
             var missingFiles = new List<string>();
-            foreach (var file in model.PicturesWithPeople.Keys)
+            foreach (var file in _model.PicturesWithPeople.Keys)
             {
                 if (!File.Exists(file))
                     missingFiles.Add(file);
@@ -258,61 +288,38 @@ namespace OuhmaniaPeopleRecognizer
                 {
                     foreach (var missingFile in missingFiles)
                     {
-                        model.PicturesWithPeople.Remove(missingFile);
+                        _model.PicturesWithPeople.Remove(missingFile);
                     }
                 }
             }
-            picturesWithPeople = model.PicturesWithPeople;
-            currentPicturePath = model.CurrentPicturePath;
+        }
 
-            directoryPath = model.DirectoryPath;
-            dictionaryPathLabel.Text = directoryPath;
-
-            var allFilesCount = new List<string>(Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)).Count;
+        private void UpdateFileCountersAndLoadedFileList()
+        {
+            dictionaryPathLabel.Text = _model.DirectoryPath;
+            var allFilesCount = new List<string>(Directory.GetFiles(_model.DirectoryPath, "*.*", SearchOption.AllDirectories)).Count;
             allFilesCountLabel.Text = "Plików w folderze: " + allFilesCount;
-
-            Image currentImage;
-            using (var stream = File.OpenRead(currentPicturePath))
-            {
-                currentImage = Image.FromStream(stream);
-                pictureBox1.Image = currentImage;
-            }
-
-            // check saved people
-            peopleCheckBoxList.Items.Clear();
-            peopleCheckBoxList.Items.AddRange(allPeople.ToArray());
-            var currentPictureSelectedPeople = picturesWithPeople[currentPicturePath];
-            foreach (var selectedPerson in currentPictureSelectedPeople)
-            {
-                peopleCheckBoxList.SetItemChecked(peopleCheckBoxList.Items.IndexOf(selectedPerson), true);
-            }
-            
-            var onlyFilenames = new List<string>();
-            foreach (var key in model.PicturesWithPeople.Keys)
-            {
-                onlyFilenames.Add(key.Replace($"{directoryPath}\\", ""));
-            }
-            
-            loadedPicturesList.Items.Clear();
-            loadedPicturesList.Items.AddRange(onlyFilenames.ToArray());
-
-            var selectedPicture = currentPicturePath.Replace($"{directoryPath}\\", "");
-            loadedPicturesList.SelectedIndex = onlyFilenames.IndexOf(selectedPicture);
-
-            loadedFilesCountLabel.Text = "Załadowanych plików: " + onlyFilenames.Count;
-            unsavedChanges = false;
+            var onlyFileNames = _model.GetOnlyFileNames();
+            loadedPicturesBindingSource.DataSource = onlyFileNames;
+            loadedFilesCountLabel.Text = "Załadowanych plików: " + onlyFileNames.Count;
         }
 
         private void bookCreatorButton_Click(object sender, EventArgs e)
         {
             // save current picture first
             SaveCurrentPictureState();
-            var bookCreator = new BookCreator(directoryPath, allPeople, picturesWithPeople)
+            var bookCreator = new BookCreator(_model)
             {
                 Visible = true,
             };
         }
 
+        /// <summary>
+        /// "Masz niezapisane zmiany w projekcie!" {details}
+        /// </summary>
+        /// <param name="details"></param>
+        /// <param name="yesAction"></param>
+        /// <param name="noAction"></param>
         private void CheckUnsavedChangesDialog(string details, Action yesAction = null, Action noAction = null)
         {
             if (unsavedChanges)
@@ -334,83 +341,68 @@ namespace OuhmaniaPeopleRecognizer
         private void refreshDirectoryButton_Click(object sender, EventArgs e)
         {
             var newFiles = new List<string>();
-            var newOnlyFilenames = new List<string>();
-            foreach (var extension in supportedExtensions)
+            foreach (var extension in _model.SupportedFileExtensions)
             {
-                var loadedFilesForExtension = new List<string>(Directory.GetFiles(directoryPath, extension, SearchOption.AllDirectories));
-                foreach (var file in loadedFilesForExtension)
-                {
-                    if (!picturesWithPeople.ContainsKey(file))
-                        newFiles.Add(file);
-                }
+                var loadedFilesForExtension = new List<string>(Directory.GetFiles(_model.DirectoryPath, extension, SearchOption.AllDirectories));
+                newFiles.AddRange(loadedFilesForExtension.Where(file => !_model.PicturesWithPeople.ContainsKey(file)));
             }
 
-            var newFilesMessage = newFiles.Count == 0
-                ? "Nie znaleziono nowych zdjęć"
-                : $"Znaleziono {newFiles.Count} nowych zdjęć";
-
-            MessageBox.Show(newFilesMessage, "Nowe zdjęcia",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            if (newFiles.Count > 0)
+            {
+                MessageBox.Show($"Znaleziono {newFiles.Count} nowych zdjęć", "Nowe zdjęcia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             foreach (var filename in newFiles)
             {
-                picturesWithPeople.Add(filename, new List<string>());
-                newOnlyFilenames.Add(filename.Replace($"{directoryPath}\\", ""));
+                _model.PicturesWithPeople.Add(filename, new List<string>());
             }
 
-            // refresh pictures list
-            loadedPicturesList.Items.AddRange(newOnlyFilenames.ToArray());
-            var allFilesCount = new List<string>(Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories)).Count;
-            var loadedPicturesCount = picturesWithPeople.Count + newFiles.Count;
-            allFilesCountLabel.Text = "Plików w folderze: " + allFilesCount;
-            loadedFilesCountLabel.Text = "Załadowanych plików: " + loadedPicturesCount;
+            // it's a sweet moment to check for missing files too
+            CheckMissingFiles();
 
+            // refresh pictures list
+            // it can be anywhere
+            UpdateFileCountersAndLoadedFileList();
         }
 
         public void SaveModel()
         {
-            var model = new OuhmaniaModel
+            var saveFileDialog = new SaveFileDialog
             {
-                AllPeople = allPeople,
-                DirectoryPath = directoryPath,
-                PicturesWithPeople = picturesWithPeople,
-                CurrentPicturePath = currentPicturePath
+                Filter = FILES_FILTER,
+                InitialDirectory = _model.DirectoryPath
             };
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
-            saveFileDialog.InitialDirectory = directoryPath;
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
-                writer.WriteLine(new JavaScriptSerializer().Serialize(model));
+                var writer = new StreamWriter(saveFileDialog.OpenFile());
+                _model.ProjectPath = saveFileDialog.FileName;
+                writer.WriteLine(new JavaScriptSerializer().Serialize(_model));
                 writer.Dispose();
                 writer.Close();
-                Text = PROGRAM_NAME + $"({saveFileDialog.FileName})";
+                Text = getFormTitle();
             }
             unsavedChanges = false;
         }
 
-        public Tuple<bool, OuhmaniaModel> Load()
+        public bool LoadModel()
         {
-            OuhmaniaModel t = new OuhmaniaModel();
-            bool success = false;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            var openFileDialog = new OpenFileDialog
             {
-                StreamReader reader = new StreamReader(openFileDialog.OpenFile());
-                t = new JavaScriptSerializer().Deserialize<OuhmaniaModel>(reader.ReadLine());
-                reader.Dispose();
-                reader.Close();
-                success = true;
-                Text = PROGRAM_NAME + $"({openFileDialog.FileName})";
-            }
-            return new Tuple<bool, OuhmaniaModel>(success, t);
+                Filter = FILES_FILTER,
+                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory
+            };
+            if (openFileDialog.ShowDialog() != DialogResult.OK) 
+                return false;
+
+            var reader = new StreamReader(openFileDialog.OpenFile());
+            _model = new JavaScriptSerializer().Deserialize<OuhmaniaModel>(reader.ReadLine() ?? string.Empty);
+            reader.Dispose();
+            reader.Close();
+            Text = getFormTitle();
+
+            return true;
         }
     }
 }

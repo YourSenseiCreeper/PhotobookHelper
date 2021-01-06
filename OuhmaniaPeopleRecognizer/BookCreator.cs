@@ -8,16 +8,23 @@ namespace OuhmaniaPeopleRecognizer
 {
     public partial class BookCreator : Form
     {
-        private string exportPath;
-        private string _importPath;
-        private readonly Dictionary<string, List<string>> _picturesWithPeople;
-        public BookCreator(string importPath, List<string> peopleList, Dictionary<string, List<string>> picturesWithPeople)
+        private int _exportedFiles;
+        // private string _importPath;
+        private readonly OuhmaniaModel _model;
+
+        public BookCreator(OuhmaniaModel model)
         {
+            _model = model;
+            var peopleBindingSource = new BindingSource();
+            peopleBindingSource.DataSource = model.AllPeople;
+
             InitializeComponent();
-            peopleChechboxList.Items.Clear();
-            peopleChechboxList.Items.AddRange(peopleList.ToArray());
-            _picturesWithPeople = picturesWithPeople;
-            _importPath = importPath;
+
+            peopleChechboxList.DataSource = peopleBindingSource;
+            pathOrErrorLabel.DataBindings.Add(new Binding("Text", _model, "ExportPath"));
+            if (_model.ExportPath != null)
+                exportButton.Enabled = true;
+
             CenterToParent();
         }
 
@@ -28,8 +35,8 @@ namespace OuhmaniaPeopleRecognizer
                 DialogResult result = dialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    exportPath = dialog.SelectedPath;
-                    pathOrErrorLabel.Text = exportPath;
+                    _model.ExportPath = dialog.SelectedPath;
+                    // pathOrErrorLabel.Text = _exportPath;
                     exportButton.Enabled = true;
                 }
             }
@@ -51,7 +58,7 @@ namespace OuhmaniaPeopleRecognizer
                 exportPeoplesPictures.Add(person.ToString(), new List<string>());
             }
             
-            foreach (var keyValue in _picturesWithPeople)
+            foreach (var keyValue in _model.PicturesWithPeople)
             {
                 foreach (var person in selectedPeople)
                 {
@@ -62,19 +69,20 @@ namespace OuhmaniaPeopleRecognizer
                 }
             }
 
+            _exportedFiles = 0;
             foreach (var keyValue in exportPeoplesPictures)
             {
                 CopyFilesForPerson(keyValue.Key, keyValue.Value);
             }
 
             var exportedPicturesCount = exportPeoplesPictures.Values.Select(pictures => pictures.Count).Sum();
-            MessageBox.Show($"Wyeksportowano ogółem {exportedPicturesCount} zdjęć dla {exportPeoplesPictures.Count} osób", "Eksport",
+            MessageBox.Show($"Wyeksportowano ogółem {_exportedFiles} zdjęć dla {exportPeoplesPictures.Count} osób", "Eksport",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CopyFilesForPerson(string person, List<string> files)
         {
-            var folderPath = exportPath + "\\Fotoksiążka_" + person.Replace(" ", "_");
+            var folderPath = _model.ExportPath + "\\Fotoksiążka_" + person.Replace(" ", "_");
             // it's better to not overwrite
             if (Directory.Exists(folderPath))
                 Directory.Delete(folderPath, true);
@@ -83,7 +91,7 @@ namespace OuhmaniaPeopleRecognizer
 
             long allSize = 0;
             files.ForEach(f => allSize += new FileInfo(f).Length);
-            var currentDriveLetter = exportPath.Substring(0, 3);
+            var currentDriveLetter = _model.ExportPath.Substring(0, 3);
             var currentDrive = DriveInfo.GetDrives().FirstOrDefault(d => d.Name == currentDriveLetter);
             // let's have at least 5mb more free space
             if (allSize + 1000000*5 >= currentDrive.AvailableFreeSpace)
@@ -92,19 +100,24 @@ namespace OuhmaniaPeopleRecognizer
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             foreach (var file in files)
             {
-                var filename = file.Replace(_importPath, "");
-                if (filename.Contains("\\"))
-                {
-                    filename = filename.Substring(filename.LastIndexOf("\\") + 1);
-                }
+                var filename = file.Replace(_model.DirectoryPath, "");
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
 
                 var filepath = folderPath + "\\" + filename;
                 if (File.Exists(filepath))
-                    filepath += "_1";
+                {
+                    MessageBox.Show($"Znaleziono powtórkę zdjęcia ({filepath}). Nie zostanie wyeksportowane.", "Powtórzony plik!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    File.Copy(file, filepath);
+                    _exportedFiles++;
+                }
 
-                File.Copy(file, filepath);
             }
         }
     }

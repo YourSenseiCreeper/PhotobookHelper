@@ -37,18 +37,19 @@
             this.addPersonButton = new System.Windows.Forms.Button();
             this.removePersonButton = new System.Windows.Forms.Button();
             this.bookCreatorButton = new System.Windows.Forms.Button();
+            this.refreshDirectoryButton = new System.Windows.Forms.Button();
             this.loadedPicturesList = new System.Windows.Forms.ListBox();
             this.peopleCheckBoxList = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.loadedFilesInfoTable = new System.Windows.Forms.TableLayoutPanel();
             this.dictionaryPathLabel = new System.Windows.Forms.Label();
             this.loadedFilesCountLabel = new System.Windows.Forms.Label();
             this.allFilesCountLabel = new System.Windows.Forms.Label();
-            this.refreshDirectoryButton = new System.Windows.Forms.Button();
+            this.autosaveLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.loadedFilesInfoTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -88,7 +89,7 @@
             this.flowLayoutPanel1.Controls.Add(this.refreshDirectoryButton);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(231, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(92, 268);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(92, 252);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // saveTagsButton
@@ -142,6 +143,16 @@
             this.bookCreatorButton.UseVisualStyleBackColor = true;
             this.bookCreatorButton.Click += new System.EventHandler(this.bookCreatorButton_Click);
             // 
+            // refreshDirectoryButton
+            // 
+            this.refreshDirectoryButton.Location = new System.Drawing.Point(3, 205);
+            this.refreshDirectoryButton.Name = "refreshDirectoryButton";
+            this.refreshDirectoryButton.Size = new System.Drawing.Size(75, 38);
+            this.refreshDirectoryButton.TabIndex = 14;
+            this.refreshDirectoryButton.Text = "Odśwież zdjęcia";
+            this.refreshDirectoryButton.UseVisualStyleBackColor = true;
+            this.refreshDirectoryButton.Click += new System.EventHandler(this.refreshDirectoryButton_Click);
+            // 
             // loadedPicturesList
             // 
             this.loadedPicturesList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -152,10 +163,10 @@
             this.loadedPicturesList.FormattingEnabled = true;
             this.loadedPicturesList.HorizontalScrollbar = true;
             this.loadedPicturesList.ItemHeight = 16;
-            this.loadedPicturesList.Location = new System.Drawing.Point(3, 277);
+            this.loadedPicturesList.Location = new System.Drawing.Point(3, 261);
             this.loadedPicturesList.MinimumSize = new System.Drawing.Size(222, 80);
             this.loadedPicturesList.Name = "loadedPicturesList";
-            this.loadedPicturesList.Size = new System.Drawing.Size(320, 260);
+            this.loadedPicturesList.Size = new System.Drawing.Size(320, 244);
             this.loadedPicturesList.TabIndex = 5;
             this.loadedPicturesList.SelectedIndexChanged += new System.EventHandler(this.PictureSelected);
             // 
@@ -171,7 +182,7 @@
             this.peopleCheckBoxList.Location = new System.Drawing.Point(3, 3);
             this.peopleCheckBoxList.MinimumSize = new System.Drawing.Size(222, 200);
             this.peopleCheckBoxList.Name = "peopleCheckBoxList";
-            this.peopleCheckBoxList.Size = new System.Drawing.Size(222, 256);
+            this.peopleCheckBoxList.Size = new System.Drawing.Size(222, 235);
             this.peopleCheckBoxList.Sorted = true;
             this.peopleCheckBoxList.TabIndex = 1;
             // 
@@ -186,34 +197,37 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.peopleCheckBoxList, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.loadedPicturesList, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.loadedFilesInfoTable, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(636, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(326, 609);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
-            // tableLayoutPanel2
+            // loadedFilesInfoTable
             // 
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.dictionaryPathLabel, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.loadedFilesCountLabel, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.allFilesCountLabel, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 551);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(320, 48);
-            this.tableLayoutPanel2.TabIndex = 13;
+            this.loadedFilesInfoTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.loadedFilesInfoTable.ColumnCount = 1;
+            this.tableLayoutPanel1.SetColumnSpan(this.loadedFilesInfoTable, 2);
+            this.loadedFilesInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.loadedFilesInfoTable.Controls.Add(this.dictionaryPathLabel, 0, 0);
+            this.loadedFilesInfoTable.Controls.Add(this.loadedFilesCountLabel, 0, 2);
+            this.loadedFilesInfoTable.Controls.Add(this.allFilesCountLabel, 0, 1);
+            this.loadedFilesInfoTable.Controls.Add(this.autosaveLabel, 0, 3);
+            this.loadedFilesInfoTable.Location = new System.Drawing.Point(3, 519);
+            this.loadedFilesInfoTable.Name = "loadedFilesInfoTable";
+            this.loadedFilesInfoTable.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.loadedFilesInfoTable.RowCount = 4;
+            this.loadedFilesInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.loadedFilesInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.loadedFilesInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.loadedFilesInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.loadedFilesInfoTable.Size = new System.Drawing.Size(320, 73);
+            this.loadedFilesInfoTable.TabIndex = 13;
+            this.loadedFilesInfoTable.Visible = false;
             // 
             // dictionaryPathLabel
             // 
@@ -230,28 +244,28 @@
             this.loadedFilesCountLabel.AutoSize = true;
             this.loadedFilesCountLabel.Location = new System.Drawing.Point(4, 34);
             this.loadedFilesCountLabel.Name = "loadedFilesCountLabel";
-            this.loadedFilesCountLabel.Size = new System.Drawing.Size(88, 13);
+            this.loadedFilesCountLabel.Size = new System.Drawing.Size(107, 13);
             this.loadedFilesCountLabel.TabIndex = 9;
-            this.loadedFilesCountLabel.Text = "Ścieżka do zdjęć";
+            this.loadedFilesCountLabel.Text = "Załadowanych zdjęć";
             // 
             // allFilesCountLabel
             // 
             this.allFilesCountLabel.AutoSize = true;
             this.allFilesCountLabel.Location = new System.Drawing.Point(4, 20);
             this.allFilesCountLabel.Name = "allFilesCountLabel";
-            this.allFilesCountLabel.Size = new System.Drawing.Size(88, 13);
+            this.allFilesCountLabel.Size = new System.Drawing.Size(94, 13);
             this.allFilesCountLabel.TabIndex = 8;
-            this.allFilesCountLabel.Text = "Ścieżka do zdjęć";
+            this.allFilesCountLabel.Text = "Wszystkich plików";
             // 
-            // refreshDirectoryButton
+            // autosaveLabel
             // 
-            this.refreshDirectoryButton.Location = new System.Drawing.Point(3, 205);
-            this.refreshDirectoryButton.Name = "refreshDirectoryButton";
-            this.refreshDirectoryButton.Size = new System.Drawing.Size(75, 38);
-            this.refreshDirectoryButton.TabIndex = 14;
-            this.refreshDirectoryButton.Text = "Odśwież zdjęcia";
-            this.refreshDirectoryButton.UseVisualStyleBackColor = true;
-            this.refreshDirectoryButton.Click += new System.EventHandler(this.refreshDirectoryButton_Click);
+            this.autosaveLabel.AutoSize = true;
+            this.autosaveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.autosaveLabel.Location = new System.Drawing.Point(4, 48);
+            this.autosaveLabel.Name = "autosaveLabel";
+            this.autosaveLabel.Size = new System.Drawing.Size(73, 18);
+            this.autosaveLabel.TabIndex = 10;
+            this.autosaveLabel.Text = "Autozapis";
             // 
             // Form1
             // 
@@ -267,8 +281,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.loadedFilesInfoTable.ResumeLayout(false);
+            this.loadedFilesInfoTable.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,13 +299,14 @@
         private System.Windows.Forms.ListBox loadedPicturesList;
         private System.Windows.Forms.CheckedListBox peopleCheckBoxList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel loadedFilesInfoTable;
         private System.Windows.Forms.Label loadedFilesCountLabel;
         private System.Windows.Forms.Label dictionaryPathLabel;
         private System.Windows.Forms.Label allFilesCountLabel;
         private System.Windows.Forms.Button removePersonButton;
         private System.Windows.Forms.Button bookCreatorButton;
         private System.Windows.Forms.Button refreshDirectoryButton;
+        private System.Windows.Forms.Label autosaveLabel;
     }
 }
 
