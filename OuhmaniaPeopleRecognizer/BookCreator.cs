@@ -94,7 +94,6 @@ namespace OuhmaniaPeopleRecognizer
             }
             foreach (var file in files)
             {
-                // sprawdzić czy podfolder dla zdjęcia istnieje
                 var filename = file.Replace(_importPath, "");
                 if (filename.Contains("\\"))
                 {

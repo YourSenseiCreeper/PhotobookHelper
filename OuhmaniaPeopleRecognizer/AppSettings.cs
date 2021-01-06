@@ -14,33 +14,37 @@ namespace OuhmaniaPeopleRecognizer
         public static string FULL_PATH = DEFAULT_PATH + "\\" + DEFAULT_FILENAME;
         public static void Save(T pSettings, string initialDirectory)
         {
-            // var directoryPath = savePath.Substring(0, savePath.LastIndexOf("\\"));
-            // if (!Directory.Exists(directoryPath))
-            //     Directory.CreateDirectory(directoryPath);
-            //
-            // if (!File.Exists(savePath))
-            //     File.Create(savePath);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
+            saveFileDialog.InitialDirectory = initialDirectory;
 
-            saveFileDialog1.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
-            saveFileDialog1.InitialDirectory = initialDirectory;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
+                StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
                 writer.WriteLine(new JavaScriptSerializer().Serialize(pSettings));
                 writer.Dispose();
                 writer.Close();
             }
         }
 
-        public static T Load(string loadPath)
+        public static Tuple<bool, T> Load()
         {
             T t = new T();
-            if (File.Exists(loadPath))
-                t = new JavaScriptSerializer().Deserialize<T>(File.ReadAllText(loadPath));
-            return t;
+            bool success = false;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+                t = new JavaScriptSerializer().Deserialize<T>(reader.ReadLine());
+                reader.Dispose();
+                reader.Close();
+                success = true;
+            }
+            return new Tuple<bool, T>(success, t);
         }
     }
 }

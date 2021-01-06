@@ -44,6 +44,7 @@
             this.dictionaryPathLabel = new System.Windows.Forms.Label();
             this.loadedFilesCountLabel = new System.Windows.Forms.Label();
             this.allFilesCountLabel = new System.Windows.Forms.Label();
+            this.refreshDirectoryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -84,6 +85,7 @@
             this.flowLayoutPanel1.Controls.Add(this.removePersonButton);
             this.flowLayoutPanel1.Controls.Add(this.loadPicturesButton);
             this.flowLayoutPanel1.Controls.Add(this.bookCreatorButton);
+            this.flowLayoutPanel1.Controls.Add(this.refreshDirectoryButton);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(231, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(92, 268);
@@ -241,6 +243,16 @@
             this.allFilesCountLabel.TabIndex = 8;
             this.allFilesCountLabel.Text = "Ścieżka do zdjęć";
             // 
+            // refreshDirectoryButton
+            // 
+            this.refreshDirectoryButton.Location = new System.Drawing.Point(3, 205);
+            this.refreshDirectoryButton.Name = "refreshDirectoryButton";
+            this.refreshDirectoryButton.Size = new System.Drawing.Size(75, 38);
+            this.refreshDirectoryButton.TabIndex = 14;
+            this.refreshDirectoryButton.Text = "Odśwież zdjęcia";
+            this.refreshDirectoryButton.UseVisualStyleBackColor = true;
+            this.refreshDirectoryButton.Click += new System.EventHandler(this.refreshDirectoryButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +291,7 @@
         private System.Windows.Forms.Label allFilesCountLabel;
         private System.Windows.Forms.Button removePersonButton;
         private System.Windows.Forms.Button bookCreatorButton;
+        private System.Windows.Forms.Button refreshDirectoryButton;
     }
 }
 
