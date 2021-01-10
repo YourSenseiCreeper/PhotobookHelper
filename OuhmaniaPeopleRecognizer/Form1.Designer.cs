@@ -46,6 +46,7 @@
             this.loadedFilesCountLabel = new System.Windows.Forms.Label();
             this.allFilesCountLabel = new System.Windows.Forms.Label();
             this.autosaveLabel = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -157,17 +158,17 @@
             // 
             this.loadedPicturesList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.tableLayoutPanel1.SetColumnSpan(this.loadedPicturesList, 2);
             this.loadedPicturesList.Cursor = System.Windows.Forms.Cursors.Default;
             this.loadedPicturesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.loadedPicturesList.FormattingEnabled = true;
             this.loadedPicturesList.HorizontalScrollbar = true;
             this.loadedPicturesList.ItemHeight = 16;
-            this.loadedPicturesList.Location = new System.Drawing.Point(3, 261);
+            this.loadedPicturesList.Location = new System.Drawing.Point(24, 23);
             this.loadedPicturesList.MinimumSize = new System.Drawing.Size(222, 80);
             this.loadedPicturesList.Name = "loadedPicturesList";
             this.loadedPicturesList.Size = new System.Drawing.Size(320, 244);
             this.loadedPicturesList.TabIndex = 5;
+            this.loadedPicturesList.Visible = false;
             this.loadedPicturesList.SelectedIndexChanged += new System.EventHandler(this.PictureSelected);
             // 
             // peopleCheckBoxList
@@ -194,9 +195,9 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.treeView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.peopleCheckBoxList, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.loadedPicturesList, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.loadedFilesInfoTable, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(636, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -267,12 +268,24 @@
             this.autosaveLabel.TabIndex = 10;
             this.autosaveLabel.Text = "Autozapis";
             // 
+            // treeView1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.treeView1, 2);
+            this.treeView1.Location = new System.Drawing.Point(3, 261);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(320, 252);
+            this.treeView1.TabIndex = 14;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSelect);
+            this.treeView1.Enter += new System.EventHandler(this.treeView1_Enter);
+            this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 633);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.loadedPicturesList);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -307,6 +320,7 @@
         private System.Windows.Forms.Button bookCreatorButton;
         private System.Windows.Forms.Button refreshDirectoryButton;
         private System.Windows.Forms.Label autosaveLabel;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

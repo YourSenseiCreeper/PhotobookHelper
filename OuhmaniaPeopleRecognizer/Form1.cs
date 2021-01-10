@@ -8,6 +8,7 @@ using System.Timers;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using WebPWrapper;
 
 namespace OuhmaniaPeopleRecognizer
 {
@@ -20,13 +21,15 @@ namespace OuhmaniaPeopleRecognizer
         public OuhmaniaModel _model;
         private bool projectLoaded = false;
         private bool unsavedChanges = false;
-        private string[] supportedExtensions = { "*.jpg", "*.png", "*.bmp" };
+        private string[] supportedExtensions = { "*.jpg", "*.png", "*.bmp"};
 
         private readonly BindingSource peopleBindingSource;
         private readonly BindingSource loadedPicturesBindingSource;
         private bool programLoaded = false;
 
         private DispatcherTimer AutoSaveTimer;
+
+        private WebP webpWrapper;
         private string getFormTitle()
         {
             var basicTitle = $"{PROGRAM_NAME} v{VERSION} ";
@@ -42,7 +45,7 @@ namespace OuhmaniaPeopleRecognizer
             _model = new OuhmaniaModel
             {
                 Version = VERSION,
-                SupportedFileExtensions = new[] { "*.jpg", "*.png", "*.bmp" },
+                SupportedFileExtensions = supportedExtensions,
                 PicturesWithPeople = new Dictionary<string, List<string>>(),
                 AllPeople = new List<string>
                 {
@@ -119,10 +122,37 @@ namespace OuhmaniaPeopleRecognizer
                 if (result == DialogResult.OK)
                 {
                     _model.DirectoryPath = dialog.SelectedPath;
-                    LoadPictures();
+                    ListDirectory(treeView1, dialog.SelectedPath);
+                    UpdateFileCountersAndLoadedFileList();
+                    // LoadPictures();
                     LoadInitialPicture();
                     unsavedChanges = true;
                 }
+            }
+        }
+
+        // private void treeView1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        // {
+        //     treeView1.SelectedNode.BackColor = Color.Aqua;
+        //     treeView1.SelectedNode.ForeColor = Color.White;
+        //     previousSelectedNode = treeView1.SelectedNode;
+        // }
+
+        private void treeView1_Enter(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null)
+            {
+                treeView1.SelectedNode.BackColor = Color.Empty;
+                treeView1.SelectedNode.ForeColor = Color.Empty;
+            }
+        }
+
+        private void treeView1_Leave(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null)
+            {
+                treeView1.SelectedNode.BackColor = Color.Blue;
+                treeView1.SelectedNode.ForeColor = Color.White;
             }
         }
 
@@ -180,16 +210,24 @@ namespace OuhmaniaPeopleRecognizer
 
         private void LoadCurrentPathImage()
         {
-            if (!File.Exists(_model.CurrentPicturePath))
+            var fullPath = _model.DirectoryPath + _model.CurrentPicturePath;
+            if (!File.Exists(fullPath))
             {
                 pictureBox1.Image = new Bitmap(20, 20);
                 return;
             }
-            using (var stream = File.OpenRead(_model.CurrentPicturePath))
-            {
-                pictureBox1.Image = Image.FromStream(stream);
-            }
 
+            if (_model.CurrentPicturePath.EndsWith(".webp"))
+            {
+                pictureBox1.Image = webpWrapper.Load(fullPath);
+            }
+            else
+            {
+                using (var stream = File.OpenRead(fullPath))
+                {
+                    pictureBox1.Image = Image.FromStream(stream);
+                }
+            }
         }
 
         private void UpdatePeopleCheckboxes()
@@ -340,30 +378,68 @@ namespace OuhmaniaPeopleRecognizer
 
         private void refreshDirectoryButton_Click(object sender, EventArgs e)
         {
-            var newFiles = new List<string>();
-            foreach (var extension in _model.SupportedFileExtensions)
-            {
-                var loadedFilesForExtension = new List<string>(Directory.GetFiles(_model.DirectoryPath, extension, SearchOption.AllDirectories));
-                newFiles.AddRange(loadedFilesForExtension.Where(file => !_model.PicturesWithPeople.ContainsKey(file)));
-            }
-
-            if (newFiles.Count > 0)
-            {
-                MessageBox.Show($"Znaleziono {newFiles.Count} nowych zdjęć", "Nowe zdjęcia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            foreach (var filename in newFiles)
-            {
-                _model.PicturesWithPeople.Add(filename, new List<string>());
-            }
-
-            // it's a sweet moment to check for missing files too
-            CheckMissingFiles();
+            ListDirectory(treeView1, _model.DirectoryPath);
+            //
+            // var newFiles = new List<string>();
+            // foreach (var extension in _model.SupportedFileExtensions)
+            // {
+            //     var loadedFilesForExtension = new List<string>(Directory.GetFiles(_model.DirectoryPath, extension, SearchOption.AllDirectories));
+            //     newFiles.AddRange(loadedFilesForExtension.Where(file => !_model.PicturesWithPeople.ContainsKey(file)));
+            // }
+            //
+            // if (newFiles.Count > 0)
+            // {
+            //     MessageBox.Show($"Znaleziono {newFiles.Count} nowych zdjęć", "Nowe zdjęcia",
+            //         MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // }
+            //
+            // foreach (var filename in newFiles)
+            // {
+            //     _model.PicturesWithPeople.Add(filename, new List<string>());
+            // }
+            //
+            // // it's a sweet moment to check for missing files too
+            // CheckMissingFiles();
 
             // refresh pictures list
             // it can be anywhere
             UpdateFileCountersAndLoadedFileList();
+        }
+
+        private void ListDirectory(TreeView treeView, string path)
+        {
+            treeView.Nodes.Clear();
+
+            var stack = new Stack<TreeNode>();
+            var rootDirectory = new DirectoryInfo(path);
+            var node = new TreeNode(rootDirectory.Name) { Tag = rootDirectory };
+            stack.Push(node);
+
+            while (stack.Count > 0)
+            {
+                var currentNode = stack.Pop();
+                var directoryInfo = (DirectoryInfo)currentNode.Tag;
+                foreach (var directory in directoryInfo.GetDirectories())
+                {
+                    var childDirectoryNode = new TreeNode(directory.Name) { Tag = directory };
+                    currentNode.Nodes.Add(childDirectoryNode);
+                    stack.Push(childDirectoryNode);
+                }
+
+                foreach (var file in directoryInfo.GetFiles())
+                {
+                    var extension = "*" + file.Name.Substring(file.Name.LastIndexOf("."));
+                    var shortPath = file.FullName.Replace(path, "");
+                    if (_model.SupportedFileExtensions.Contains(extension))
+                    {
+                        currentNode.Nodes.Add(new TreeNode(file.Name));
+                        if (!_model.PicturesWithPeople.ContainsKey(shortPath))
+                            _model.PicturesWithPeople.Add(shortPath, new List<string>());
+                    }
+                }
+            }
+
+            treeView.Nodes.Add(node);
         }
 
         public void SaveModel()
@@ -403,6 +479,31 @@ namespace OuhmaniaPeopleRecognizer
             Text = getFormTitle();
 
             return true;
+        }
+
+        private void treeViewSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView1.SelectedNode.Nodes.Count == 0)
+            {
+                peopleCheckBoxList.Enabled = true;
+                SaveCurrentPictureState();
+
+                // disposing
+                GC.Collect();
+                pictureBox1.Image.Dispose();
+
+                // load new picture
+                
+                _model.CurrentPicturePath = $"{treeView1.SelectedNode.FullPath.Replace(treeView1.TopNode.FullPath, "")}";
+
+                LoadCurrentPathImage();
+                UpdatePeopleCheckboxes();
+            }
+            else
+            {
+                pictureBox1.Image = new Bitmap(20, 20);
+                peopleCheckBoxList.Enabled = false;
+            }
         }
     }
 }
