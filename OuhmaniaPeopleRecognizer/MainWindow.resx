@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>618, 609</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="loadPicturesButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 119</value>
+  </data>
+  <data name="loadPicturesButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 36</value>
+  </data>
+  <data name="loadPicturesButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="loadPicturesButton.Text" xml:space="preserve">
+    <value>Załaduj zdjęcia</value>
+  </data>
+  <data name="&gt;&gt;loadPicturesButton.Name" xml:space="preserve">
+    <value>loadPicturesButton</value>
+  </data>
+  <data name="&gt;&gt;loadPicturesButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadPicturesButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;loadPicturesButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="saveTagsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="saveTagsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="saveTagsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="saveTagsButton.Text" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="&gt;&gt;saveTagsButton.Name" xml:space="preserve">
+    <value>saveTagsButton</value>
+  </data>
+  <data name="&gt;&gt;saveTagsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveTagsButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;saveTagsButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="loadSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="loadSettingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="loadSettingsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="loadSettingsButton.Text" xml:space="preserve">
+    <value>Wczytaj</value>
+  </data>
+  <data name="&gt;&gt;loadSettingsButton.Name" xml:space="preserve">
+    <value>loadSettingsButton</value>
+  </data>
+  <data name="&gt;&gt;loadSettingsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadSettingsButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;loadSettingsButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="addPersonButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="addPersonButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 61</value>
+  </data>
+  <data name="addPersonButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="addPersonButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="addPersonButton.Text" xml:space="preserve">
+    <value>Dodaj osobęę</value>
+  </data>
+  <data name="&gt;&gt;addPersonButton.Name" xml:space="preserve">
+    <value>addPersonButton</value>
+  </data>
+  <data name="&gt;&gt;addPersonButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addPersonButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;addPersonButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="removePersonButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="removePersonButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 90</value>
+  </data>
+  <data name="removePersonButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="removePersonButton.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="removePersonButton.Text" xml:space="preserve">
+    <value>Usuń osobę</value>
+  </data>
+  <data name="&gt;&gt;removePersonButton.Name" xml:space="preserve">
+    <value>removePersonButton</value>
+  </data>
+  <data name="&gt;&gt;removePersonButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removePersonButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;removePersonButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="bookCreatorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 161</value>
+  </data>
+  <data name="bookCreatorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 38</value>
+  </data>
+  <data name="bookCreatorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="bookCreatorButton.Text" xml:space="preserve">
+    <value>Kreator książek</value>
+  </data>
+  <data name="&gt;&gt;bookCreatorButton.Name" xml:space="preserve">
+    <value>bookCreatorButton</value>
+  </data>
+  <data name="&gt;&gt;bookCreatorButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bookCreatorButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;bookCreatorButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="refreshDirectoryButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 205</value>
+  </data>
+  <data name="refreshDirectoryButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 38</value>
+  </data>
+  <data name="refreshDirectoryButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="refreshDirectoryButton.Text" xml:space="preserve">
+    <value>Odśwież zdjęcia</value>
+  </data>
+  <data name="&gt;&gt;refreshDirectoryButton.Name" xml:space="preserve">
+    <value>refreshDirectoryButton</value>
+  </data>
+  <data name="&gt;&gt;refreshDirectoryButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;refreshDirectoryButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;refreshDirectoryButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 3</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 252</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="loadedPicturesList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="loadedPicturesList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="loadedPicturesList.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="loadedPicturesList.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="loadedPicturesList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 23</value>
+  </data>
+  <data name="loadedPicturesList.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>222, 80</value>
+  </data>
+  <data name="loadedPicturesList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 244</value>
+  </data>
+  <data name="loadedPicturesList.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="loadedPicturesList.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;loadedPicturesList.Name" xml:space="preserve">
+    <value>loadedPicturesList</value>
+  </data>
+  <data name="&gt;&gt;loadedPicturesList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadedPicturesList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loadedPicturesList.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="peopleCheckBoxList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="peopleCheckBoxList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="peopleCheckBoxList.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="peopleCheckBoxList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="peopleCheckBoxList.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>222, 200</value>
+  </data>
+  <data name="peopleCheckBoxList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 235</value>
+  </data>
+  <data name="peopleCheckBoxList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;peopleCheckBoxList.Name" xml:space="preserve">
+    <value>peopleCheckBoxList</value>
+  </data>
+  <data name="&gt;&gt;peopleCheckBoxList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;peopleCheckBoxList.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;peopleCheckBoxList.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 261</value>
+  </data>
+  <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 252</value>
+  </data>
+  <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;treeView1.Name" xml:space="preserve">
+    <value>treeView1</value>
+  </data>
+  <data name="&gt;&gt;treeView1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;treeView1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;treeView1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="loadedFilesInfoTable.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
+  </data>
+  <data name="loadedFilesInfoTable.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="dictionaryPathLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dictionaryPathLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 6</value>
+  </data>
+  <data name="dictionaryPathLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="dictionaryPathLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="dictionaryPathLabel.Text" xml:space="preserve">
+    <value>Ścieżka do zdjęć</value>
+  </data>
+  <data name="&gt;&gt;dictionaryPathLabel.Name" xml:space="preserve">
+    <value>dictionaryPathLabel</value>
+  </data>
+  <data name="&gt;&gt;dictionaryPathLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dictionaryPathLabel.Parent" xml:space="preserve">
+    <value>loadedFilesInfoTable</value>
+  </data>
+  <data name="&gt;&gt;dictionaryPathLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="loadedFilesCountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="loadedFilesCountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 34</value>
+  </data>
+  <data name="loadedFilesCountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="loadedFilesCountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="loadedFilesCountLabel.Text" xml:space="preserve">
+    <value>Załadowanych zdjęć</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesCountLabel.Name" xml:space="preserve">
+    <value>loadedFilesCountLabel</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesCountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesCountLabel.Parent" xml:space="preserve">
+    <value>loadedFilesInfoTable</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesCountLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="allFilesCountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="allFilesCountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="allFilesCountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="allFilesCountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="allFilesCountLabel.Text" xml:space="preserve">
+    <value>Wszystkich plików</value>
+  </data>
+  <data name="&gt;&gt;allFilesCountLabel.Name" xml:space="preserve">
+    <value>allFilesCountLabel</value>
+  </data>
+  <data name="&gt;&gt;allFilesCountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;allFilesCountLabel.Parent" xml:space="preserve">
+    <value>loadedFilesInfoTable</value>
+  </data>
+  <data name="&gt;&gt;allFilesCountLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="autosaveLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="autosaveLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 11.25pt</value>
+  </data>
+  <data name="autosaveLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 48</value>
+  </data>
+  <data name="autosaveLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 18</value>
+  </data>
+  <data name="autosaveLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="autosaveLabel.Text" xml:space="preserve">
+    <value>Autozapis</value>
+  </data>
+  <data name="&gt;&gt;autosaveLabel.Name" xml:space="preserve">
+    <value>autosaveLabel</value>
+  </data>
+  <data name="&gt;&gt;autosaveLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;autosaveLabel.Parent" xml:space="preserve">
+    <value>loadedFilesInfoTable</value>
+  </data>
+  <data name="&gt;&gt;autosaveLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="loadedFilesInfoTable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 519</value>
+  </data>
+  <data name="loadedFilesInfoTable.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="loadedFilesInfoTable.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="loadedFilesInfoTable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 73</value>
+  </data>
+  <data name="loadedFilesInfoTable.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="loadedFilesInfoTable.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesInfoTable.Name" xml:space="preserve">
+    <value>loadedFilesInfoTable</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesInfoTable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesInfoTable.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;loadedFilesInfoTable.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="loadedFilesInfoTable.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="dictionaryPathLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="loadedFilesCountLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="allFilesCountLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="autosaveLabel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>636, 12</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 609</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="treeView1" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="peopleCheckBoxList" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="loadedFilesInfoTable" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,42,5,Percent,42,5,Percent,15" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>974, 633</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAIAaQA4G/8AOBv/ADgb/wAbBrIAAAAAAAAAAAAAAAAMAAAAUgAAAI8AAAC4AAAA0AAA
+        ANYAAADKAAAAqwAAAHwAAAA4AAAAAi8V8AAAAAAAAAAAAH9/fwD///8A////AP///wD///8A////AP//
+        /wD///8AXV1dAAAAAAAAAAAAAAAbADgb/wA4G/8AOBv/ACcO1gAAAAAjAAAAmwAAAPUAAA//BwB7/xcD
+        q/8eCb7/HwnC/xwHuf8TAJz/AABZ/wAAAP8AAADdAAAAcAAAAAkAAAAAAAAAAJ+fnwD///8A////AP//
+        /wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAMhb2ADgb/wAAAAAGAAAAgwAAAPkBAGf/JA3R/zUa
+        //84G///OBv//zgb//84G///OBv//zgb//84G///MhXs/xoCmf8AAB7/AAAA4AAAAEcAAAAAAAAAAFVV
+        VQDf398A////AP///wD///8A8/PzAIeHhwAAAAAAAAAAAAAAAAAjDc0AAAAAFwAAAMYAAC//JA3P/zgb
+        //84G///NBn//yQN0v8XA6n/DQCL/wsAg/8PAJT/Gwa1/ysR4v83G///OBv//zMV5P8TAH//AAAA/gAA
+        AIIAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAADYAABk/zIX
+        +P84G///Mhb3/xIAm/8AAAf/MDAw/5WVlf+9vb3/xMTE/7S0tP97e3v/AAAA/wAAQf8fCcH/Nxr//zcX
+        9v8kB6v/AAAK/wAAAJYAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAAJAAAAzAEA
+        Z/80Gf//OBv//yILyv8AABf/e3t7//f39///////////////////////////////////////1tbW/zs7
+        O/8AAF3/LxXw/zcX9P8oCrX/AAAF/wAAAHoqEeAAHwnAABkFrgAcB7kAJw7WADQZ/QD///8AAAAAAAAA
+        AJIAADz/Mxf7/zgb//8aBbD/BwcH/93d3f//////////////////////39/f/9bW1v/o6Oj/////////
+        /////////////5ubm/8AACb/LBLn/zcW6P8iBaX/AAAA/AAAADo4G/8AOBv/ADgb/wA4G/8AOBv/AP//
+        /wAAAAAyAAAA/SgP2v84G///IArC/w4ODv/7+/v////////////R0dH/Nzc3/wAAAP8AAFj/AgBq/wAA
+        Pf8AAAD/c3Nz//v7+////////////7S0tP8AACz/MBXw/zUT2v8OAHH/AAAA0QAAAAI4G/8AOBv/ADgb
+        /wA4G/8A////AAAAALEKAH//OBv//y8V8P8AAAb/5ubm////////////dXV1/wAAOf8gCsb/NBn//zgb
+        //84G///OBv//y8V8v8VAaD/AAAA/8LCwv///////////4+Pj/8DAG7/Nxfy/zAOx/8AAAL/AAAAVjgb
+        /wA4G/8AOBv/ADgb/wAAAAAfAAAA/SoR4v84G///CgCD/5KSkv///////////21tbf8DAG7/NBn9/zgb
+        //84G///OBv//zgb//84G///OBv//zgb//8qEd//AAAc/8rKyv///////////xoaGv8kDc7/NRLZ/xIA
+        ev8AAADAOBv/ADgb/wA4G/8AOBv/AAAAAHEAAEP/OBv//zAW8/8AAAD////////////AwMD/AABJ/zQZ
+        //84G///OBv//yQNz/8NAIr/AwBx/xMBn/8uE+z/OBv//zgb//8nD9r/AAAA////////////vr6+/wIA
+        av83Fuj/KAq1/wAAAP0AAAAXDgCMAAUAcQAAACMAAAAAsBMAnf84G///HAe6/2ZmZv///////////w4O
+        Dv8mDtb/OBv//zcb//8LAIf/IiIi/7a2tv/R0dH/j4+P/wAAAP8kDc7/OBv//zgb//8NAIr/m5ub////
+        ////////AAAA/zAT4P80EtP/AAAL/wAAAFUAAAAAAAAAAAAAAAAAAADdIArF/zgb//8LAIb/vb29////
+        ///o6Oj/AAA1/zcb//84G///HwnA/zU1Nf//////////////////////2dnZ/wAADv8yFvf/OBv//yoR
+        3v8FBQX///////////8yMjL/JAvF/zUS1v8CAFT/AAAAgkNDQwBubm4ApaWlAAAAAPcoD9v/OBv//wAA
+        Wv/f39///////76+vv8NAIf/OBv//zgb//8AAF3/0dHR////////////6urq////////////ZGRk/x4J
+        vf84G///NRn//wAAAP///////////3t7e/8cBrH/NRLW/w0Acf8AAACb////AP///wD///8AAAAA/ysR
+        4/84G///AABF/+jo6P//////rq6u/xIAm/84G///OBv//wAAJP/29vb///////////8cHBz/wMDA////
+        //+fn5//FQGj/zgb//84G///AAAA//39/f//////kJCQ/xoFrv81Etb/EQB3/wAAAKP///8A////AP//
+        /wAAAAD3KA/a/zgb//8AAFz/39/f///////AwMD/CwCH/zgb//84G///AABe/8/Pz///////////////
+        //8eHh7/wMDA/2FhYf8eCb3/OBv//zQZ//8AAAD///////////96enr/HAax/zUS1v8NAHH/AAAAm///
+        /wD///8A////AAAAANwgCsX/OBv//wsAh/+8vLz//////+rq6v8AADP/Nxv//zgb//8fCcL/MDAw////
+        //////////////////8FBQX/AAAA/zIW+P84G///KBHd/wcHB////////////y8vL/8kC8b/NRLW/wIA
+        VP8AAACC////AP///wDs7OwAAAAArxMAnP84G///Hge8/2RkZP///////////xMTE/8mDtP/OBv//zgb
+        //8OAI7/GRkZ/7CwsP/Ozs7/h4eH/wAAA/8AABP/FwOn/zgb//8LAIb/n5+f////////////AAAA/zAT
+        4v80EdL/AAAJ/wAAAFQAAAAAAAAAAAAAAAAAAABvAABA/zgb//8wFvT/AAAA////////////wsLC/wAA
+        Rf80Gf//OBv//zgb//8mDtP/DgCP/wcAev8WAqT/LxXv/yoR4P8AABb/CQB+/wAAAP///////////7y8
+        vP8DAG3/NRbo/ygJtP8AAAD9AAAAFgAAAAAAAAAAAAAAAAAAAB0AAAD9KhHg/zgb//8LAIb/j4+P////
+        ////////cnJy/wEAZ/8zF/z/OBv//zgb//84G///OBv//zgb//84G///OBv//xoGsv8AAAD/h4eH////
+        ////////FhYW/yYNz/81Etf/EQB3/wAAAL4iCscAIwvJACcO1wAsE+gA////AAAAAK8JAHv/OBv//zAV
+        8v8AAA3/4uLi////////////e3t7/wAAM/8fCsL/NBn9/zgb//84G///OBv//y4V7v8SAJv/AAAA/6ys
+        rP8eHh7/vr6+/4qKiv8FAHL/Nxfy/y8Oxv8AAAD/AAAAUzgb/wA4G/8AOBv/ADgb/wD///8AAAAALwAA
+        APwnD9f/OBv//yIKxv8HBwf/9/f3////////////1tbW/0FBQf8AAAD/AABM/wAAYv8AADD/AAAA/319
+        ff////////////z8/P8AAAD/AAAK/zAW8v8yD87/CwBr/wAAAPcAAAA0OBv/ADgb/wA4G/8AOBv/AP//
+        /wD///8AAAAAjgAAN/8zF/n/OBv//xsGtP8BAQH/19fX///////////////////////k5OT/3d3d/+7u
+        7v//////////////////////lJSU/wAAK/8AABb/AAAq/wAAAP8AAAD/AAAA/wAAAPAAAAA3ORv/ADca
+        /wAzF/sA////AP///wAAAAAHAAAAyAAAYv80Gf//OBv//yQNzv8AAB//dXV1//Ly8v//////////////
+        ////////////////////////0dHR/zIyMv8AAGT/MBbz/wUAc/8AAAD/CgoK/z08PP9APz//FxYW/wAA
+        APAAAAA3AAAAAAAAAAD///8A////AP///wAAAAAWAAAA1QAAXv8yFvf/OBv//zMX+f8VAaD/AAAS/yQk
+        JP+Ojo7/tra2/729vf+tra3/cnJy/wAAAP8AAEn/IArF/zcb//83F/P/AAAV/xYWFv8AAAD/Gxoa/0A/
+        P/9APz//FxYW/wAAAPAAAAA3AAAAAP///wD///8A////AP///wAAAAAUAAAAwgAAKP8jC8v/OBv//zgb
+        //81Gf//Jg7W/xoFrv8PAJL/DQCI/xIAm/8eB7r/LBLm/zgb//84G///MxPi/xEAef8AAAD/NTQ0/zAv
+        L/8AAAD/Gxoa/0A/P/9APz//FxYW/wAAAPAAAAA3////AP///wD///8A////AP///wAAAAAEAAAAfQAA
+        APcAAGD/Iw3N/zUZ//84G///OBv//zgb//84G///OBv//zgb//84G///MBXo/xkBlf8AABf/AAAA9QAA
+        AP84Nzf/QD8//zAvL/8AAAD/FxYW/yAfH/8RDw//AAAA/wAAAOv///8A////AP///wD///8A////AP//
+        /wD///8AAAAAHwAAAJQAAADxAAAD/wUAcv8WAqT/HAe5/x8Jvv8bBrT/EQCX/wAATv8AAAD/AAAA2AAA
+        AGoAAAAUAAAAxwAAAP85ODj/QD8//yoqKv8AAAD/AAAAyAAAAJoAAABsAAAAM////wD///8A////AP//
+        /wD///8A////AP///wD///8A////AAAAAAkAAABMAAAAiQAAALIAAADKAAAA0AAAAMQAAAClAAAAdQAA
+        ADEAAAAB////AP///wAAAAAPAAAAxwAAAP85ODj/Kioq/wAAAOv///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wAAAAAPAAAAxwAAAP8TEhL/AAAAvP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wAAAAAPAAAAxwAAAP8AAACO////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wAAAAAPAAAAswAA
+        AEb///8A////AP///wD///8A/4AP//4AA//4AAH/8AAAf+AAAD/AAAA/wAAAH4AAAA+AAAAPAAAADwAA
+        AAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAA+AAAAPgAAAD8AAAAfAAAAD4AAAAfAA
+        AAD4AAAA/gAAAP+ADA////4P////D////48=
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>OuhmaniaPeopleRecognizer v1.0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainWindow</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

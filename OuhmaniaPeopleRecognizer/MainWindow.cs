@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Timers;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -12,7 +11,7 @@ using WebPWrapper;
 
 namespace OuhmaniaPeopleRecognizer
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         private const string VERSION = "1.0";
         private const string PROGRAM_NAME = "OuhmaniaPeopleRecognizer";
@@ -38,7 +37,7 @@ namespace OuhmaniaPeopleRecognizer
             return basicTitle;
         }
 
-        public Form1()
+        public MainWindow()
         {
             peopleBindingSource = new BindingSource();
             loadedPicturesBindingSource = new BindingSource();
@@ -47,21 +46,7 @@ namespace OuhmaniaPeopleRecognizer
                 Version = VERSION,
                 SupportedFileExtensions = supportedExtensions,
                 PicturesWithPeople = new Dictionary<string, List<string>>(),
-                AllPeople = new List<string>
-                {
-                    "Feliks Wawrzyniak", "Ryszard Kaczmarek", "Zofia Rydzińska",
-                    "Małgorzata Bednarek", "Rafaela Brodziak", "Janina Bala",
-                    "Genowefa Frąckowiak", "Maria Grabowska", "Lilianna Korzeniewska",
-                    "Janina Brzozowska", "Agnieszka Bryk", "Marta Bryk",
-                    "Jolanta Grabowska", "Paulina Jagieła-Śliwińska", "Janina Markowicz",
-                    "Jan Dunajko", "Marian Fieduk", "Zygmunt Toboła",
-                    "Marian Kuncewicz", "Stanisław Przybyszewski", "Edmund Pujanek",
-                    "Mirosława Orłowska", "Wanda Rejtan", "Ilona Skoneczna-Kupś",
-                    "Halina Strzelecka", "Janina Szews", "Zofia Śliperska",
-                    "Marianna Wieczorek", "Jadwiga Prętka", "Helena Nowak",
-                    "Agnieszka Szkuciak", "Dominika Szkuciak", "Patryk Sawiński",
-                    "Marian Zapała", "Alina Wereszczyńska", "Grażyna Borowik"
-                },
+                AllPeople = new List<string>(),
                 AutoSave = true,
                 AutoSaveIntervalInMins = 5,
                 DirectoryPath = AppDomain.CurrentDomain.BaseDirectory,
@@ -72,6 +57,10 @@ namespace OuhmaniaPeopleRecognizer
             InitializeComponent();
             Text = getFormTitle();
             CenterToScreen();
+            
+            // replace with some method
+            // new Localization();
+            // saveTagsButton.Text = Localization.Get("SaveButton");
 
             peopleCheckBoxList.DataSource = peopleBindingSource;
             loadedPicturesList.DataSource = loadedPicturesBindingSource;

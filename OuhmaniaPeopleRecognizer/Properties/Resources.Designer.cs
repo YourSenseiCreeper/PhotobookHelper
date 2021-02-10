@@ -59,5 +59,23 @@ namespace OuhmaniaPeopleRecognizer.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Hello Photobook.
+        /// </summary>
+        internal static string HelloString {
+            get {
+                return ResourceManager.GetString("HelloString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu .
+        /// </summary>
+        internal static string MainWindow_Save {
+            get {
+                return ResourceManager.GetString("MainWindow_Save", resourceCulture);
+            }
+        }
     }
 }
