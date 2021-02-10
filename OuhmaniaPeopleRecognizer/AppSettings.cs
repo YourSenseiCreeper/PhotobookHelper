@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Security.AccessControl;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer
 {
+    //na var
     public class AppSettings<T> where T : new()
     {
         private static string DEFAULT_FILENAME = "settings.json";
