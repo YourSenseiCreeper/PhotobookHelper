@@ -7,7 +7,6 @@ using System.Linq;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using OuhmaniaPeopleRecognizer.Properties;
 using WebPWrapper;
 
 namespace OuhmaniaPeopleRecognizer
@@ -30,7 +29,8 @@ namespace OuhmaniaPeopleRecognizer
         private DispatcherTimer AutoSaveTimer;
 
         private WebP webpWrapper;
-        private string getFormTitle()
+
+        private string GetFormTitle()
         {
             var basicTitle = $"{PROGRAM_NAME} v{VERSION} ";
             if (_model.ProjectPath != null)
@@ -59,12 +59,8 @@ namespace OuhmaniaPeopleRecognizer
             peopleBindingSource.DataSource = _model.AllPeople;
             loadedPicturesBindingSource.DataSource = new List<string>();
             InitializeComponent();
-            Text = getFormTitle();
+            Text = GetFormTitle();
             CenterToScreen();
-            
-            // replace with some method
-            // new Localization();
-            // saveTagsButton.Text = Localization.Get("SaveButton");
 
             peopleCheckBoxList.DataSource = peopleBindingSource;
             loadedPicturesList.DataSource = loadedPicturesBindingSource;
@@ -77,7 +73,7 @@ namespace OuhmaniaPeopleRecognizer
                 SetTimer();
         }
 
-        private string getAutosaveLabel(bool autosaved=false)
+        private string GetAutosaveLabel(bool autosaved=false)
         {
             var autosave = _model.AutoSave ? "Włączony" : "Wyłączony";
             var datetime = autosaved ? DateTime.Now.ToShortTimeString() : "brak";
@@ -96,7 +92,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private void OnTimedEvent(object source, EventArgs e)
         {
-            autosaveLabel.Text = getAutosaveLabel(true);
+            autosaveLabel.Text = GetAutosaveLabel(true);
             if (_model.ProjectPath == null) 
                 return;
 
@@ -117,19 +113,11 @@ namespace OuhmaniaPeopleRecognizer
                     _model.DirectoryPath = dialog.SelectedPath;
                     ListDirectory(treeView1, dialog.SelectedPath);
                     UpdateFileCountersAndLoadedFileList();
-                    // LoadPictures();
                     LoadInitialPicture();
                     unsavedChanges = true;
                 }
             }
         }
-
-        // private void treeView1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        // {
-        //     treeView1.SelectedNode.BackColor = Color.Aqua;
-        //     treeView1.SelectedNode.ForeColor = Color.White;
-        //     previousSelectedNode = treeView1.SelectedNode;
-        // }
 
         private void treeView1_Enter(object sender, EventArgs e)
         {
@@ -252,7 +240,6 @@ namespace OuhmaniaPeopleRecognizer
 
             // check saved people
             // not sure if there's a need to repoint datasource
-            // peopleBindingSource.DataSource = _model.AllPeople;
             LoadCurrentPathImage();
             UpdatePeopleCheckboxes();
         }
@@ -285,7 +272,7 @@ namespace OuhmaniaPeopleRecognizer
             {
                 AutoSaveTimer.Stop();
                 SetTimer();
-                autosaveLabel.Text = getAutosaveLabel();
+                autosaveLabel.Text = GetAutosaveLabel();
             }
             //////// IO section
             CheckMissingFiles();
@@ -295,7 +282,7 @@ namespace OuhmaniaPeopleRecognizer
             LoadCurrentPathImage();
             UpdatePeopleCheckboxes();
 
-            Text = getFormTitle();
+            Text = GetFormTitle();
             loadedFilesInfoTable.Visible = true;
             unsavedChanges = false;
             projectLoaded = true;
@@ -372,27 +359,6 @@ namespace OuhmaniaPeopleRecognizer
         private void refreshDirectoryButton_Click(object sender, EventArgs e)
         {
             ListDirectory(treeView1, _model.DirectoryPath);
-            //
-            // var newFiles = new List<string>();
-            // foreach (var extension in _model.SupportedFileExtensions)
-            // {
-            //     var loadedFilesForExtension = new List<string>(Directory.GetFiles(_model.DirectoryPath, extension, SearchOption.AllDirectories));
-            //     newFiles.AddRange(loadedFilesForExtension.Where(file => !_model.PicturesWithPeople.ContainsKey(file)));
-            // }
-            //
-            // if (newFiles.Count > 0)
-            // {
-            //     MessageBox.Show($"Znaleziono {newFiles.Count} nowych zdjęć", "Nowe zdjęcia",
-            //         MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // }
-            //
-            // foreach (var filename in newFiles)
-            // {
-            //     _model.PicturesWithPeople.Add(filename, new List<string>());
-            // }
-            //
-            // // it's a sweet moment to check for missing files too
-            // CheckMissingFiles();
 
             // refresh pictures list
             // it can be anywhere
@@ -450,7 +416,7 @@ namespace OuhmaniaPeopleRecognizer
                 writer.WriteLine(new JavaScriptSerializer().Serialize(_model));
                 writer.Dispose();
                 writer.Close();
-                Text = getFormTitle();
+                Text = GetFormTitle();
             }
             unsavedChanges = false;
         }
@@ -469,7 +435,7 @@ namespace OuhmaniaPeopleRecognizer
             _model = new JavaScriptSerializer().Deserialize<OuhmaniaModel>(reader.ReadLine() ?? string.Empty);
             reader.Dispose();
             reader.Close();
-            Text = getFormTitle();
+            Text = GetFormTitle();
 
             return true;
         }
