@@ -30,15 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.loadPicturesButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.saveTagsButton = new System.Windows.Forms.Button();
-            this.loadSettingsButton = new System.Windows.Forms.Button();
-            this.addPersonButton = new System.Windows.Forms.Button();
-            this.removePersonButton = new System.Windows.Forms.Button();
-            this.bookCreatorButton = new System.Windows.Forms.Button();
-            this.refreshDirectoryButton = new System.Windows.Forms.Button();
-            this.loadedPicturesList = new System.Windows.Forms.ListBox();
             this.peopleCheckBoxList = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -60,94 +51,39 @@
             this.personToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.loadedFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.loadedFilesInfoTable.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Layout += new System.Windows.Forms.LayoutEventHandler(this.pictureBox1_Layout);
             // 
-            // loadPicturesButton
-            // 
-            resources.ApplyResources(this.loadPicturesButton, "loadPicturesButton");
-            this.loadPicturesButton.Name = "loadPicturesButton";
-            this.loadPicturesButton.UseVisualStyleBackColor = true;
-            this.loadPicturesButton.Click += new System.EventHandler(this.LoadPicturesClick);
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.saveTagsButton);
-            this.flowLayoutPanel1.Controls.Add(this.loadSettingsButton);
-            this.flowLayoutPanel1.Controls.Add(this.addPersonButton);
-            this.flowLayoutPanel1.Controls.Add(this.removePersonButton);
-            this.flowLayoutPanel1.Controls.Add(this.loadPicturesButton);
-            this.flowLayoutPanel1.Controls.Add(this.bookCreatorButton);
-            this.flowLayoutPanel1.Controls.Add(this.refreshDirectoryButton);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // saveTagsButton
-            // 
-            resources.ApplyResources(this.saveTagsButton, "saveTagsButton");
-            this.saveTagsButton.Name = "saveTagsButton";
-            this.saveTagsButton.UseVisualStyleBackColor = true;
-            this.saveTagsButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // loadSettingsButton
-            // 
-            resources.ApplyResources(this.loadSettingsButton, "loadSettingsButton");
-            this.loadSettingsButton.Name = "loadSettingsButton";
-            this.loadSettingsButton.UseVisualStyleBackColor = true;
-            this.loadSettingsButton.Click += new System.EventHandler(this.loadSettingsButton_Click);
-            // 
-            // addPersonButton
-            // 
-            resources.ApplyResources(this.addPersonButton, "addPersonButton");
-            this.addPersonButton.Name = "addPersonButton";
-            this.addPersonButton.UseVisualStyleBackColor = true;
-            this.addPersonButton.Click += new System.EventHandler(this.AddPersonClicked);
-            // 
-            // removePersonButton
-            // 
-            resources.ApplyResources(this.removePersonButton, "removePersonButton");
-            this.removePersonButton.Name = "removePersonButton";
-            this.removePersonButton.UseVisualStyleBackColor = true;
-            // 
-            // bookCreatorButton
-            // 
-            resources.ApplyResources(this.bookCreatorButton, "bookCreatorButton");
-            this.bookCreatorButton.Name = "bookCreatorButton";
-            this.bookCreatorButton.UseVisualStyleBackColor = true;
-            this.bookCreatorButton.Click += new System.EventHandler(this.bookCreatorButton_Click);
-            // 
-            // refreshDirectoryButton
-            // 
-            resources.ApplyResources(this.refreshDirectoryButton, "refreshDirectoryButton");
-            this.refreshDirectoryButton.Name = "refreshDirectoryButton";
-            this.refreshDirectoryButton.UseVisualStyleBackColor = true;
-            this.refreshDirectoryButton.Click += new System.EventHandler(this.refreshDirectoryButton_Click);
-            // 
-            // loadedPicturesList
-            // 
-            resources.ApplyResources(this.loadedPicturesList, "loadedPicturesList");
-            this.loadedPicturesList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.loadedPicturesList.FormattingEnabled = true;
-            this.loadedPicturesList.Name = "loadedPicturesList";
-            this.loadedPicturesList.SelectedIndexChanged += new System.EventHandler(this.PictureSelected);
-            // 
             // peopleCheckBoxList
             // 
-            resources.ApplyResources(this.peopleCheckBoxList, "peopleCheckBoxList");
             this.peopleCheckBoxList.CausesValidation = false;
             this.peopleCheckBoxList.CheckOnClick = true;
+            resources.ApplyResources(this.peopleCheckBoxList, "peopleCheckBoxList");
             this.peopleCheckBoxList.FormattingEnabled = true;
             this.peopleCheckBoxList.Name = "peopleCheckBoxList";
             this.peopleCheckBoxList.Sorted = true;
@@ -155,15 +91,12 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.treeView1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.peopleCheckBoxList, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.loadedFilesInfoTable, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.treeView1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.loadedFilesInfoTable, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // treeView1
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.treeView1, 2);
             resources.ApplyResources(this.treeView1, "treeView1");
             this.treeView1.Name = "treeView1";
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSelect);
@@ -288,24 +221,78 @@
             this.removePersonToolStripMenuItem.Name = "removePersonToolStripMenuItem";
             resources.ApplyResources(this.removePersonToolStripMenuItem, "removePersonToolStripMenuItem");
             // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            // 
+            // splitContainer2
+            // 
+            resources.ApplyResources(this.splitContainer2, "splitContainer2");
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.peopleCheckBoxList);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadedFilesCounttoolStripStatusLabel,
+            this.allFilesCounttoolStripStatusLabel});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // loadedFilesCounttoolStripStatusLabel
+            // 
+            this.loadedFilesCounttoolStripStatusLabel.Name = "loadedFilesCounttoolStripStatusLabel";
+            resources.ApplyResources(this.loadedFilesCounttoolStripStatusLabel, "loadedFilesCounttoolStripStatusLabel");
+            // 
+            // allFilesCounttoolStripStatusLabel
+            // 
+            this.allFilesCounttoolStripStatusLabel.Name = "allFilesCounttoolStripStatusLabel";
+            resources.ApplyResources(this.allFilesCounttoolStripStatusLabel, "allFilesCounttoolStripStatusLabel");
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.loadedPicturesList);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beforeClose);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.loadedFilesInfoTable.ResumeLayout(false);
             this.loadedFilesInfoTable.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,21 +301,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button loadPicturesButton;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button saveTagsButton;
-        private System.Windows.Forms.Button loadSettingsButton;
-        private System.Windows.Forms.Button addPersonButton;
-        private System.Windows.Forms.ListBox loadedPicturesList;
         private System.Windows.Forms.CheckedListBox peopleCheckBoxList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel loadedFilesInfoTable;
         private System.Windows.Forms.Label loadedFilesCountLabel;
         private System.Windows.Forms.Label dictionaryPathLabel;
         private System.Windows.Forms.Label allFilesCountLabel;
-        private System.Windows.Forms.Button removePersonButton;
-        private System.Windows.Forms.Button bookCreatorButton;
-        private System.Windows.Forms.Button refreshDirectoryButton;
         private System.Windows.Forms.Label autosaveLabel;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -344,6 +322,11 @@
         private System.Windows.Forms.ToolStripMenuItem personToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addPersonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removePersonToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel loadedFilesCounttoolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel allFilesCounttoolStripStatusLabel;
     }
 }
 

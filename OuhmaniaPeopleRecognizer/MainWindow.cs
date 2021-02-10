@@ -183,7 +183,8 @@ namespace OuhmaniaPeopleRecognizer
 
         private string GetCurrentPicturePath()
         {
-            return $"{_model.DirectoryPath}\\{loadedPicturesList.SelectedItem}";
+            return "";
+            // return $"{_model.DirectoryPath}\\{loadedPicturesList.SelectedItem}";
         }
 
         private void LoadCurrentPathImage()
@@ -538,6 +539,9 @@ namespace OuhmaniaPeopleRecognizer
             UpdateFileCountersAndLoadedFileList();
         }
 
- 
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
