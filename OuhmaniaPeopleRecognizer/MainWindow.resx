@@ -235,7 +235,7 @@
     <value>7</value>
   </data>
   <data name="addPersonButton.Text" xml:space="preserve">
-    <value>Dodaj osobęę</value>
+    <value>Dodaj osobę</value>
   </data>
   <data name="&gt;&gt;addPersonButton.Name" xml:space="preserve">
     <value>addPersonButton</value>
@@ -328,7 +328,7 @@
     <value>231, 3</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 252</value>
+    <value>92, 279</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -400,7 +400,7 @@
     <value>222, 200</value>
   </data>
   <data name="peopleCheckBoxList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 235</value>
+    <value>222, 277</value>
   </data>
   <data name="peopleCheckBoxList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -427,10 +427,10 @@
     <value>2</value>
   </data>
   <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 261</value>
+    <value>3, 288</value>
   </data>
   <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 252</value>
+    <value>320, 225</value>
   </data>
   <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -622,7 +622,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="treeView1" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="peopleCheckBoxList" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="loadedFilesInfoTable" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,42,5,Percent,42,5,Percent,15" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="treeView1" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="peopleCheckBoxList" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="loadedFilesInfoTable" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,46,79803,Percent,37,93103,Percent,15" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -717,5 +717,8 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Warning_UnsavedChanges" xml:space="preserve">
+    <value>Masz niezapisane zmiany w projekcie!</value>
   </data>
 </root>

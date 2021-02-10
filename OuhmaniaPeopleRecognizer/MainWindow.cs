@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using OuhmaniaPeopleRecognizer.Properties;
 using WebPWrapper;
 
 namespace OuhmaniaPeopleRecognizer
@@ -46,7 +47,10 @@ namespace OuhmaniaPeopleRecognizer
                 Version = VERSION,
                 SupportedFileExtensions = supportedExtensions,
                 PicturesWithPeople = new Dictionary<string, List<string>>(),
-                AllPeople = new List<string>(),
+                AllPeople = new List<string>
+                {
+                    "Thomas Kowalski", "Amanda Turner"
+                },
                 AutoSave = true,
                 AutoSaveIntervalInMins = 5,
                 DirectoryPath = AppDomain.CurrentDomain.BaseDirectory,

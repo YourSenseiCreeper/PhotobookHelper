@@ -117,10 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="loadPicturesButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 143</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 279</value>
+  </data>
   <data name="saveTagsButton.Text" xml:space="preserve">
     <value>Save</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="loadSettingsButton.Text" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="addPersonButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 33</value>
+  </data>
+  <data name="addPersonButton.Text" xml:space="preserve">
+    <value>Add person</value>
+  </data>
+  <data name="removePersonButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 100</value>
+  </data>
+  <data name="removePersonButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 37</value>
+  </data>
+  <data name="removePersonButton.Text" xml:space="preserve">
+    <value>Remove person</value>
+  </data>
+  <data name="bookCreatorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 185</value>
+  </data>
+  <data name="bookCreatorButton.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="refreshDirectoryButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 229</value>
+  </data>
+  <data name="refreshDirectoryButton.Text" xml:space="preserve">
+    <value>Rescan folder</value>
+  </data>
+  <data name="peopleCheckBoxList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 277</value>
+  </data>
+  <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 288</value>
+  </data>
+  <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 225</value>
+  </data>
+  <data name="dictionaryPathLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="dictionaryPathLabel.Text" xml:space="preserve">
+    <value>Directory path</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -196,5 +247,8 @@
         AAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAA+AAAAPgAAAD8AAAAfAAAAD4AAAAfAA
         AAD4AAAA/gAAAP+ADA////4P////D////48=
 </value>
+  </data>
+  <data name="Warning_UnsavedChanges" xml:space="preserve">
+    <value>You have unsaved changes in project!</value>
   </data>
 </root>
