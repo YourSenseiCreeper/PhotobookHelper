@@ -47,10 +47,24 @@
             this.loadedFilesCountLabel = new System.Windows.Forms.Label();
             this.allFilesCountLabel = new System.Windows.Forms.Label();
             this.autosaveLabel = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.photosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadPhotosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rescanDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.loadedFilesInfoTable.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -187,6 +201,93 @@
             resources.ApplyResources(this.autosaveLabel, "autosaveLabel");
             this.autosaveLabel.Name = "autosaveLabel";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.photosToolStripMenuItem,
+            this.personToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadProjectToolStripMenuItem,
+            this.saveProjectToolStripMenuItem,
+            this.exportFilesToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.closeProgramToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // loadProjectToolStripMenuItem
+            // 
+            this.loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
+            resources.ApplyResources(this.loadProjectToolStripMenuItem, "loadProjectToolStripMenuItem");
+            this.loadProjectToolStripMenuItem.Click += new System.EventHandler(this.loadProjectToolStripMenuItem_Click);
+            // 
+            // saveProjectToolStripMenuItem
+            // 
+            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+            resources.ApplyResources(this.saveProjectToolStripMenuItem, "saveProjectToolStripMenuItem");
+            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
+            // 
+            // exportFilesToolStripMenuItem
+            // 
+            this.exportFilesToolStripMenuItem.Name = "exportFilesToolStripMenuItem";
+            resources.ApplyResources(this.exportFilesToolStripMenuItem, "exportFilesToolStripMenuItem");
+            this.exportFilesToolStripMenuItem.Click += new System.EventHandler(this.exportFilesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // closeProgramToolStripMenuItem
+            // 
+            this.closeProgramToolStripMenuItem.Name = "closeProgramToolStripMenuItem";
+            resources.ApplyResources(this.closeProgramToolStripMenuItem, "closeProgramToolStripMenuItem");
+            this.closeProgramToolStripMenuItem.Click += new System.EventHandler(this.closeProgramToolStripMenuItem_Click);
+            // 
+            // photosToolStripMenuItem
+            // 
+            this.photosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadPhotosToolStripMenuItem,
+            this.rescanDirectoryToolStripMenuItem});
+            this.photosToolStripMenuItem.Name = "photosToolStripMenuItem";
+            resources.ApplyResources(this.photosToolStripMenuItem, "photosToolStripMenuItem");
+            // 
+            // loadPhotosToolStripMenuItem
+            // 
+            this.loadPhotosToolStripMenuItem.Name = "loadPhotosToolStripMenuItem";
+            resources.ApplyResources(this.loadPhotosToolStripMenuItem, "loadPhotosToolStripMenuItem");
+            this.loadPhotosToolStripMenuItem.Click += new System.EventHandler(this.loadPhotosToolStripMenuItem_Click);
+            // 
+            // rescanDirectoryToolStripMenuItem
+            // 
+            this.rescanDirectoryToolStripMenuItem.Name = "rescanDirectoryToolStripMenuItem";
+            resources.ApplyResources(this.rescanDirectoryToolStripMenuItem, "rescanDirectoryToolStripMenuItem");
+            this.rescanDirectoryToolStripMenuItem.Click += new System.EventHandler(this.rescanDirectoryToolStripMenuItem_Click);
+            // 
+            // personToolStripMenuItem
+            // 
+            this.personToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPersonToolStripMenuItem,
+            this.removePersonToolStripMenuItem});
+            this.personToolStripMenuItem.Name = "personToolStripMenuItem";
+            resources.ApplyResources(this.personToolStripMenuItem, "personToolStripMenuItem");
+            // 
+            // addPersonToolStripMenuItem
+            // 
+            this.addPersonToolStripMenuItem.Name = "addPersonToolStripMenuItem";
+            resources.ApplyResources(this.addPersonToolStripMenuItem, "addPersonToolStripMenuItem");
+            // 
+            // removePersonToolStripMenuItem
+            // 
+            this.removePersonToolStripMenuItem.Name = "removePersonToolStripMenuItem";
+            resources.ApplyResources(this.removePersonToolStripMenuItem, "removePersonToolStripMenuItem");
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -194,6 +295,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.loadedPicturesList);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beforeClose);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -201,6 +304,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.loadedFilesInfoTable.ResumeLayout(false);
             this.loadedFilesInfoTable.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +331,19 @@
         private System.Windows.Forms.Button refreshDirectoryButton;
         private System.Windows.Forms.Label autosaveLabel;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem closeProgramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem photosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadPhotosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rescanDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPersonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePersonToolStripMenuItem;
     }
 }
 

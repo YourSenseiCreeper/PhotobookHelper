@@ -23,7 +23,6 @@ namespace OuhmaniaPeopleRecognizer
         private string[] supportedExtensions = { "*.jpg", "*.png", "*.bmp"};
 
         private readonly BindingSource peopleBindingSource;
-        private readonly BindingSource loadedPicturesBindingSource;
         private bool programLoaded = false;
 
         private DispatcherTimer AutoSaveTimer;
@@ -41,7 +40,7 @@ namespace OuhmaniaPeopleRecognizer
         public MainWindow()
         {
             peopleBindingSource = new BindingSource();
-            loadedPicturesBindingSource = new BindingSource();
+            // loadedPicturesBindingSource = new BindingSource();
             _model = new OuhmaniaModel
             {
                 Version = VERSION,
@@ -57,13 +56,11 @@ namespace OuhmaniaPeopleRecognizer
                 CurrentPicturePath = ""
             };
             peopleBindingSource.DataSource = _model.AllPeople;
-            loadedPicturesBindingSource.DataSource = new List<string>();
             InitializeComponent();
             Text = GetFormTitle();
             CenterToScreen();
 
             peopleCheckBoxList.DataSource = peopleBindingSource;
-            loadedPicturesList.DataSource = loadedPicturesBindingSource;
 
             Trace.Listeners["textWriterListener"].Attributes["initializeData"] =
                 AppDomain.CurrentDomain.BaseDirectory + "\\" + DateTime.Now + ".log";
@@ -150,8 +147,8 @@ namespace OuhmaniaPeopleRecognizer
                 loadedFilesForExtension.ForEach(f => _model.PicturesWithPeople.Add(f, new List<string>()));
             }
 
-            loadedPicturesBindingSource.ResetBindings(true);
-            loadedPicturesBindingSource.Clear();
+            // loadedPicturesBindingSource.ResetBindings(true);
+            // loadedPicturesBindingSource.Clear();
             UpdateFileCountersAndLoadedFileList();
             loadedFilesInfoTable.Visible = true;
         }
@@ -318,7 +315,7 @@ namespace OuhmaniaPeopleRecognizer
             var allFilesCount = new List<string>(Directory.GetFiles(_model.DirectoryPath, "*.*", SearchOption.AllDirectories)).Count;
             allFilesCountLabel.Text = "Plików w folderze: " + allFilesCount;
             var onlyFileNames = _model.GetOnlyFileNames();
-            loadedPicturesBindingSource.DataSource = onlyFileNames;
+            // loadedPicturesBindingSource.DataSource = onlyFileNames;
             loadedFilesCountLabel.Text = "Załadowanych plików: " + onlyFileNames.Count;
         }
 
@@ -464,5 +461,83 @@ namespace OuhmaniaPeopleRecognizer
                 peopleCheckBoxList.Enabled = false;
             }
         }
+
+        private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
+        private void exportFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // save current picture first
+            SaveCurrentPictureState();
+            var bookCreator = new BookCreator(_model)
+            {
+                Visible = true,
+            };
+        }
+
+        private void loadProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (projectLoaded)
+                SaveCurrentPictureState();
+
+            CheckUnsavedChangesDialog("Czy chcesz je zapisać?", SaveModel);
+
+            // user clicked cancel button during file opening
+            if (!LoadModel())
+                return;
+
+            peopleBindingSource.ResetBindings(true);
+            peopleBindingSource.DataSource = _model.AllPeople;
+            if (_model.AutoSave)
+            {
+                AutoSaveTimer.Stop();
+                SetTimer();
+                autosaveLabel.Text = GetAutosaveLabel();
+            }
+            //////// IO section
+            CheckMissingFiles();
+            /////////////
+
+            UpdateFileCountersAndLoadedFileList();
+            LoadCurrentPathImage();
+            UpdatePeopleCheckboxes();
+
+            Text = GetFormTitle();
+            loadedFilesInfoTable.Visible = true;
+            unsavedChanges = false;
+            projectLoaded = true;
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveCurrentPictureState(true);
+            SaveModel();
+        }
+
+        private void loadPhotosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                DialogResult result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    _model.DirectoryPath = dialog.SelectedPath;
+                    ListDirectory(treeView1, dialog.SelectedPath);
+                    UpdateFileCountersAndLoadedFileList();
+                    LoadInitialPicture();
+                    unsavedChanges = true;
+                }
+            }
+        }
+
+        private void rescanDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListDirectory(treeView1, _model.DirectoryPath);
+
+            // refresh pictures list
+            // it can be anywhere
+            UpdateFileCountersAndLoadedFileList();
+        }
+
+ 
     }
 }

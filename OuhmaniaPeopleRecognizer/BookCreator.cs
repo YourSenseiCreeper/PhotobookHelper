@@ -36,7 +36,6 @@ namespace OuhmaniaPeopleRecognizer
                 if (result == DialogResult.OK)
                 {
                     _model.ExportPath = dialog.SelectedPath;
-                    // pathOrErrorLabel.Text = _exportPath;
                     exportButton.Enabled = true;
                 }
             }
