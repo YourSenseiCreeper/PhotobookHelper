@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.peopleCheckBoxList = new System.Windows.Forms.CheckedListBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.loadedFilesInfoTable = new System.Windows.Forms.TableLayoutPanel();
-            this.dictionaryPathLabel = new System.Windows.Forms.Label();
-            this.loadedFilesCountLabel = new System.Windows.Forms.Label();
-            this.allFilesCountLabel = new System.Windows.Forms.Label();
-            this.autosaveLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,9 +51,15 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.loadedFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.peopleListMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dodajOsobęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuńOsobęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderPathtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.rotateRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotateLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autosaveToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.loadedFilesInfoTable.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -69,38 +70,35 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.peopleListMenuStrip.SuspendLayout();
+            this.pictureMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox1.ContextMenuStrip = this.pictureMenuStrip;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Layout += new System.Windows.Forms.LayoutEventHandler(this.pictureBox1_Layout);
             // 
             // peopleCheckBoxList
             // 
+            resources.ApplyResources(this.peopleCheckBoxList, "peopleCheckBoxList");
             this.peopleCheckBoxList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.peopleCheckBoxList.CausesValidation = false;
             this.peopleCheckBoxList.CheckOnClick = true;
-            resources.ApplyResources(this.peopleCheckBoxList, "peopleCheckBoxList");
+            this.peopleCheckBoxList.ContextMenuStrip = this.peopleListMenuStrip;
             this.peopleCheckBoxList.FormattingEnabled = true;
             this.peopleCheckBoxList.Name = "peopleCheckBoxList";
             this.peopleCheckBoxList.Sorted = true;
             // 
-            // tableLayoutPanel1
-            // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.treeView1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.loadedFilesInfoTable, 0, 1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
             // treeView1
             // 
             this.treeView1.AllowDrop = true;
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.treeView1, "treeView1");
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeView1.HideSelection = false;
             this.treeView1.ItemHeight = 18;
             this.treeView1.Name = "treeView1";
@@ -109,37 +107,6 @@
             this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
             this.treeView1.Enter += new System.EventHandler(this.treeView1_Enter);
             this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
-            // 
-            // loadedFilesInfoTable
-            // 
-            resources.ApplyResources(this.loadedFilesInfoTable, "loadedFilesInfoTable");
-            this.tableLayoutPanel1.SetColumnSpan(this.loadedFilesInfoTable, 2);
-            this.loadedFilesInfoTable.Controls.Add(this.dictionaryPathLabel, 0, 0);
-            this.loadedFilesInfoTable.Controls.Add(this.loadedFilesCountLabel, 0, 2);
-            this.loadedFilesInfoTable.Controls.Add(this.allFilesCountLabel, 0, 1);
-            this.loadedFilesInfoTable.Controls.Add(this.autosaveLabel, 0, 3);
-            this.loadedFilesInfoTable.Name = "loadedFilesInfoTable";
-            // 
-            // dictionaryPathLabel
-            // 
-            this.dictionaryPathLabel.AutoEllipsis = true;
-            resources.ApplyResources(this.dictionaryPathLabel, "dictionaryPathLabel");
-            this.dictionaryPathLabel.Name = "dictionaryPathLabel";
-            // 
-            // loadedFilesCountLabel
-            // 
-            resources.ApplyResources(this.loadedFilesCountLabel, "loadedFilesCountLabel");
-            this.loadedFilesCountLabel.Name = "loadedFilesCountLabel";
-            // 
-            // allFilesCountLabel
-            // 
-            resources.ApplyResources(this.allFilesCountLabel, "allFilesCountLabel");
-            this.allFilesCountLabel.Name = "allFilesCountLabel";
-            // 
-            // autosaveLabel
-            // 
-            resources.ApplyResources(this.autosaveLabel, "autosaveLabel");
-            this.autosaveLabel.Name = "autosaveLabel";
             // 
             // menuStrip1
             // 
@@ -254,13 +221,15 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer2.Panel2.Controls.Add(this.treeView1);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadedFilesCounttoolStripStatusLabel,
-            this.allFilesCounttoolStripStatusLabel});
+            this.allFilesCounttoolStripStatusLabel,
+            this.folderPathtoolStripStatusLabel,
+            this.autosaveToolStripStatusLabel});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
@@ -274,6 +243,54 @@
             this.allFilesCounttoolStripStatusLabel.Name = "allFilesCounttoolStripStatusLabel";
             resources.ApplyResources(this.allFilesCounttoolStripStatusLabel, "allFilesCounttoolStripStatusLabel");
             // 
+            // peopleListMenuStrip
+            // 
+            this.peopleListMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dodajOsobęToolStripMenuItem,
+            this.usuńOsobęToolStripMenuItem});
+            this.peopleListMenuStrip.Name = "peopleListMenuStrip";
+            resources.ApplyResources(this.peopleListMenuStrip, "peopleListMenuStrip");
+            // 
+            // dodajOsobęToolStripMenuItem
+            // 
+            this.dodajOsobęToolStripMenuItem.Name = "dodajOsobęToolStripMenuItem";
+            resources.ApplyResources(this.dodajOsobęToolStripMenuItem, "dodajOsobęToolStripMenuItem");
+            // 
+            // usuńOsobęToolStripMenuItem
+            // 
+            this.usuńOsobęToolStripMenuItem.Name = "usuńOsobęToolStripMenuItem";
+            resources.ApplyResources(this.usuńOsobęToolStripMenuItem, "usuńOsobęToolStripMenuItem");
+            // 
+            // folderPathtoolStripStatusLabel
+            // 
+            this.folderPathtoolStripStatusLabel.Name = "folderPathtoolStripStatusLabel";
+            resources.ApplyResources(this.folderPathtoolStripStatusLabel, "folderPathtoolStripStatusLabel");
+            // 
+            // pictureMenuStrip
+            // 
+            this.pictureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rotateRightToolStripMenuItem,
+            this.rotateLeftToolStripMenuItem});
+            this.pictureMenuStrip.Name = "pictureMenuStrip";
+            resources.ApplyResources(this.pictureMenuStrip, "pictureMenuStrip");
+            // 
+            // rotateRightToolStripMenuItem
+            // 
+            this.rotateRightToolStripMenuItem.Name = "rotateRightToolStripMenuItem";
+            resources.ApplyResources(this.rotateRightToolStripMenuItem, "rotateRightToolStripMenuItem");
+            this.rotateRightToolStripMenuItem.Click += new System.EventHandler(this.rotateRightToolStripMenuItem_Click);
+            // 
+            // rotateLeftToolStripMenuItem
+            // 
+            this.rotateLeftToolStripMenuItem.Name = "rotateLeftToolStripMenuItem";
+            resources.ApplyResources(this.rotateLeftToolStripMenuItem, "rotateLeftToolStripMenuItem");
+            this.rotateLeftToolStripMenuItem.Click += new System.EventHandler(this.rotateLeftToolStripMenuItem_Click);
+            // 
+            // autosaveToolStripStatusLabel
+            // 
+            resources.ApplyResources(this.autosaveToolStripStatusLabel, "autosaveToolStripStatusLabel");
+            this.autosaveToolStripStatusLabel.Name = "autosaveToolStripStatusLabel";
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -285,9 +302,6 @@
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beforeClose);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.loadedFilesInfoTable.ResumeLayout(false);
-            this.loadedFilesInfoTable.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -296,11 +310,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.peopleListMenuStrip.ResumeLayout(false);
+            this.pictureMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,12 +325,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckedListBox peopleCheckBoxList;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel loadedFilesInfoTable;
-        private System.Windows.Forms.Label loadedFilesCountLabel;
-        private System.Windows.Forms.Label dictionaryPathLabel;
-        private System.Windows.Forms.Label allFilesCountLabel;
-        private System.Windows.Forms.Label autosaveLabel;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -335,6 +344,14 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel loadedFilesCounttoolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel allFilesCounttoolStripStatusLabel;
+        private System.Windows.Forms.ContextMenuStrip peopleListMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem dodajOsobęToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuńOsobęToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel folderPathtoolStripStatusLabel;
+        private System.Windows.Forms.ContextMenuStrip pictureMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem rotateRightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotateLeftToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel autosaveToolStripStatusLabel;
     }
 }
 

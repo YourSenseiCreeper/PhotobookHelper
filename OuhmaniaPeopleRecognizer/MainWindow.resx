@@ -118,15 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pictureBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="pictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
+  <metadata name="pictureMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>403, 3</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="rotateRightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obróć w prawo</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obróć w lewo</value>
+  </data>
+  <data name="pictureMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 48</value>
+  </data>
+  <data name="&gt;&gt;pictureMenuStrip.Name" xml:space="preserve">
+    <value>pictureMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;pictureMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>12, 3</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>706, 628</value>
+    <value>681, 592</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -147,8 +171,32 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="peopleCheckBoxList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="peopleCheckBoxList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="peopleListMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>248, 3</value>
+  </metadata>
+  <data name="dodajOsobęToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="dodajOsobęToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dodaj osobę</value>
+  </data>
+  <data name="usuńOsobęToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="usuńOsobęToolStripMenuItem.Text" xml:space="preserve">
+    <value>Usuń osobę</value>
+  </data>
+  <data name="peopleListMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 48</value>
+  </data>
+  <data name="&gt;&gt;peopleListMenuStrip.Name" xml:space="preserve">
+    <value>peopleListMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;peopleListMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="peopleCheckBoxList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -157,16 +205,16 @@
     <value>True</value>
   </data>
   <data name="peopleCheckBoxList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>3, 3</value>
   </data>
   <data name="peopleCheckBoxList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 20, 3</value>
   </data>
   <data name="peopleCheckBoxList.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>222, 200</value>
+    <value>100, 44</value>
   </data>
   <data name="peopleCheckBoxList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 252</value>
+    <value>251, 212</value>
   </data>
   <data name="peopleCheckBoxList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -183,20 +231,17 @@
   <data name="&gt;&gt;peopleCheckBoxList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="treeView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="treeView1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="treeView1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 44</value>
+  </data>
   <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 263</value>
+    <value>249, 340</value>
   </data>
   <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -208,275 +253,14 @@
     <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;treeView1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+    <value>splitContainer2.Panel2</value>
   </data>
   <data name="&gt;&gt;treeView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="loadedFilesInfoTable.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
-    <value>Single</value>
-  </data>
-  <data name="loadedFilesInfoTable.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.Name" xml:space="preserve">
-    <value>dictionaryPathLabel</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.Name" xml:space="preserve">
-    <value>loadedFilesCountLabel</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.Name" xml:space="preserve">
-    <value>allFilesCountLabel</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.Name" xml:space="preserve">
-    <value>autosaveLabel</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="loadedFilesInfoTable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="loadedFilesInfoTable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 275</value>
-  </data>
-  <data name="loadedFilesInfoTable.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="loadedFilesInfoTable.RowCount" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="loadedFilesInfoTable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 73</value>
-  </data>
-  <data name="loadedFilesInfoTable.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="loadedFilesInfoTable.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesInfoTable.Name" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesInfoTable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesInfoTable.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesInfoTable.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="loadedFilesInfoTable.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="dictionaryPathLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="loadedFilesCountLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="allFilesCountLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="autosaveLabel" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 372</value>
-  </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="treeView1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="loadedFilesInfoTable" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="dictionaryPathLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="dictionaryPathLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 6</value>
-  </data>
-  <data name="dictionaryPathLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 13</value>
-  </data>
-  <data name="dictionaryPathLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dictionaryPathLabel.Text" xml:space="preserve">
-    <value>Ścieżka do zdjęć</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.Name" xml:space="preserve">
-    <value>dictionaryPathLabel</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;dictionaryPathLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="loadedFilesCountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="loadedFilesCountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 34</value>
-  </data>
-  <data name="loadedFilesCountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
-  </data>
-  <data name="loadedFilesCountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="loadedFilesCountLabel.Text" xml:space="preserve">
-    <value>Załadowanych zdjęć</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.Name" xml:space="preserve">
-    <value>loadedFilesCountLabel</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;loadedFilesCountLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="allFilesCountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="allFilesCountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
-  </data>
-  <data name="allFilesCountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 13</value>
-  </data>
-  <data name="allFilesCountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="allFilesCountLabel.Text" xml:space="preserve">
-    <value>Wszystkich plików</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.Name" xml:space="preserve">
-    <value>allFilesCountLabel</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;allFilesCountLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="autosaveLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="autosaveLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 11.25pt</value>
-  </data>
-  <data name="autosaveLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 48</value>
-  </data>
-  <data name="autosaveLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 18</value>
-  </data>
-  <data name="autosaveLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="autosaveLabel.Text" xml:space="preserve">
-    <value>Autozapis</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.Name" xml:space="preserve">
-    <value>autosaveLabel</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.Parent" xml:space="preserve">
-    <value>loadedFilesInfoTable</value>
-  </data>
-  <data name="&gt;&gt;autosaveLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>974, 24</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Plik</value>
-  </data>
   <data name="loadProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
@@ -504,11 +288,11 @@
   <data name="closeProgramToolStripMenuItem.Text" xml:space="preserve">
     <value>Zamknij program</value>
   </data>
-  <data name="photosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 20</value>
   </data>
-  <data name="photosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zdjęcia</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plik</value>
   </data>
   <data name="loadPhotosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 22</value>
@@ -522,11 +306,11 @@
   <data name="rescanDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Odśwież zdjęcia</value>
   </data>
-  <data name="personToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+  <data name="photosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
   </data>
-  <data name="personToolStripMenuItem.Text" xml:space="preserve">
-    <value>Osoby</value>
+  <data name="photosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zdjęcia</value>
   </data>
   <data name="addPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 22</value>
@@ -539,6 +323,36 @@
   </data>
   <data name="removePersonToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuń osobę</value>
+  </data>
+  <data name="personToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="personToolStripMenuItem.Text" xml:space="preserve">
+    <value>Osoby</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>974, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -598,10 +412,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 628</value>
+    <value>264, 620</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>252</value>
+    <value>248</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -634,7 +448,7 @@
     <value>100</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>974, 628</value>
+    <value>974, 620</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>706</value>
@@ -652,13 +466,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
+  <data name="loadedFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
+    <value>Files loaded: 0</value>
+  </data>
+  <data name="allFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 17</value>
+  </data>
+  <data name="allFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
+    <value>All files: 0</value>
+  </data>
+  <data name="folderPathtoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Text" xml:space="preserve">
+    <value>Autosave: On</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 630</value>
+    <value>0, 622</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>974, 22</value>
@@ -679,19 +517,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="loadedFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
-  </data>
-  <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>Files loaded: 0</value>
-  </data>
-  <data name="allFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
-  </data>
-  <data name="allFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>All files: 0</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -703,7 +529,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>974, 652</value>
+    <value>974, 644</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -866,6 +692,42 @@
     <value>allFilesCounttoolStripStatusLabel</value>
   </data>
   <data name="&gt;&gt;allFilesCounttoolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dodajOsobęToolStripMenuItem.Name" xml:space="preserve">
+    <value>dodajOsobęToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;dodajOsobęToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;usuńOsobęToolStripMenuItem.Name" xml:space="preserve">
+    <value>usuńOsobęToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;usuńOsobęToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderPathtoolStripStatusLabel.Name" xml:space="preserve">
+    <value>folderPathtoolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;folderPathtoolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotateRightToolStripMenuItem.Name" xml:space="preserve">
+    <value>rotateRightToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;rotateRightToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotateLeftToolStripMenuItem.Name" xml:space="preserve">
+    <value>rotateLeftToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;rotateLeftToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;autosaveToolStripStatusLabel.Name" xml:space="preserve">
+    <value>autosaveToolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;autosaveToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -89,7 +89,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private void OnTimedEvent(object source, EventArgs e)
         {
-            autosaveLabel.Text = GetAutosaveLabel(true);
+            autosaveToolStripStatusLabel.Text = GetAutosaveLabel(true);
             if (_model.ProjectPath == null) 
                 return;
 
@@ -169,7 +169,10 @@ namespace OuhmaniaPeopleRecognizer
             {
                 using (var stream = File.OpenRead(fullPath))
                 {
+                    var loadedImage = Image.FromStream(stream);
+                    loadedImage.RotateFlip(RotateFlipType.Rotate90FlipXY);
                     pictureBox1.Image = Image.FromStream(stream);
+
                 }
             }
         }
@@ -238,12 +241,12 @@ namespace OuhmaniaPeopleRecognizer
 
         private void UpdateFileCountersAndLoadedFileList()
         {
-            dictionaryPathLabel.Text = _model.DirectoryPath;
             var allFilesCount = new List<string>(Directory.GetFiles(_model.DirectoryPath, "*.*", SearchOption.AllDirectories)).Count;
-            allFilesCountLabel.Text = "Plików w folderze: " + allFilesCount;
+            allFilesCounttoolStripStatusLabel.Text = "All files: " + allFilesCount;
             var onlyFileNames = _model.GetOnlyFileNames();
             // loadedPicturesBindingSource.DataSource = onlyFileNames;
-            loadedFilesCountLabel.Text = "Załadowanych plików: " + onlyFileNames.Count;
+            loadedFilesCounttoolStripStatusLabel.Text = "Loaded files: " + onlyFileNames.Count;
+            folderPathtoolStripStatusLabel.Text = _model.DirectoryPath;
         }
 
         /// <summary>
@@ -357,8 +360,10 @@ namespace OuhmaniaPeopleRecognizer
                 pictureBox1.Image.Dispose();
 
                 // load new picture
-                
-                _model.CurrentPicturePath = $"{treeView1.SelectedNode.FullPath.Replace(treeView1.TopNode.FullPath, "")}";
+                var allNodes = treeView1.Nodes;
+                var rootNode = allNodes[0];
+                var selectedNodePath = treeView1.SelectedNode.FullPath;
+                _model.CurrentPicturePath = $"{selectedNodePath.Replace(rootNode.FullPath, "")}";
 
                 LoadCurrentPathImage();
                 UpdatePeopleCheckboxes();
@@ -399,7 +404,7 @@ namespace OuhmaniaPeopleRecognizer
             {
                 AutoSaveTimer.Stop();
                 SetTimer();
-                autosaveLabel.Text = GetAutosaveLabel();
+                autosaveToolStripStatusLabel.Text = GetAutosaveLabel();
             }
             //////// IO section
             CheckMissingFiles();
@@ -410,7 +415,7 @@ namespace OuhmaniaPeopleRecognizer
             UpdatePeopleCheckboxes();
 
             Text = GetFormTitle();
-            loadedFilesInfoTable.Visible = true;
+            loadedFilesCounttoolStripStatusLabel.Visible = true;
             unsavedChanges = false;
             projectLoaded = true;
         }
@@ -473,6 +478,20 @@ namespace OuhmaniaPeopleRecognizer
                 e.Effect = DragDropEffects.Copy;
             else
                 e.Effect = DragDropEffects.None;
+        }
+
+        private void rotateRightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currentImage = pictureBox1.Image;
+            currentImage.RotateFlip(RotateFlipType.Rotate270FlipXY);
+            pictureBox1.Image = currentImage;
+        }
+
+        private void rotateLeftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currentImage = pictureBox1.Image;
+            currentImage.RotateFlip(RotateFlipType.Rotate90FlipXY);
+            pictureBox1.Image = currentImage;
         }
     }
 }
