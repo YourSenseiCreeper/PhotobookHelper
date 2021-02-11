@@ -100,22 +100,6 @@ namespace OuhmaniaPeopleRecognizer
             unsavedChanges = false;
         }
 
-        private void LoadPicturesClick(object sender, EventArgs e)
-        {
-            using (var dialog = new FolderBrowserDialog())
-            {
-                DialogResult result = dialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    _model.DirectoryPath = dialog.SelectedPath;
-                    ListDirectory(treeView1, dialog.SelectedPath);
-                    UpdateFileCountersAndLoadedFileList();
-                    LoadInitialPicture();
-                    unsavedChanges = true;
-                }
-            }
-        }
-
         private void treeView1_Enter(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null)
@@ -139,31 +123,12 @@ namespace OuhmaniaPeopleRecognizer
             peopleCheckBoxList.Items.AddRange(_model.AllPeople.ToArray());
         }
 
-        private void LoadPictures()
-        {
-            foreach (var extension in supportedExtensions)
-            {
-                var loadedFilesForExtension = new List<string>(Directory.GetFiles(_model.DirectoryPath, extension, SearchOption.AllDirectories));
-                loadedFilesForExtension.ForEach(f => _model.PicturesWithPeople.Add(f, new List<string>()));
-            }
-
-            // loadedPicturesBindingSource.ResetBindings(true);
-            // loadedPicturesBindingSource.Clear();
-            UpdateFileCountersAndLoadedFileList();
-            loadedFilesInfoTable.Visible = true;
-        }
-
         private void LoadInitialPicture()
         {
             // load first picture
             _model.CurrentPicturePath = _model.PicturesWithPeople.First().Key;
             LoadCurrentPathImage();
             UpdatePeopleCheckboxes();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void SaveCurrentPictureState(bool beforeSaveAction = false)
@@ -247,45 +212,6 @@ namespace OuhmaniaPeopleRecognizer
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SaveCurrentPictureState(true);
-            SaveModel();
-        }
-
-        private void loadSettingsButton_Click(object sender, EventArgs e)
-        {
-            if (projectLoaded)
-                SaveCurrentPictureState();
-
-            CheckUnsavedChangesDialog("Czy chcesz je zapisać?", SaveModel);
-
-            // user clicked cancel button during file opening
-            if (!LoadModel())
-                return;
-
-            peopleBindingSource.ResetBindings(true);
-            peopleBindingSource.DataSource = _model.AllPeople;
-            if (_model.AutoSave)
-            {
-                AutoSaveTimer.Stop();
-                SetTimer();
-                autosaveLabel.Text = GetAutosaveLabel();
-            }
-            //////// IO section
-            CheckMissingFiles();
-            /////////////
-
-            UpdateFileCountersAndLoadedFileList();
-            LoadCurrentPathImage();
-            UpdatePeopleCheckboxes();
-
-            Text = GetFormTitle();
-            loadedFilesInfoTable.Visible = true;
-            unsavedChanges = false;
-            projectLoaded = true;
-        }
-
         private void CheckMissingFiles()
         {
             var missingFiles = new List<string>();
@@ -320,16 +246,6 @@ namespace OuhmaniaPeopleRecognizer
             loadedFilesCountLabel.Text = "Załadowanych plików: " + onlyFileNames.Count;
         }
 
-        private void bookCreatorButton_Click(object sender, EventArgs e)
-        {
-            // save current picture first
-            SaveCurrentPictureState();
-            var bookCreator = new BookCreator(_model)
-            {
-                Visible = true,
-            };
-        }
-
         /// <summary>
         /// "Masz niezapisane zmiany w projekcie!" {details}
         /// </summary>
@@ -352,15 +268,6 @@ namespace OuhmaniaPeopleRecognizer
         private void beforeClose(object sender, FormClosingEventArgs e)
         {
             CheckUnsavedChangesDialog("Czy chcesz je zapisać?", SaveModel);
-        }
-
-        private void refreshDirectoryButton_Click(object sender, EventArgs e)
-        {
-            ListDirectory(treeView1, _model.DirectoryPath);
-
-            // refresh pictures list
-            // it can be anywhere
-            UpdateFileCountersAndLoadedFileList();
         }
 
         private void ListDirectory(TreeView treeView, string path)
@@ -542,6 +449,30 @@ namespace OuhmaniaPeopleRecognizer
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void treeView1_DragDrop(object sender, DragEventArgs e)
+        {
+            // Move the dragged node when the left mouse button is used.
+            var data = e.Data;
+            var filepaths = (string[]) e.Data.GetData(DataFormats.FileDrop);
+            if (filepaths.Length != 0)
+            {
+                _model.DirectoryPath = filepaths[0];
+                ListDirectory(treeView1, filepaths[0]);
+                UpdateFileCountersAndLoadedFileList();
+            }
+            
+
+        }
+
+        private void treeView1_DragEnter(object sender, DragEventArgs e)
+        {
+            var datatype = e.Data.GetFormats();
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
         }
     }
 }
