@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using OuhmaniaPeopleRecognizer.Properties;
 using WebPWrapper;
 
 namespace OuhmaniaPeopleRecognizer
@@ -82,22 +83,29 @@ namespace OuhmaniaPeopleRecognizer
             // Create a timer with a two second interval.
             // Hook up the Elapsed event for the timer. 
             AutoSaveTimer = new DispatcherTimer(DispatcherPriority.SystemIdle);
-            AutoSaveTimer.Tick += OnTimedEvent;
+            AutoSaveTimer.Tick += OnAutosave;
             AutoSaveTimer.Interval = TimeSpan.FromMilliseconds(_model.AutoSaveIntervalInMins * 1000 * 60);
             AutoSaveTimer.Start();
         }
 
-        private void OnTimedEvent(object source, EventArgs e)
+        private void OnAutosave(object source, EventArgs e)
         {
-            autosaveToolStripStatusLabel.Text = GetAutosaveLabel(true);
-            if (_model.ProjectPath == null) 
+            if (_model.ProjectPath == null)
                 return;
 
-            var writer = new StreamWriter(_model.ProjectPath);
-            writer.WriteLine(new JavaScriptSerializer().Serialize(_model));
-            writer.Dispose();
-            writer.Close();
-            unsavedChanges = false;
+            try
+            {
+                var writer = new StreamWriter(_model.ProjectPath);
+                writer.WriteLine(new JavaScriptSerializer().Serialize(_model));
+                writer.Dispose();
+                writer.Close();
+                unsavedChanges = false;
+                autosaveToolStripStatusLabel.Text = GetAutosaveLabel(true);
+            }
+            catch (IOException exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void treeView1_Enter(object sender, EventArgs e)
@@ -118,9 +126,16 @@ namespace OuhmaniaPeopleRecognizer
             }
         }
 
-        private void AddPersonClicked(object sender, EventArgs e)
+        private void AddPersonAction()
         {
-            peopleCheckBoxList.Items.AddRange(_model.AllPeople.ToArray());
+            var personName = AddPersonDialog.ShowDialog("Dodaj osobę", "Wpisz imię i nazwisko");
+            
+            // var personName = Prompt.ShowDialog("Wpisz imię i nazwisko osoby", "asdf");
+            if (personName == null)
+                return;
+            
+            _model.AllPeople.Add(personName);
+            peopleBindingSource.ResetBindings(true);
         }
 
         private void LoadInitialPicture()
@@ -139,11 +154,11 @@ namespace OuhmaniaPeopleRecognizer
                 selectedPeople.Add(selectedPerson.ToString());
             }
 
-            if (selectedPeople != _model.GetSelectedPeopleForCurrentPicture())
-            {
-                _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
-                unsavedChanges = !beforeSaveAction;
-            }
+            if (selectedPeople == _model.GetSelectedPeopleForCurrentPicture()) 
+                return;
+
+            _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
+            unsavedChanges = !beforeSaveAction;
         }
 
         private string GetCurrentPicturePath()
@@ -187,32 +202,6 @@ namespace OuhmaniaPeopleRecognizer
             {
                 peopleCheckBoxList.SetItemCheckState(peopleCheckBoxList.Items.IndexOf(selectedPerson), CheckState.Checked);
             }
-        }
-
-        private void PictureSelected(object sender, EventArgs e)
-        {
-            if (!programLoaded)
-                return;
-            // Add people from previous picture
-            SaveCurrentPictureState();
-
-            // disposing
-            GC.Collect();
-            pictureBox1.Image.Dispose();
-
-            // load new picture
-            _model.CurrentPicturePath = GetCurrentPicturePath();
-            
-
-            // check saved people
-            // not sure if there's a need to repoint datasource
-            LoadCurrentPathImage();
-            UpdatePeopleCheckboxes();
-        }
-
-        private void pictureBox1_Layout(object sender, LayoutEventArgs e)
-        {
-
         }
 
         private void CheckMissingFiles()
@@ -492,6 +481,23 @@ namespace OuhmaniaPeopleRecognizer
             var currentImage = pictureBox1.Image;
             currentImage.RotateFlip(RotateFlipType.Rotate90FlipXY);
             pictureBox1.Image = currentImage;
+        }
+
+        private void addPersonToolStripContextMenuItem_Click(object sender, EventArgs e) => AddPersonAction();
+
+        private void deletePersonToolStripContextMenuItem_Click(object sender, EventArgs e)
+        {
+            var personToDelete = peopleCheckBoxList.SelectedItem.ToString();
+
+            //TODO: Check if person was added to pictures
+
+            var dialogInfo = string.Format(Resources.MainWindow_deletePersonToolStripContextMenuItem_Confirm, personToDelete);
+            var dialogTitle = Resources.MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle;
+            if (MessageBox.Show(dialogInfo, dialogTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _model.AllPeople.Remove(personToDelete);
+                peopleBindingSource.ResetBindings(true);
+            }
         }
     }
 }

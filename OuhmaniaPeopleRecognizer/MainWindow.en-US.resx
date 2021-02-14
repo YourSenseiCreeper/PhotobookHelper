@@ -124,12 +124,6 @@
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 279</value>
   </data>
-  <data name="saveTagsButton.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="loadSettingsButton.Text" xml:space="preserve">
-    <value>Load</value>
-  </data>
   <data name="addPersonButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 33</value>
   </data>
@@ -148,9 +142,6 @@
   <data name="bookCreatorButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 185</value>
   </data>
-  <data name="bookCreatorButton.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
   <data name="refreshDirectoryButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 229</value>
   </data>
@@ -168,9 +159,6 @@
   </data>
   <data name="dictionaryPathLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 13</value>
-  </data>
-  <data name="dictionaryPathLabel.Text" xml:space="preserve">
-    <value>Directory path</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -250,5 +238,62 @@
   </data>
   <data name="Warning_UnsavedChanges" xml:space="preserve">
     <value>You have unsaved changes in project!</value>
+  </data>
+  <data name="saveProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save project</value>
+  </data>
+  <data name="deletePersonToolStripContextMenuItem.Text" xml:space="preserve">
+    <value>Delete selected person</value>
+  </data>
+  <data name="closeProgramToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="exportFilesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Export files</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="loadPhotosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load photos</value>
+  </data>
+  <data name="loadProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load project</value>
+  </data>
+  <data name="addPersonToolStripContextMenuItem.Text" xml:space="preserve">
+    <value>Add person</value>
+  </data>
+  <data name="addPersonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add person</value>
+  </data>
+  <data name="allFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
+    <value>All files: {0}</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Text" xml:space="preserve">
+    <value>Autosave: On</value>
+  </data>
+  <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
+    <value>Loaded files: {0}</value>
+  </data>
+  <data name="personToolStripMenuItem.Text" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="photosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="removePersonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Remove person</value>
+  </data>
+  <data name="rescanDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rescan files</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotate left</value>
+  </data>
+  <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotate right</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>OuhmaniaPeopleRecognizer v1.0</value>
   </data>
 </root>

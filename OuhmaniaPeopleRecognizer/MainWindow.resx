@@ -125,18 +125,6 @@
     <value>403, 3</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rotateRightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Obróć w prawo</value>
-  </data>
-  <data name="rotateLeftToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
-    <value>Obróć w lewo</value>
-  </data>
   <data name="pictureMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 48</value>
   </data>
@@ -171,26 +159,26 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="rotateRightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obróć w prawo</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obróć w lewo</value>
+  </data>
   <data name="peopleCheckBoxList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <metadata name="peopleListMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 3</value>
   </metadata>
-  <data name="dodajOsobęToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
-  <data name="dodajOsobęToolStripMenuItem.Text" xml:space="preserve">
-    <value>Dodaj osobę</value>
-  </data>
-  <data name="usuńOsobęToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
-  <data name="usuńOsobęToolStripMenuItem.Text" xml:space="preserve">
-    <value>Usuń osobę</value>
-  </data>
   <data name="peopleListMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 48</value>
+    <value>185, 48</value>
   </data>
   <data name="&gt;&gt;peopleListMenuStrip.Name" xml:space="preserve">
     <value>peopleListMenuStrip</value>
@@ -231,6 +219,18 @@
   <data name="&gt;&gt;peopleCheckBoxList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="addPersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="addPersonToolStripContextMenuItem.Text" xml:space="preserve">
+    <value>Dodaj osobę</value>
+  </data>
+  <data name="deletePersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="deletePersonToolStripContextMenuItem.Text" xml:space="preserve">
+    <value>Usuń wybraną osobę</value>
+  </data>
   <data name="treeView1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -261,6 +261,36 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>974, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plik</value>
+  </data>
   <data name="loadProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
@@ -288,11 +318,11 @@
   <data name="closeProgramToolStripMenuItem.Text" xml:space="preserve">
     <value>Zamknij program</value>
   </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
+  <data name="photosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
   </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Plik</value>
+  <data name="photosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zdjęcia</value>
   </data>
   <data name="loadPhotosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 22</value>
@@ -306,11 +336,11 @@
   <data name="rescanDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Odśwież zdjęcia</value>
   </data>
-  <data name="photosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
+  <data name="personToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
   </data>
-  <data name="photosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zdjęcia</value>
+  <data name="personToolStripMenuItem.Text" xml:space="preserve">
+    <value>Osoby</value>
   </data>
   <data name="addPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 22</value>
@@ -323,36 +353,6 @@
   </data>
   <data name="removePersonToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuń osobę</value>
-  </data>
-  <data name="personToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="personToolStripMenuItem.Text" xml:space="preserve">
-    <value>Osoby</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>974, 24</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -472,16 +472,16 @@
     <value>132, 17</value>
   </metadata>
   <data name="loadedFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
+    <value>121, 17</value>
   </data>
   <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>Files loaded: 0</value>
+    <value>Wczytanych plików: {0}</value>
   </data>
   <data name="allFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
+    <value>95, 17</value>
   </data>
   <data name="allFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>All files: 0</value>
+    <value>Wszystkie pliki: {0}</value>
   </data>
   <data name="folderPathtoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>
@@ -490,10 +490,10 @@
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
   <data name="autosaveToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
+    <value>121, 17</value>
   </data>
   <data name="autosaveToolStripStatusLabel.Text" xml:space="preserve">
-    <value>Autosave: On</value>
+    <value>Autozapis: Włączony</value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 622</value>
@@ -523,7 +523,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>53</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -610,6 +610,30 @@
   <data name="$this.Text" xml:space="preserve">
     <value>OuhmaniaPeopleRecognizer v1.0</value>
   </data>
+  <data name="&gt;&gt;rotateRightToolStripMenuItem.Name" xml:space="preserve">
+    <value>rotateRightToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;rotateRightToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotateLeftToolStripMenuItem.Name" xml:space="preserve">
+    <value>rotateLeftToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;rotateLeftToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addPersonToolStripContextMenuItem.Name" xml:space="preserve">
+    <value>addPersonToolStripContextMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addPersonToolStripContextMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deletePersonToolStripContextMenuItem.Name" xml:space="preserve">
+    <value>deletePersonToolStripContextMenuItem</value>
+  </data>
+  <data name="&gt;&gt;deletePersonToolStripContextMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
   </data>
@@ -694,35 +718,11 @@
   <data name="&gt;&gt;allFilesCounttoolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dodajOsobęToolStripMenuItem.Name" xml:space="preserve">
-    <value>dodajOsobęToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;dodajOsobęToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;usuńOsobęToolStripMenuItem.Name" xml:space="preserve">
-    <value>usuńOsobęToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;usuńOsobęToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;folderPathtoolStripStatusLabel.Name" xml:space="preserve">
     <value>folderPathtoolStripStatusLabel</value>
   </data>
   <data name="&gt;&gt;folderPathtoolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rotateRightToolStripMenuItem.Name" xml:space="preserve">
-    <value>rotateRightToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;rotateRightToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rotateLeftToolStripMenuItem.Name" xml:space="preserve">
-    <value>rotateLeftToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;rotateLeftToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;autosaveToolStripStatusLabel.Name" xml:space="preserve">
     <value>autosaveToolStripStatusLabel</value>

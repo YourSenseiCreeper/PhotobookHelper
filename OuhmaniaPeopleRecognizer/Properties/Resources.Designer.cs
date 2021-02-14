@@ -70,6 +70,24 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Czy chcesz usunąć &apos;{0}&apos;?.
+        /// </summary>
+        internal static string MainWindow_deletePersonToolStripContextMenuItem_Confirm {
+            get {
+                return ResourceManager.GetString("MainWindow_deletePersonToolStripContextMenuItem_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Usuń osobę.
+        /// </summary>
+        internal static string MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle {
+            get {
+                return ResourceManager.GetString("MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu .
         /// </summary>
         internal static string MainWindow_Save {

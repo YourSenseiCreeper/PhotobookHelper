@@ -14,4 +14,10 @@
   <data name="HelloString" xml:space="preserve">
     <value>Hello Photobook</value>
   </data>
+  <data name="MainWindow_deletePersonToolStripContextMenuItem_Confirm" xml:space="preserve">
+    <value>Do you want to delete '{0}'?</value>
+  </data>
+  <data name="MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle" xml:space="preserve">
+    <value>Delete person</value>
+  </data>
 </root>

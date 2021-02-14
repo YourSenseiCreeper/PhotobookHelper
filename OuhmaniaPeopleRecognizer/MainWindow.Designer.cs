@@ -31,7 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.rotateRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotateLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleCheckBoxList = new System.Windows.Forms.CheckedListBox();
+            this.peopleListMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addPersonToolStripContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deletePersonToolStripContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,15 +57,11 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.loadedFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.peopleListMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dodajOsobęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuńOsobęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderPathtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.rotateRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotateLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autosaveToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureMenuStrip.SuspendLayout();
+            this.peopleListMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -70,8 +72,6 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.peopleListMenuStrip.SuspendLayout();
-            this.pictureMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -81,7 +81,26 @@
             this.pictureBox1.ContextMenuStrip = this.pictureMenuStrip;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Layout += new System.Windows.Forms.LayoutEventHandler(this.pictureBox1_Layout);
+            // 
+            // pictureMenuStrip
+            // 
+            this.pictureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rotateRightToolStripMenuItem,
+            this.rotateLeftToolStripMenuItem});
+            this.pictureMenuStrip.Name = "pictureMenuStrip";
+            resources.ApplyResources(this.pictureMenuStrip, "pictureMenuStrip");
+            // 
+            // rotateRightToolStripMenuItem
+            // 
+            this.rotateRightToolStripMenuItem.Name = "rotateRightToolStripMenuItem";
+            resources.ApplyResources(this.rotateRightToolStripMenuItem, "rotateRightToolStripMenuItem");
+            this.rotateRightToolStripMenuItem.Click += new System.EventHandler(this.rotateRightToolStripMenuItem_Click);
+            // 
+            // rotateLeftToolStripMenuItem
+            // 
+            this.rotateLeftToolStripMenuItem.Name = "rotateLeftToolStripMenuItem";
+            resources.ApplyResources(this.rotateLeftToolStripMenuItem, "rotateLeftToolStripMenuItem");
+            this.rotateLeftToolStripMenuItem.Click += new System.EventHandler(this.rotateLeftToolStripMenuItem_Click);
             // 
             // peopleCheckBoxList
             // 
@@ -93,6 +112,26 @@
             this.peopleCheckBoxList.FormattingEnabled = true;
             this.peopleCheckBoxList.Name = "peopleCheckBoxList";
             this.peopleCheckBoxList.Sorted = true;
+            // 
+            // peopleListMenuStrip
+            // 
+            this.peopleListMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPersonToolStripContextMenuItem,
+            this.deletePersonToolStripContextMenuItem});
+            this.peopleListMenuStrip.Name = "peopleListMenuStrip";
+            resources.ApplyResources(this.peopleListMenuStrip, "peopleListMenuStrip");
+            // 
+            // addPersonToolStripContextMenuItem
+            // 
+            this.addPersonToolStripContextMenuItem.Name = "addPersonToolStripContextMenuItem";
+            resources.ApplyResources(this.addPersonToolStripContextMenuItem, "addPersonToolStripContextMenuItem");
+            this.addPersonToolStripContextMenuItem.Click += new System.EventHandler(this.addPersonToolStripContextMenuItem_Click);
+            // 
+            // deletePersonToolStripContextMenuItem
+            // 
+            this.deletePersonToolStripContextMenuItem.Name = "deletePersonToolStripContextMenuItem";
+            resources.ApplyResources(this.deletePersonToolStripContextMenuItem, "deletePersonToolStripContextMenuItem");
+            this.deletePersonToolStripContextMenuItem.Click += new System.EventHandler(this.deletePersonToolStripContextMenuItem_Click);
             // 
             // treeView1
             // 
@@ -243,48 +282,10 @@
             this.allFilesCounttoolStripStatusLabel.Name = "allFilesCounttoolStripStatusLabel";
             resources.ApplyResources(this.allFilesCounttoolStripStatusLabel, "allFilesCounttoolStripStatusLabel");
             // 
-            // peopleListMenuStrip
-            // 
-            this.peopleListMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajOsobęToolStripMenuItem,
-            this.usuńOsobęToolStripMenuItem});
-            this.peopleListMenuStrip.Name = "peopleListMenuStrip";
-            resources.ApplyResources(this.peopleListMenuStrip, "peopleListMenuStrip");
-            // 
-            // dodajOsobęToolStripMenuItem
-            // 
-            this.dodajOsobęToolStripMenuItem.Name = "dodajOsobęToolStripMenuItem";
-            resources.ApplyResources(this.dodajOsobęToolStripMenuItem, "dodajOsobęToolStripMenuItem");
-            // 
-            // usuńOsobęToolStripMenuItem
-            // 
-            this.usuńOsobęToolStripMenuItem.Name = "usuńOsobęToolStripMenuItem";
-            resources.ApplyResources(this.usuńOsobęToolStripMenuItem, "usuńOsobęToolStripMenuItem");
-            // 
             // folderPathtoolStripStatusLabel
             // 
             this.folderPathtoolStripStatusLabel.Name = "folderPathtoolStripStatusLabel";
             resources.ApplyResources(this.folderPathtoolStripStatusLabel, "folderPathtoolStripStatusLabel");
-            // 
-            // pictureMenuStrip
-            // 
-            this.pictureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rotateRightToolStripMenuItem,
-            this.rotateLeftToolStripMenuItem});
-            this.pictureMenuStrip.Name = "pictureMenuStrip";
-            resources.ApplyResources(this.pictureMenuStrip, "pictureMenuStrip");
-            // 
-            // rotateRightToolStripMenuItem
-            // 
-            this.rotateRightToolStripMenuItem.Name = "rotateRightToolStripMenuItem";
-            resources.ApplyResources(this.rotateRightToolStripMenuItem, "rotateRightToolStripMenuItem");
-            this.rotateRightToolStripMenuItem.Click += new System.EventHandler(this.rotateRightToolStripMenuItem_Click);
-            // 
-            // rotateLeftToolStripMenuItem
-            // 
-            this.rotateLeftToolStripMenuItem.Name = "rotateLeftToolStripMenuItem";
-            resources.ApplyResources(this.rotateLeftToolStripMenuItem, "rotateLeftToolStripMenuItem");
-            this.rotateLeftToolStripMenuItem.Click += new System.EventHandler(this.rotateLeftToolStripMenuItem_Click);
             // 
             // autosaveToolStripStatusLabel
             // 
@@ -302,6 +303,8 @@
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beforeClose);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pictureMenuStrip.ResumeLayout(false);
+            this.peopleListMenuStrip.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -314,8 +317,6 @@
             this.splitContainer2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.peopleListMenuStrip.ResumeLayout(false);
-            this.pictureMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,8 +346,8 @@
         private System.Windows.Forms.ToolStripStatusLabel loadedFilesCounttoolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel allFilesCounttoolStripStatusLabel;
         private System.Windows.Forms.ContextMenuStrip peopleListMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem dodajOsobęToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuńOsobęToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPersonToolStripContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deletePersonToolStripContextMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel folderPathtoolStripStatusLabel;
         private System.Windows.Forms.ContextMenuStrip pictureMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem rotateRightToolStripMenuItem;
