@@ -70,6 +70,60 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wpisz imię i nazwisko.
+        /// </summary>
+        internal static string MainWindow_addPerson_Caption {
+            get {
+                return ResourceManager.GetString("MainWindow_addPerson_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Dodaj osobę.
+        /// </summary>
+        internal static string MainWindow_addPerson_Title {
+            get {
+                return ResourceManager.GetString("MainWindow_addPerson_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu? \n {1}.
+        /// </summary>
+        internal static string MainWindow_CheckMissingFiles_FoundMissingFiles {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckMissingFiles_FoundMissingFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu .
+        /// </summary>
+        internal static string MainWindow_CheckMissingFiles_FoundMissingFiles_Title {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckMissingFiles_FoundMissingFiles_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?.
+        /// </summary>
+        internal static string MainWindow_CheckUnsavedChangesDialog_Caption {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckUnsavedChangesDialog_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Niezapisane zmiany.
+        /// </summary>
+        internal static string MainWindow_CheckUnsavedChangesDialog_Title {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckUnsavedChangesDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Czy chcesz usunąć &apos;{0}&apos;?.
         /// </summary>
         internal static string MainWindow_deletePersonToolStripContextMenuItem_Confirm {

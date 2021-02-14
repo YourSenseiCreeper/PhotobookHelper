@@ -129,4 +129,10 @@
   <data name="MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle" xml:space="preserve">
     <value>Usuń osobę</value>
   </data>
+  <data name="MainWindow_addPerson_Caption" xml:space="preserve">
+    <value>Wpisz imię i nazwisko</value>
+  </data>
+  <data name="MainWindow_addPerson_Title" xml:space="preserve">
+    <value>Dodaj osobę</value>
+  </data>
 </root>

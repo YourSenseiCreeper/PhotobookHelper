@@ -40,8 +40,6 @@ namespace OuhmaniaPeopleRecognizer
 
         public MainWindow()
         {
-            peopleBindingSource = new BindingSource();
-            // loadedPicturesBindingSource = new BindingSource();
             _model = new OuhmaniaModel
             {
                 Version = VERSION,
@@ -52,11 +50,11 @@ namespace OuhmaniaPeopleRecognizer
                     "Thomas Kowalski", "Amanda Turner"
                 },
                 AutoSave = true,
-                AutoSaveIntervalInMins = 5,
+                AutoSaveIntervalInMinutes = 5,
                 DirectoryPath = AppDomain.CurrentDomain.BaseDirectory,
                 CurrentPicturePath = ""
             };
-            peopleBindingSource.DataSource = _model.AllPeople;
+            peopleBindingSource = new BindingSource {DataSource = _model.AllPeople};
             InitializeComponent();
             Text = GetFormTitle();
             CenterToScreen();
@@ -84,7 +82,7 @@ namespace OuhmaniaPeopleRecognizer
             // Hook up the Elapsed event for the timer. 
             AutoSaveTimer = new DispatcherTimer(DispatcherPriority.SystemIdle);
             AutoSaveTimer.Tick += OnAutosave;
-            AutoSaveTimer.Interval = TimeSpan.FromMilliseconds(_model.AutoSaveIntervalInMins * 1000 * 60);
+            AutoSaveTimer.Interval = TimeSpan.FromMilliseconds(_model.AutoSaveIntervalInMinutes * 1000 * 60);
             AutoSaveTimer.Start();
         }
 
@@ -128,13 +126,12 @@ namespace OuhmaniaPeopleRecognizer
 
         private void AddPersonAction()
         {
-            var personName = AddPersonDialog.ShowDialog("Dodaj osobę", "Wpisz imię i nazwisko");
+            var personName = AddPersonDialog.ShowDialog(Resources.MainWindow_addPerson_Title, Resources.MainWindow_addPerson_Caption);
             
-            // var personName = Prompt.ShowDialog("Wpisz imię i nazwisko osoby", "asdf");
             if (personName == null)
                 return;
             
-            _model.AllPeople.Add(personName);
+            _model.AddPerson(personName);
             peopleBindingSource.ResetBindings(true);
         }
 
@@ -159,12 +156,6 @@ namespace OuhmaniaPeopleRecognizer
 
             _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
             unsavedChanges = !beforeSaveAction;
-        }
-
-        private string GetCurrentPicturePath()
-        {
-            return "";
-            // return $"{_model.DirectoryPath}\\{loadedPicturesList.SelectedItem}";
         }
 
         private void LoadCurrentPathImage()
@@ -215,9 +206,13 @@ namespace OuhmaniaPeopleRecognizer
 
             if (missingFiles.Count != 0)
             {
-                var message = $"Nie znaleziono {missingFiles.Count} plików. Czy chcesz je usunąć z projektu? \n" +
-                              string.Join("\n", missingFiles);
-                var result = MessageBox.Show(message, "Brakujące pliki", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var message = string.Format(Resources.MainWindow_CheckMissingFiles_FoundMissingFiles,
+                    missingFiles.Count, string.Join("\n", missingFiles));
+                var result = MessageBox.Show(
+                    message, 
+                    Resources.MainWindow_CheckMissingFiles_FoundMissingFiles_Title,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     foreach (var missingFile in missingFiles)
@@ -239,28 +234,26 @@ namespace OuhmaniaPeopleRecognizer
         }
 
         /// <summary>
-        /// "Masz niezapisane zmiany w projekcie!" {details}
+        /// "You have unsaved changes in project!" {details}
         /// </summary>
         /// <param name="details"></param>
         /// <param name="yesAction"></param>
         /// <param name="noAction"></param>
-        private void CheckUnsavedChangesDialog(string details, Action yesAction = null, Action noAction = null)
+        private void CheckUnsavedChangesDialog()
         {
-            if (unsavedChanges)
+            if (_model.Dirty)
             {
-                var result = MessageBox.Show("Masz niezapisane zmiany w projekcie! " + details, "Niezapisane zmiany",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No && noAction != null)
-                    noAction();
-                else if (result == DialogResult.Yes & yesAction != null)
-                    yesAction();
+                var result = MessageBox.Show(
+                    Resources.MainWindow_CheckUnsavedChangesDialog_Caption,
+                    Resources.MainWindow_CheckUnsavedChangesDialog_Title,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                    SaveModel();
             }
         }
 
-        private void beforeClose(object sender, FormClosingEventArgs e)
-        {
-            CheckUnsavedChangesDialog("Czy chcesz je zapisać?", SaveModel);
-        }
+        private void beforeClose(object sender, FormClosingEventArgs e) => CheckUnsavedChangesDialog();
 
         private void ListDirectory(TreeView treeView, string path)
         {
@@ -381,7 +374,7 @@ namespace OuhmaniaPeopleRecognizer
             if (projectLoaded)
                 SaveCurrentPictureState();
 
-            CheckUnsavedChangesDialog("Czy chcesz je zapisać?", SaveModel);
+            CheckUnsavedChangesDialog();
 
             // user clicked cancel button during file opening
             if (!LoadModel())
@@ -448,7 +441,6 @@ namespace OuhmaniaPeopleRecognizer
         private void treeView1_DragDrop(object sender, DragEventArgs e)
         {
             // Move the dragged node when the left mouse button is used.
-            var data = e.Data;
             var filepaths = (string[]) e.Data.GetData(DataFormats.FileDrop);
             if (filepaths.Length != 0)
             {
@@ -462,11 +454,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private void treeView1_DragEnter(object sender, DragEventArgs e)
         {
-            var datatype = e.Data.GetFormats();
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-            else
-                e.Effect = DragDropEffects.None;
+            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         }
 
         private void rotateRightToolStripMenuItem_Click(object sender, EventArgs e)
@@ -495,7 +483,7 @@ namespace OuhmaniaPeopleRecognizer
             var dialogTitle = Resources.MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle;
             if (MessageBox.Show(dialogInfo, dialogTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _model.AllPeople.Remove(personToDelete);
+                _model.RemovePerson(personToDelete);
                 peopleBindingSource.ResetBindings(true);
             }
         }
