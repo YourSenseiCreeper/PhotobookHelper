@@ -88,6 +88,42 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wszystkie pliki: {0}.
+        /// </summary>
+        internal static string MainWindow_allFilesCounttoolStripStatusLabel {
+            get {
+                return ResourceManager.GetString("MainWindow_allFilesCounttoolStripStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Autozapis: Wyłączony.
+        /// </summary>
+        internal static string MainWindow_Autosave_Off {
+            get {
+                return ResourceManager.GetString("MainWindow_Autosave_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Autozapis: Włączony.
+        /// </summary>
+        internal static string MainWindow_Autosave_On {
+            get {
+                return ResourceManager.GetString("MainWindow_Autosave_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu {0}. ostatni: {1}.
+        /// </summary>
+        internal static string MainWindow_Autosave_Status {
+            get {
+                return ResourceManager.GetString("MainWindow_Autosave_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu? \n {1}.
         /// </summary>
         internal static string MainWindow_CheckMissingFiles_FoundMissingFiles {
@@ -97,7 +133,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu .
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Brakujące pliki.
         /// </summary>
         internal static string MainWindow_CheckMissingFiles_FoundMissingFiles_Title {
             get {
@@ -138,6 +174,15 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         internal static string MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle {
             get {
                 return ResourceManager.GetString("MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wczytanych plików: {0}.
+        /// </summary>
+        internal static string MainWindow_loadedFilesCounttoolStripStatusLabel {
+            get {
+                return ResourceManager.GetString("MainWindow_loadedFilesCounttoolStripStatusLabel", resourceCulture);
             }
         }
         

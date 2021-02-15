@@ -273,7 +273,7 @@
     <value>Autosave: On</value>
   </data>
   <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>Loaded files: {0}</value>
+    <value>Loaded files: 0</value>
   </data>
   <data name="personToolStripMenuItem.Text" xml:space="preserve">
     <value>Person</value>

@@ -38,4 +38,19 @@
   <data name="MainWindow_CheckMissingFiles_FoundMissingFiles_Title" xml:space="preserve">
     <value>Missing files</value>
   </data>
+  <data name="MainWindow_Autosave_Off" xml:space="preserve">
+    <value>Autosave: Off</value>
+  </data>
+  <data name="MainWindow_Autosave_On" xml:space="preserve">
+    <value>Autosave: On</value>
+  </data>
+  <data name="MainWindow_Autosave_Status" xml:space="preserve">
+    <value>{0}, last: {1}</value>
+  </data>
+  <data name="MainWindow_loadedFilesCounttoolStripStatusLabel" xml:space="preserve">
+    <value>Loaded files: {0}</value>
+  </data>
+  <data name="MainWindow_allFilesCounttoolStripStatusLabel" xml:space="preserve">
+    <value>All files: {0}</value>
+  </data>
 </root>

@@ -7,7 +7,6 @@ namespace OuhmaniaPeopleRecognizer
     public class OuhmaniaModel
     {
         private bool _dirty;
-
         public bool Dirty { get; set; }
         public string Version { get; set; }
 
@@ -84,7 +83,5 @@ namespace OuhmaniaPeopleRecognizer
             AllPeople.Remove(personName);
             _dirty = true;
         }
-
-        public void SetDirty(bool isDirty) => _dirty = isDirty;
     }
 }

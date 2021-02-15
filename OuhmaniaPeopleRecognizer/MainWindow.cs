@@ -71,9 +71,8 @@ namespace OuhmaniaPeopleRecognizer
 
         private string GetAutosaveLabel(bool autosaved=false)
         {
-            var autosave = _model.AutoSave ? "Włączony" : "Wyłączony";
-            var datetime = autosaved ? DateTime.Now.ToShortTimeString() : "brak";
-            return $"Autozapis: {autosave}, ostatni: {datetime}";
+            var autosave = _model.AutoSave ? Resources.MainWindow_Autosave_On : Resources.MainWindow_Autosave_Off;
+            return autosaved ? string.Format(Resources.MainWindow_Autosave_Status, autosave, DateTime.Now.ToShortTimeString()) : autosave;
         }
 
         private void SetTimer()
@@ -226,19 +225,13 @@ namespace OuhmaniaPeopleRecognizer
         private void UpdateFileCountersAndLoadedFileList()
         {
             var allFilesCount = new List<string>(Directory.GetFiles(_model.DirectoryPath, "*.*", SearchOption.AllDirectories)).Count;
-            allFilesCounttoolStripStatusLabel.Text = "All files: " + allFilesCount;
+            allFilesCounttoolStripStatusLabel.Text =
+                string.Format(Resources.MainWindow_allFilesCounttoolStripStatusLabel, allFilesCount);
             var onlyFileNames = _model.GetOnlyFileNames();
-            // loadedPicturesBindingSource.DataSource = onlyFileNames;
-            loadedFilesCounttoolStripStatusLabel.Text = "Loaded files: " + onlyFileNames.Count;
+            loadedFilesCounttoolStripStatusLabel.Text = string.Format(Resources.MainWindow_loadedFilesCounttoolStripStatusLabel, onlyFileNames.Count);
             folderPathtoolStripStatusLabel.Text = _model.DirectoryPath;
         }
 
-        /// <summary>
-        /// "You have unsaved changes in project!" {details}
-        /// </summary>
-        /// <param name="details"></param>
-        /// <param name="yesAction"></param>
-        /// <param name="noAction"></param>
         private void CheckUnsavedChangesDialog()
         {
             if (_model.Dirty)
@@ -447,9 +440,8 @@ namespace OuhmaniaPeopleRecognizer
                 _model.DirectoryPath = filepaths[0];
                 ListDirectory(treeView1, filepaths[0]);
                 UpdateFileCountersAndLoadedFileList();
+                LoadInitialPicture();
             }
-            
-
         }
 
         private void treeView1_DragEnter(object sender, DragEventArgs e)
