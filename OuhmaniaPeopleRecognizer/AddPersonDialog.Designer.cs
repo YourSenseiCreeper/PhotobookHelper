@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.okButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.descriptionLabel = new System.Windows.Forms.Label();
-            this.addPersonDialogBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.addPersonDialogBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // okButton
@@ -63,10 +60,6 @@
             this.descriptionLabel.TabIndex = 2;
             this.descriptionLabel.Text = "label1";
             // 
-            // addPersonDialogBindingSource
-            // 
-            this.addPersonDialogBindingSource.DataSource = typeof(OuhmaniaPeopleRecognizer.AddPersonDialog);
-            // 
             // AddPersonDialog
             // 
             this.AcceptButton = this.okButton;
@@ -81,7 +74,6 @@
             this.Name = "AddPersonDialog";
             this.ShowIcon = false;
             this.Text = "AddPersonDialog";
-            ((System.ComponentModel.ISupportInitialize)(this.addPersonDialogBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,6 +84,5 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.Label descriptionLabel;
-        private System.Windows.Forms.BindingSource addPersonDialogBindingSource;
     }
 }

@@ -14,14 +14,15 @@ namespace OuhmaniaPeopleRecognizer
         public static string FULL_PATH = DEFAULT_PATH + "\\" + DEFAULT_FILENAME;
         public static void Save(T pSettings, string initialDirectory)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
-            saveFileDialog.InitialDirectory = initialDirectory;
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*",
+                InitialDirectory = initialDirectory
+            };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile());
+                var writer = new StreamWriter(saveFileDialog.OpenFile());
                 writer.WriteLine(new JavaScriptSerializer().Serialize(pSettings));
                 writer.Dispose();
                 writer.Close();
@@ -30,15 +31,16 @@ namespace OuhmaniaPeopleRecognizer
 
         public static Tuple<bool, T> Load()
         {
-            T t = new T();
-            bool success = false;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var t = new T();
+            var success = false;
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*",
+                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory
+            };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+                var reader = new StreamReader(openFileDialog.OpenFile());
                 t = new JavaScriptSerializer().Deserialize<T>(reader.ReadLine());
                 reader.Dispose();
                 reader.Close();

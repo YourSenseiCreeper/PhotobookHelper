@@ -7,7 +7,13 @@ namespace OuhmaniaPeopleRecognizer
     public class OuhmaniaModel
     {
         private bool _dirty;
-        public bool Dirty { get; set; }
+
+        public bool Dirty
+        {
+            get => _dirty;
+            set => _dirty = value;
+        }
+
         public string Version { get; set; }
 
         private string _projectPath;

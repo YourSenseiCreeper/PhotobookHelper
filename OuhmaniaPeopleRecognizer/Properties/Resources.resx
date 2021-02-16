@@ -142,7 +142,7 @@
     <value>Niezapisane zmiany</value>
   </data>
   <data name="MainWindow_CheckMissingFiles_FoundMissingFiles" xml:space="preserve">
-    <value>Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu? \n {1}</value>
+    <value>Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?</value>
   </data>
   <data name="MainWindow_CheckMissingFiles_FoundMissingFiles_Title" xml:space="preserve">
     <value>Brakujące pliki</value>

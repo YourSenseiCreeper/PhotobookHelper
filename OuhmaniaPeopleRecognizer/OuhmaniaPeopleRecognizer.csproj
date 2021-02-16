@@ -68,7 +68,12 @@
     <Compile Include="BookCreator.Designer.cs">
       <DependentUpon>BookCreator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Localization.cs" />
+    <Compile Include="FilesNotFoundDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilesNotFoundDialog.Designer.cs">
+      <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +89,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookCreator.resx">
       <DependentUpon>BookCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilesNotFoundDialog.en-us.resx">
+      <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilesNotFoundDialog.resx">
+      <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.en-US.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -103,9 +114,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\AddPersonDialog.datasource" />
-    <None Include="Properties\DataSources\Form1.datasource" />
-    <None Include="Properties\DataSources\OuhmaniaModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="target32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

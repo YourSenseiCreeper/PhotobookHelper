@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Resources;
+using System.Threading;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using OuhmaniaPeopleRecognizer.Properties;
 using WebPWrapper;
 
+[assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
 {
     public partial class MainWindow : Form
@@ -40,20 +44,23 @@ namespace OuhmaniaPeopleRecognizer
 
         public MainWindow()
         {
+            var newCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = newCulture;
+            Thread.CurrentThread.CurrentUICulture = newCulture;
+
             _model = new OuhmaniaModel
             {
                 Version = VERSION,
                 SupportedFileExtensions = supportedExtensions,
                 PicturesWithPeople = new Dictionary<string, List<string>>(),
-                AllPeople = new List<string>
-                {
-                    "Thomas Kowalski", "Amanda Turner"
-                },
+                AllPeople = new List<string>(),
                 AutoSave = true,
                 AutoSaveIntervalInMinutes = 5,
                 DirectoryPath = AppDomain.CurrentDomain.BaseDirectory,
                 CurrentPicturePath = ""
             };
+            _model.Dirty = false;
+
             peopleBindingSource = new BindingSource {DataSource = _model.AllPeople};
             InitializeComponent();
             Text = GetFormTitle();
@@ -205,14 +212,13 @@ namespace OuhmaniaPeopleRecognizer
 
             if (missingFiles.Count != 0)
             {
-                var message = string.Format(Resources.MainWindow_CheckMissingFiles_FoundMissingFiles,
-                    missingFiles.Count, string.Join("\n", missingFiles));
-                var result = MessageBox.Show(
-                    message, 
+                var message = string.Format(Resources.MainWindow_CheckMissingFiles_FoundMissingFiles, missingFiles.Count);
+                var filesNotFoundDialog = FilesNotFoundDialog.ShowDialog(
                     Resources.MainWindow_CheckMissingFiles_FoundMissingFiles_Title,
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                    message,
+                    missingFiles.ToArray());
+
+                if (filesNotFoundDialog == DialogResult.Yes)
                 {
                     foreach (var missingFile in missingFiles)
                     {

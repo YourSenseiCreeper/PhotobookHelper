@@ -1,0 +1,26 @@
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Not found files from project</value>
+  </data>
+  <data name="keepButton.Text" xml:space="preserve">
+    <value>Keep</value>
+  </data>
+  <data name="notFoundLabel.Text" xml:space="preserve">
+    <value>Files not found</value>
+  </data>
+  <data name="removeButton.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+</root>

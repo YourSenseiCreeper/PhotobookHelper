@@ -117,4 +117,123 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="keepButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 216</value>
+  </data>
+  <data name="keepButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="keepButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="keepButton.Text" xml:space="preserve">
+    <value>Zostaw</value>
+  </data>
+  <data name="&gt;&gt;keepButton.Name" xml:space="preserve">
+    <value>keepButton</value>
+  </data>
+  <data name="&gt;&gt;keepButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;keepButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;keepButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="removeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 216</value>
+  </data>
+  <data name="removeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="removeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="removeButton.Text" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="&gt;&gt;removeButton.Name" xml:space="preserve">
+    <value>removeButton</value>
+  </data>
+  <data name="&gt;&gt;removeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removeButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;removeButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="notFoundLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="notFoundLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 9</value>
+  </data>
+  <data name="notFoundLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="notFoundLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="notFoundLabel.Text" xml:space="preserve">
+    <value>Zagubione pliki</value>
+  </data>
+  <data name="&gt;&gt;notFoundLabel.Name" xml:space="preserve">
+    <value>notFoundLabel</value>
+  </data>
+  <data name="&gt;&gt;notFoundLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;notFoundLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;notFoundLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="notFoundListBox.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="notFoundListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 37</value>
+  </data>
+  <data name="notFoundListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 173</value>
+  </data>
+  <data name="notFoundListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;notFoundListBox.Name" xml:space="preserve">
+    <value>notFoundListBox</value>
+  </data>
+  <data name="&gt;&gt;notFoundListBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;notFoundListBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;notFoundListBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>345, 246</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Nie znaleziono plików z projektu</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FilesNotFoundDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

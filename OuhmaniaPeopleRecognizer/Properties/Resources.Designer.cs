@@ -124,7 +124,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu? \n {1}.
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?.
         /// </summary>
         internal static string MainWindow_CheckMissingFiles_FoundMissingFiles {
             get {
