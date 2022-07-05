@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OuhmaniaPeopleRecognizer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,8 +53,48 @@ namespace OuhmaniaPeopleRecognizer
         public string CurrentPicturePath { get; set; }
         public bool AutoSave { get; set; }
         public int AutoSaveIntervalInMinutes { get; set; }
+        public LastUserSelection LastUserSelection { get; set; }
+        public bool HasUserSelectedImage()
+        {
+            return LastUserSelection.BatchId.HasValue && LastUserSelection.ImageName != null;
+        }
+
+        public string GetSelectedImagePath()
+        {
+            if (!HasUserSelectedImage())
+                throw new Exception("No picture has been selected.");
+
+            var selectedBatch = Batches.First(b => b.Id == LastUserSelection.BatchId);
+            return selectedBatch.DirectoryPath + LastUserSelection.ImageName;
+        }
+
+        public int NextPersonId { get; set; }
         public List<string> AllPeople { get; set; }
+        public List<Batch> Batches { get; set; }
+
+        public bool HasAlreadyLoadedBatch(string path)
+        {
+            return Batches.Any(b => b.DirectoryPath == path);
+        }
+
+        public List<string> GetPicturesForPerson(int personIndex)
+        {
+            var picturesPaths = new List<string>();
+            foreach (var batch in Batches)
+            {
+                foreach (var keyValue in batch.PicturePeople)
+                {
+                    if (keyValue.Value.Contains(personIndex))
+                    {
+                        picturesPaths.Add(keyValue.Key);
+                    }
+                }
+            }
+            return picturesPaths;
+        }
+
         public Dictionary<string, List<string>> PicturesWithPeople { get; set; }
+
         public IEnumerable<string> SupportedFileExtensions { get; set; }
 
         public List<string> GetSelectedPeopleForCurrentPicture()

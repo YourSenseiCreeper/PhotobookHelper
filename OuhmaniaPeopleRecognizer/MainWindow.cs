@@ -10,8 +10,10 @@ using System.Threading;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using Newtonsoft.Json;
 using OuhmaniaPeopleRecognizer.Properties;
-using WebPWrapper;
+using OuhmaniaPeopleRecognizer.Services;
+using OuhmaniaPeopleRecognizer.Services.Interfaces;
 
 [assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
@@ -32,7 +34,9 @@ namespace OuhmaniaPeopleRecognizer
 
         private DispatcherTimer AutoSaveTimer;
 
-        private WebP webpWrapper;
+        
+        private IFileService _fileService;
+        private INotificationService _notificationService;
 
         private string GetFormTitle()
         {
@@ -47,6 +51,8 @@ namespace OuhmaniaPeopleRecognizer
             var newCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = newCulture;
             Thread.CurrentThread.CurrentUICulture = newCulture;
+            _notificationService = new NotificationService();
+            _fileService = new FileService(_notificationService);
 
             _model = new OuhmaniaModel
             {
@@ -166,27 +172,8 @@ namespace OuhmaniaPeopleRecognizer
 
         private void LoadCurrentPathImage()
         {
-            var fullPath = _model.DirectoryPath + _model.CurrentPicturePath;
-            if (!File.Exists(fullPath))
-            {
-                pictureBox1.Image = new Bitmap(20, 20);
-                return;
-            }
-
-            if (_model.CurrentPicturePath.EndsWith(".webp"))
-            {
-                pictureBox1.Image = webpWrapper.Load(fullPath);
-            }
-            else
-            {
-                using (var stream = File.OpenRead(fullPath))
-                {
-                    var loadedImage = Image.FromStream(stream);
-                    loadedImage.RotateFlip(RotateFlipType.Rotate90FlipXY);
-                    pictureBox1.Image = Image.FromStream(stream);
-
-                }
-            }
+            var path = _model.GetSelectedImagePath();
+            pictureBox1.Image = _fileService.LoadImage(path);
         }
 
         private void UpdatePeopleCheckboxes()
@@ -203,28 +190,9 @@ namespace OuhmaniaPeopleRecognizer
 
         private void CheckMissingFiles()
         {
-            var missingFiles = new List<string>();
-            foreach (var file in _model.PicturesWithPeople.Keys)
+            foreach(var batch in _model.Batches)
             {
-                if (!File.Exists(file))
-                    missingFiles.Add(file);
-            }
-
-            if (missingFiles.Count != 0)
-            {
-                var message = string.Format(Resources.MainWindow_CheckMissingFiles_FoundMissingFiles, missingFiles.Count);
-                var filesNotFoundDialog = FilesNotFoundDialog.ShowDialog(
-                    Resources.MainWindow_CheckMissingFiles_FoundMissingFiles_Title,
-                    message,
-                    missingFiles.ToArray());
-
-                if (filesNotFoundDialog == DialogResult.Yes)
-                {
-                    foreach (var missingFile in missingFiles)
-                    {
-                        _model.PicturesWithPeople.Remove(missingFile);
-                    }
-                }
+                _fileService.CheckMissingFilesForBatch(batch);
             }
         }
 
@@ -300,11 +268,9 @@ namespace OuhmaniaPeopleRecognizer
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var writer = new StreamWriter(saveFileDialog.OpenFile());
                 _model.ProjectPath = saveFileDialog.FileName;
-                writer.WriteLine(new JavaScriptSerializer().Serialize(_model));
-                writer.Dispose();
-                writer.Close();
+                var serialized = JsonConvert.SerializeObject(_model);
+                File.WriteAllText(saveFileDialog.FileName, serialized);
                 Text = GetFormTitle();
             }
             unsavedChanges = false;
@@ -320,12 +286,9 @@ namespace OuhmaniaPeopleRecognizer
             if (openFileDialog.ShowDialog() != DialogResult.OK) 
                 return false;
 
-            var reader = new StreamReader(openFileDialog.OpenFile());
-            _model = new JavaScriptSerializer().Deserialize<OuhmaniaModel>(reader.ReadLine() ?? string.Empty);
-            reader.Dispose();
-            reader.Close();
+            var text = File.ReadAllText(openFileDialog.FileName);
+            _model = JsonConvert.DeserializeObject<OuhmaniaModel>(text);
             Text = GetFormTitle();
-
             return true;
         }
 
@@ -484,6 +447,12 @@ namespace OuhmaniaPeopleRecognizer
                 _model.RemovePerson(personToDelete);
                 peopleBindingSource.ResetBindings(true);
             }
+        }
+
+        private void nowyProjektToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: Check if there are any changes in current project
+            // TODO: Clear all data
         }
     }
 }

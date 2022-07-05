@@ -59,6 +59,7 @@
             this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderPathtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.autosaveToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.nowyProjektToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pictureMenuStrip.SuspendLayout();
             this.peopleListMenuStrip.SuspendLayout();
@@ -159,6 +160,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nowyProjektToolStripMenuItem,
             this.loadProjectToolStripMenuItem,
             this.saveProjectToolStripMenuItem,
             this.exportFilesToolStripMenuItem,
@@ -292,6 +294,12 @@
             resources.ApplyResources(this.autosaveToolStripStatusLabel, "autosaveToolStripStatusLabel");
             this.autosaveToolStripStatusLabel.Name = "autosaveToolStripStatusLabel";
             // 
+            // nowyProjektToolStripMenuItem
+            // 
+            this.nowyProjektToolStripMenuItem.Name = "nowyProjektToolStripMenuItem";
+            resources.ApplyResources(this.nowyProjektToolStripMenuItem, "nowyProjektToolStripMenuItem");
+            this.nowyProjektToolStripMenuItem.Click += new System.EventHandler(this.nowyProjektToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -353,6 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem rotateRightToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotateLeftToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel autosaveToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripMenuItem nowyProjektToolStripMenuItem;
     }
 }
 

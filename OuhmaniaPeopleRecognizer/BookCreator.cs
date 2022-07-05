@@ -43,39 +43,26 @@ namespace OuhmaniaPeopleRecognizer
 
         private void exportButton_Click(object sender, EventArgs e)
         {
-            if (peopleChechboxList.CheckedItems.Count == 0)
+            var selectedPeople = peopleChechboxList.CheckedItems;
+
+            if (selectedPeople.Count == 0)
             {
                 MessageBox.Show("Nie zaznaczono żadnej osoby, której chcesz utworzyć książkę.", "Czekaj, czekaj...",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var exportPeoplesPictures = new Dictionary<string, List<string>>();
-            var selectedPeople = new List<string>();
-            foreach (var person in peopleChechboxList.CheckedItems)
+
+            var exportedFilesCount = 0;
+            foreach (var person in selectedPeople)
             {
-                selectedPeople.Add(person.ToString());
-                exportPeoplesPictures.Add(person.ToString(), new List<string>());
-            }
-            
-            foreach (var keyValue in _model.PicturesWithPeople)
-            {
-                foreach (var person in selectedPeople)
-                {
-                    if (keyValue.Value.Contains(person))
-                    {
-                        exportPeoplesPictures[person].Add(keyValue.Key);
-                    }
-                }
+                var personName = person as string;
+                var personIndex = _model.AllPeople.IndexOf(personName);
+                var personImages = _model.GetPicturesForPerson(personIndex);
+                CopyFilesForPerson(personName, personImages);
+                exportedFilesCount += personImages.Count;
             }
 
-            _exportedFiles = 0;
-            foreach (var keyValue in exportPeoplesPictures)
-            {
-                CopyFilesForPerson(keyValue.Key, keyValue.Value);
-            }
-
-            var exportedPicturesCount = exportPeoplesPictures.Values.Select(pictures => pictures.Count).Sum();
-            MessageBox.Show($"Wyeksportowano ogółem {_exportedFiles} zdjęć dla {exportPeoplesPictures.Count} osób", "Eksport",
+            MessageBox.Show($"Wyeksportowano ogółem {exportedFilesCount} zdjęć dla {selectedPeople.Count} osób", "Eksport",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
