@@ -1,6 +1,6 @@
-﻿using System;
+﻿using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,19 +8,25 @@ namespace OuhmaniaPeopleRecognizer
 {
     public partial class BookCreator : Form
     {
-        private int _exportedFiles;
-        // private string _importPath;
         private readonly OuhmaniaModel _model;
+        private readonly INotificationService _notificationService;
+        private readonly IFileService _fileService;
 
-        public BookCreator(OuhmaniaModel model)
+        private List<string> _peopleToExport;
+
+        public BookCreator(OuhmaniaModel model, INotificationService notificationService, IFileService fileService)
         {
             _model = model;
-            var peopleBindingSource = new BindingSource();
-            peopleBindingSource.DataSource = model.AllPeople;
+            _notificationService = notificationService;
+            _fileService = fileService;
+            _peopleToExport = model.PersonAndIndex.Keys.ToList();
 
             InitializeComponent();
 
-            peopleChechboxList.DataSource = peopleBindingSource;
+            peopleChechboxList.DataSource = new BindingSource
+            {
+                DataSource = _peopleToExport,
+            };
             pathOrErrorLabel.DataBindings.Add(new Binding("Text", _model, "ExportPath"));
             if (_model.ExportPath != null)
                 exportButton.Enabled = true;
@@ -47,8 +53,7 @@ namespace OuhmaniaPeopleRecognizer
 
             if (selectedPeople.Count == 0)
             {
-                MessageBox.Show("Nie zaznaczono żadnej osoby, której chcesz utworzyć książkę.", "Czekaj, czekaj...",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _notificationService.Warning("Nie zaznaczono żadnej osoby, której chcesz utworzyć książkę.", "Czekaj, czekaj...");
                 return;
             }
 
@@ -56,55 +61,31 @@ namespace OuhmaniaPeopleRecognizer
             foreach (var person in selectedPeople)
             {
                 var personName = person as string;
-                var personIndex = _model.AllPeople.IndexOf(personName);
-                var personImages = _model.GetPicturesForPerson(personIndex);
-                CopyFilesForPerson(personName, personImages);
-                exportedFilesCount += personImages.Count;
+                exportedFilesCount += ExportPerson(_model.ExportPath, personName);
             }
 
-            MessageBox.Show($"Wyeksportowano ogółem {exportedFilesCount} zdjęć dla {selectedPeople.Count} osób", "Eksport",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _notificationService.Info($"Wyeksportowano ogółem {exportedFilesCount} zdjęć dla {selectedPeople.Count} osób", "Eksport");
         }
 
-        private void CopyFilesForPerson(string person, List<string> files)
+        private int ExportPerson(string exportPath, string personName)
         {
-            var folderPath = _model.ExportPath + "\\Fotoksiążka_" + person.Replace(" ", "_");
-            // it's better to not overwrite
-            if (Directory.Exists(folderPath))
-                Directory.Delete(folderPath, true);
-            
-            Directory.CreateDirectory(folderPath);
+            var exportImagePaths = new List<string>();
+            var personIndex = _model.PersonAndIndex[personName];
 
-            long allSize = 0;
-            files.ForEach(f => allSize += new FileInfo(f).Length);
-            var currentDriveLetter = _model.ExportPath.Substring(0, 3);
-            var currentDrive = DriveInfo.GetDrives().FirstOrDefault(d => d.Name == currentDriveLetter);
-            // let's have at least 5mb more free space
-            if (allSize + 1000000*5 >= currentDrive.AvailableFreeSpace)
+            foreach(var batch in _model.Batches)
             {
-                MessageBox.Show($"Nie masz już więcej wolnego miejsca w folderze, do którego chcesz eksportować zdjęcia ({folderPath})", "Brak wolnego miejsca!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                foreach(var imageAndPeople in batch.PicturePeople)
+                {
+                    if (imageAndPeople.Value.Contains(personIndex))
+                    {
+                        exportImagePaths.Add(batch.DirectoryPath + imageAndPeople.Key);
+                    }
+                }
             }
 
-            foreach (var file in files)
-            {
-                var filename = file.Replace(_model.DirectoryPath, "");
-                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
-
-                var filepath = folderPath + "\\" + filename;
-                if (File.Exists(filepath))
-                {
-                    MessageBox.Show($"Znaleziono powtórkę zdjęcia ({filepath}). Nie zostanie wyeksportowane.", "Powtórzony plik!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    File.Copy(file, filepath);
-                    _exportedFiles++;
-                }
-
-            }
+            _fileService.CopyFilesForPerson(exportPath, personName, exportImagePaths);
+            return exportImagePaths.Count;
         }
+
     }
 }

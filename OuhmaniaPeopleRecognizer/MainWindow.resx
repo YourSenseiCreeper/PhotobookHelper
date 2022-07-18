@@ -125,8 +125,20 @@
     <value>403, 3</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="rotateRightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 24</value>
+  </data>
+  <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obróć w prawo</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 24</value>
+  </data>
+  <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
+    <value>Obróć w lewo</value>
+  </data>
   <data name="pictureMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 48</value>
+    <value>181, 52</value>
   </data>
   <data name="&gt;&gt;pictureMenuStrip.Name" xml:space="preserve">
     <value>pictureMenuStrip</value>
@@ -135,10 +147,13 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 3</value>
+    <value>16, 4</value>
+  </data>
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 592</value>
+    <value>907, 731</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -159,26 +174,26 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="rotateRightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Obróć w prawo</value>
-  </data>
-  <data name="rotateLeftToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
-    <value>Obróć w lewo</value>
-  </data>
   <data name="peopleCheckBoxList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <metadata name="peopleListMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 3</value>
   </metadata>
+  <data name="addPersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="addPersonToolStripContextMenuItem.Text" xml:space="preserve">
+    <value>Dodaj osobę</value>
+  </data>
+  <data name="deletePersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="deletePersonToolStripContextMenuItem.Text" xml:space="preserve">
+    <value>Usuń wybraną osobę</value>
+  </data>
   <data name="peopleListMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>216, 52</value>
   </data>
   <data name="&gt;&gt;peopleListMenuStrip.Name" xml:space="preserve">
     <value>peopleListMenuStrip</value>
@@ -193,16 +208,16 @@
     <value>True</value>
   </data>
   <data name="peopleCheckBoxList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
   </data>
   <data name="peopleCheckBoxList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 20, 3</value>
+    <value>4, 4, 27, 4</value>
   </data>
   <data name="peopleCheckBoxList.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 44</value>
+    <value>133, 54</value>
   </data>
   <data name="peopleCheckBoxList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 233</value>
+    <value>336, 277</value>
   </data>
   <data name="peopleCheckBoxList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -219,29 +234,20 @@
   <data name="&gt;&gt;peopleCheckBoxList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="addPersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="addPersonToolStripContextMenuItem.Text" xml:space="preserve">
-    <value>Dodaj osobę</value>
-  </data>
-  <data name="deletePersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="deletePersonToolStripContextMenuItem.Text" xml:space="preserve">
-    <value>Usuń wybraną osobę</value>
-  </data>
   <data name="treeView1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="treeView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="treeView1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 44</value>
+    <value>133, 54</value>
   </data>
   <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 340</value>
+    <value>333, 418</value>
   </data>
   <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -261,32 +267,77 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="nowyProjektToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="nowyProjektToolStripMenuItem.Text" xml:space="preserve">
+    <value>Nowy projekt</value>
+  </data>
+  <data name="loadProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="loadProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Wczytaj projekt</value>
+  </data>
+  <data name="saveProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="saveProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zapisz projekt</value>
+  </data>
+  <data name="exportFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="exportFilesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Stwórz fotoksiążki</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 6</value>
+  </data>
+  <data name="closeProgramToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="closeProgramToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zamknij program</value>
+  </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
+    <value>46, 24</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Plik</value>
   </data>
   <data name="loadPhotosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>224, 26</value>
   </data>
   <data name="loadPhotosToolStripMenuItem.Text" xml:space="preserve">
     <value>Dodaj zdjęcia</value>
   </data>
   <data name="rescanDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>224, 26</value>
   </data>
   <data name="rescanDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Odśwież foldery</value>
   </data>
   <data name="photosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
+    <value>72, 24</value>
   </data>
   <data name="photosToolStripMenuItem.Text" xml:space="preserve">
     <value>Zdjęcia</value>
   </data>
+  <data name="addPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="addPersonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dodaj osobę</value>
+  </data>
+  <data name="removePersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="removePersonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Usuń osobę</value>
+  </data>
   <data name="personToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+    <value>65, 24</value>
   </data>
   <data name="personToolStripMenuItem.Text" xml:space="preserve">
     <value>Osoby</value>
@@ -295,7 +346,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>974, 24</value>
+    <value>1299, 28</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -315,53 +366,14 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="loadProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="loadProjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Wczytaj projekt</value>
-  </data>
-  <data name="saveProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="saveProjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zapisz projekt</value>
-  </data>
-  <data name="exportFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="exportFilesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Eksportuj pliki</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="closeProgramToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="closeProgramToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zamknij program</value>
-  </data>
-  <data name="addPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="addPersonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Dodaj osobę</value>
-  </data>
-  <data name="removePersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="removePersonToolStripMenuItem.Text" xml:space="preserve">
-    <value>Usuń osobę</value>
-  </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 28</value>
   </data>
   <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
+    <value>7, 6, 7, 6</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -383,6 +395,9 @@
   </data>
   <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="splitContainer2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
@@ -412,10 +427,13 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 620</value>
+    <value>354, 765</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>248</value>
+    <value>306</value>
+  </data>
+  <data name="splitContainer2.SplitterWidth" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -448,10 +466,13 @@
     <value>100</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>974, 620</value>
+    <value>1299, 765</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>706</value>
+    <value>940</value>
+  </data>
+  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -471,11 +492,38 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
+  <data name="loadedFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 20</value>
+  </data>
+  <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
+    <value>Wczytanych plików: 0</value>
+  </data>
+  <data name="allFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="allFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
+    <value>Wszystkie pliki: {0}</value>
+  </data>
+  <data name="folderPathtoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 20</value>
+  </data>
+  <data name="autosaveToolStripStatusLabel.Text" xml:space="preserve">
+    <value>Autozapis: Włączony</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 622</value>
+    <value>0, 767</value>
+  </data>
+  <data name="statusStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 19, 0</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>974, 22</value>
+    <value>1299, 26</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -495,36 +543,6 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="loadedFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
-  </data>
-  <data name="loadedFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>Wczytanych plików: 0</value>
-  </data>
-  <data name="allFilesCounttoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
-  </data>
-  <data name="allFilesCounttoolStripStatusLabel.Text" xml:space="preserve">
-    <value>Wszystkie pliki: {0}</value>
-  </data>
-  <data name="folderPathtoolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
-  </data>
-  <data name="autosaveToolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt, style=Bold</value>
-  </data>
-  <data name="autosaveToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
-  </data>
-  <data name="autosaveToolStripStatusLabel.Text" xml:space="preserve">
-    <value>Autozapis: Włączony</value>
-  </data>
-  <data name="nowyProjektToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="nowyProjektToolStripMenuItem.Text" xml:space="preserve">
-    <value>Nowy projekt</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -532,10 +550,10 @@
     <value>53</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>974, 644</value>
+    <value>1299, 793</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -613,6 +631,9 @@
         AAD4AAAA/gAAAP+ADA////4P////D////48=
 </value>
   </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>OuhmaniaPeopleRecognizer v1.0</value>
   </data>
@@ -644,6 +665,12 @@
     <value>fileToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nowyProjektToolStripMenuItem.Name" xml:space="preserve">
+    <value>nowyProjektToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;nowyProjektToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;loadProjectToolStripMenuItem.Name" xml:space="preserve">
@@ -735,12 +762,6 @@
   </data>
   <data name="&gt;&gt;autosaveToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nowyProjektToolStripMenuItem.Name" xml:space="preserve">
-    <value>nowyProjektToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;nowyProjektToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainWindow</value>

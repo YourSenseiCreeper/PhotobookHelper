@@ -71,6 +71,7 @@
     <Compile Include="BookCreator.Designer.cs">
       <DependentUpon>BookCreator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="FilesNotFoundDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,9 @@
     <Compile Include="OuhmaniaModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IFileService.cs" />
+    <Compile Include="Services\Interfaces\INotificationService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="WebPWrapper.cs" />
     <EmbeddedResource Include="AddPersonDialog.resx">
       <DependentUpon>AddPersonDialog.cs</DependentUpon>

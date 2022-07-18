@@ -4,12 +4,10 @@ using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer.Services.Interfaces
 {
-    public interface INotificationService
+    public interface IDialogService
     {
-        void Info(string title, string message);
-        void Warning(string title, string message);
-        void Error(string title, string message);
-        DialogResult ShowUnsavedFilesDialog();
+        bool ShowDeletePerson(string personToDelete);
         void ShowMissingFiles(string directoryPath, List<string> missingFiles, Action<string> removeCallback);
+        DialogResult ShowUnsavedFilesDialog();
     }
 }

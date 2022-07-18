@@ -6,23 +6,8 @@ using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer.Services
 {
-    public class NotificationService : INotificationService
+    public class DialogService : IDialogService
     {
-        public void Info(string title, string message)
-        {
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        public void Warning(string title, string message)
-        {
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        public void Error(string title, string message)
-        {
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         public DialogResult ShowUnsavedFilesDialog()
         {
             return MessageBox.Show(
@@ -46,6 +31,13 @@ namespace OuhmaniaPeopleRecognizer.Services
                     removeCallback(missingFile);
                 }
             }
+        }
+
+        public bool ShowDeletePerson(string personToDelete)
+        {
+            var dialogInfo = string.Format(Resources.MainWindow_deletePersonToolStripContextMenuItem_Confirm, personToDelete);
+            var dialogTitle = Resources.MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle;
+            return MessageBox.Show(dialogInfo, dialogTitle, MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
     }
 }

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OuhmaniaPeopleRecognizer.Models
 {
     public class Batch
     {
+        public Batch(string directoryPath)
+        {
+            Id = Guid.NewGuid();
+            IsDirty = false;
+            DirectoryPath = directoryPath;
+            PicturePeople = new Dictionary<string, HashSet<int>>();
+        }
+
         public Guid Id { get; set; }
         public bool IsDirty { get; set; }
         public string DirectoryPath { get; set; }

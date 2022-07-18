@@ -41,6 +41,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nowyProjektToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,6 @@
             this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderPathtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.autosaveToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.nowyProjektToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pictureMenuStrip.SuspendLayout();
             this.peopleListMenuStrip.SuspendLayout();
@@ -85,6 +85,7 @@
             // 
             // pictureMenuStrip
             // 
+            this.pictureMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pictureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rotateRightToolStripMenuItem,
             this.rotateLeftToolStripMenuItem});
@@ -116,6 +117,7 @@
             // 
             // peopleListMenuStrip
             // 
+            this.peopleListMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.peopleListMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addPersonToolStripContextMenuItem,
             this.deletePersonToolStripContextMenuItem});
@@ -150,6 +152,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.photosToolStripMenuItem,
@@ -168,6 +171,12 @@
             this.closeProgramToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // nowyProjektToolStripMenuItem
+            // 
+            this.nowyProjektToolStripMenuItem.Name = "nowyProjektToolStripMenuItem";
+            resources.ApplyResources(this.nowyProjektToolStripMenuItem, "nowyProjektToolStripMenuItem");
+            this.nowyProjektToolStripMenuItem.Click += new System.EventHandler(this.nowyProjektToolStripMenuItem_Click);
             // 
             // loadProjectToolStripMenuItem
             // 
@@ -266,6 +275,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadedFilesCounttoolStripStatusLabel,
             this.allFilesCounttoolStripStatusLabel,
@@ -293,12 +303,6 @@
             // 
             resources.ApplyResources(this.autosaveToolStripStatusLabel, "autosaveToolStripStatusLabel");
             this.autosaveToolStripStatusLabel.Name = "autosaveToolStripStatusLabel";
-            // 
-            // nowyProjektToolStripMenuItem
-            // 
-            this.nowyProjektToolStripMenuItem.Name = "nowyProjektToolStripMenuItem";
-            resources.ApplyResources(this.nowyProjektToolStripMenuItem, "nowyProjektToolStripMenuItem");
-            this.nowyProjektToolStripMenuItem.Click += new System.EventHandler(this.nowyProjektToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
