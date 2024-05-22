@@ -1,0 +1,33 @@
+{
+    "C:\\pliki": {
+        "IsDirty": true,
+        "PicturePeople": {
+            "\\DSC_5307": [],
+            "\\DSC_5308": [],
+            "\\DSC_5309": [],
+            "\\DSC_5310": []
+        },
+        "SubBatches": {
+            "\\zdjecia z wakacji": {
+                "IsDirty": true,
+                "PicturePeople": {
+                    "\\DSC_5307": [],
+                    "\\DSC_5308": [],
+                    "\\DSC_5309": [],
+                    "\\DSC_5310": []
+                },
+                "SubBatches": null
+            },
+            "\\morze 2022": {
+                "IsDirty": true,
+                "PicturePeople": {
+                    "\\DSC_6307": [],
+                    "\\DSC_7308": [],
+                    "\\DSC_9309": [],
+                    "\\DSC_8310": []
+                },
+                "SubBatches": null
+            }
+        }
+    } 
+}
