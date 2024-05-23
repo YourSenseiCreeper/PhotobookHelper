@@ -1,4 +1,5 @@
-﻿using OuhmaniaPeopleRecognizer.Models;
+﻿using OuhmaniaPeopleRecognizer.Commands.Abstraction;
+using OuhmaniaPeopleRecognizer.Models;
 using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using System;
@@ -57,8 +58,8 @@ namespace OuhmaniaPeopleRecognizer.Commands
                 BatchId = batch?.Id,
                 ImageName = batch?.PicturePeople.FirstOrDefault().Key
             };
-            _commandFactory.Get(Commands.LoadCurrentImageCommand).Execute(null, null);
-            _commandFactory.Get(Commands.UpdateCategoryCheckboxesCommand).Execute(null, null);
+            _commandFactory.Get(Command.LoadCurrentImage).Execute(null, null);
+            _commandFactory.Get(Command.UpdateCategoryCheckboxes).Execute(null, null);
         }
     }
 }

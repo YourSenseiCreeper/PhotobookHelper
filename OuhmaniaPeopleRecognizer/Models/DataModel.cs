@@ -1,4 +1,5 @@
-﻿using OuhmaniaPeopleRecognizer.Models;
+﻿using Newtonsoft.Json;
+using OuhmaniaPeopleRecognizer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,10 @@ namespace OuhmaniaPeopleRecognizer
     public class DataModel
     {
         private const string VERSION = "1.0";
+        [JsonIgnore]
         private const string PROGRAM_NAME = "PhotoCategorizer";
+        [JsonIgnore]
+        public IEnumerable<string> SupportedFileExtensions => new[] { "*.jpg", "*.png", "*.bmp" };
 
         private bool _dirty;
         private string _directoryPath;
@@ -31,8 +35,6 @@ namespace OuhmaniaPeopleRecognizer
             var projectPath = ProjectPath == null ? string.Empty : $"({ProjectPath})";
             return $"{PROGRAM_NAME} v{VERSION} {projectPath}";
         }
-
-        public string Version => VERSION;
 
         public bool Dirty
         {
@@ -68,8 +70,6 @@ namespace OuhmaniaPeopleRecognizer
         public Dictionary<string, int> PersonAndIndex { get; set; }
         public Dictionary<int, string> IndexAndPerson { get; set; }
         public List<Batch> Batches { get; set; }
-        public IEnumerable<string> SupportedFileExtensions => new[] { "*.jpg", "*.png", "*.bmp" };
-
 
         public bool HasUserSelectedImage()
         {
@@ -123,11 +123,11 @@ namespace OuhmaniaPeopleRecognizer
             return selectedPeople;
         }
 
-        public bool SetSelectedPeopleForCurrentPicture(List<string> selectedPeopleNames)
+        public bool SetSelectedPeopleForCurrentPicture(List<string> selectedCategories)
         {
             var batch = GetBatch(LastUserSelection.BatchId.Value);
             var currentImagePeople = batch.PicturePeople[LastUserSelection.ImageName];
-            var mappedSelectedPeople = selectedPeopleNames.Select(p => PersonAndIndex[p]).ToHashSet();
+            var mappedSelectedPeople = selectedCategories.Select(p => PersonAndIndex[p]).ToHashSet();
 
             if (currentImagePeople != mappedSelectedPeople)
             {

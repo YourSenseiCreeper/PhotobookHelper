@@ -3,13 +3,13 @@ using System;
 
 namespace OuhmaniaPeopleRecognizer.Commands
 {
-    public class LoadCurrentImageCommand : ICommand
+    public class SaveDataModelCommand : ICommand
     {
         private readonly IFileService _fileService;
         private readonly DataModel _model;
         private readonly MainWindowViewModel _mainWindowViewModel;
 
-        public LoadCurrentImageCommand(IFileService fileService,
+        public SaveDataModelCommand(IFileService fileService,
             DataModel dataModel,
             MainWindowViewModel viewModel)
         {
@@ -20,8 +20,11 @@ namespace OuhmaniaPeopleRecognizer.Commands
 
         public void Execute(object sender, EventArgs args)
         {
-            var path = _model.GetSelectedImagePath();
-            _mainWindowViewModel.PictureBox1.Image = _fileService.LoadImage(path, 0.3d);
+            if (!_fileService.SaveProject(_model))
+                return;
+
+            // TODO: this won't update form title. Find another way to do that
+            _mainWindowViewModel.FormTitle = _model.GetFormTitle();
         }
     }
 }

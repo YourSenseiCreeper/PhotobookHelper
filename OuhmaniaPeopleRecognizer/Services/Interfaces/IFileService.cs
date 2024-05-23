@@ -8,7 +8,7 @@ namespace OuhmaniaPeopleRecognizer.Services.Interfaces
     public interface IFileService
     {
         void CheckMissingFilesForBatch(Batch batch);
-        Image LoadImage(string path);
+        Image LoadImage(string path, double? thumbnailScaleFactor = null);
         int CopyFilesForPerson(string exportPath, string person, List<string> files);
 
         /// <summary>
@@ -18,9 +18,9 @@ namespace OuhmaniaPeopleRecognizer.Services.Interfaces
         /// <param name="filesFilter">Which files user can pick to save file</param>
         /// <param name="model">Project model having all data</param>
         /// <returns>Whether user picked a file to save or not</returns>
-        bool SaveProject(string filesFilter, DataModel model);
-        bool Autosave(string filesFilter, DataModel model);
-        DataModel LoadModel(string filesFilter, string initialDirectory);
+        bool SaveProject(DataModel model);
+        bool Autosave(DataModel model);
+        DataModel LoadModel(string initialDirectory);
         void LoadDirectory(TreeView treeView, DataModel model, string directoryPath);
     }
 }

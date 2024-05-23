@@ -1,8 +1,10 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
+using OuhmaniaPeopleRecognizer.Commands.Abstraction;
 using OuhmaniaPeopleRecognizer.Models;
 using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using OuhmaniaPeopleRecognizer.ViewManager;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,8 +22,6 @@ namespace OuhmaniaPeopleRecognizer
 {
     public partial class MainWindow : Form
     {
-        private const string FILES_FILTER = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
-
         public DataModel _model;
         private bool projectLoaded = false;
 
@@ -33,6 +33,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private IFileService _fileService;
         private INotificationService _notificationService;
+        private TreeViewManager _treeViewManager;
 
         private MainWindowViewModel _mainWindowViewModel;
         private ICommandFactory _commandFactory;
@@ -74,6 +75,7 @@ namespace OuhmaniaPeopleRecognizer
                 DirectoryPath = AppDomain.CurrentDomain.BaseDirectory
             };
 
+            // jak z tego zrobić binding source?
             Text = _model.GetFormTitle();
 
             peopleBindingSource = new BindingSource { DataSource = PeopleToDisplay };
@@ -83,21 +85,20 @@ namespace OuhmaniaPeopleRecognizer
 
             if (_model.IsAutoSaveActive)
                 SetTimer();
+
+            _treeViewManager = new TreeViewManager(_mainWindowViewModel, _model, _commandFactory);
+            _treeViewManager.SubscribeOnEvents();
         }
 
         #region model management
         public void SaveModel()
         {
-            if (!_fileService.SaveProject(FILES_FILTER, _model))
-                return;
-            
-            Text = _model.GetFormTitle();
-            unsavedChanges = false;
+            _commandFactory.Get(Command.SaveDataModel).Execute(null, null);
         }
 
         public bool LoadModel()
         {
-            var loadedModel = _fileService.LoadModel(FILES_FILTER, AppDomain.CurrentDomain.BaseDirectory);
+            var loadedModel = _fileService.LoadModel(AppDomain.CurrentDomain.BaseDirectory);
             if (loadedModel != null)
             {
                 _model = loadedModel;
@@ -119,10 +120,10 @@ namespace OuhmaniaPeopleRecognizer
 
         private void OnAutosave(object source, EventArgs e)
         {
-            var success = _fileService.Autosave(FILES_FILTER, _model);
+            var success = _fileService.Autosave(_model);
             if (success)
             {
-                unsavedChanges = false;
+                //unsavedChanges = false;
                 autosaveToolStripStatusLabel.Text = GetAutosaveLabel(true);
             }
         }
@@ -160,10 +161,8 @@ namespace OuhmaniaPeopleRecognizer
                 BatchId = batch?.Id,
                 ImageName = batch?.PicturePeople.FirstOrDefault().Key
             };
-            //LoadCurrentPathImage();
-            _commandFactory.Get(Commands.Commands.LoadCurrentImageCommand).Execute(null, null);
-            _commandFactory.Get(Commands.Commands.UpdateCategoryCheckboxesCommand).Execute(null, null);
-            //UpdatePeopleCheckboxes();
+            _commandFactory.Get(Command.LoadCurrentImage).Execute(null, null);
+            _commandFactory.Get(Command.UpdateCategoryCheckboxes).Execute(null, null);
         }
 
         private void LoadCurrentPathImage()
@@ -181,18 +180,6 @@ namespace OuhmaniaPeopleRecognizer
                 var state = currentPictureSelectedPeople.Contains(personName) ? CheckState.Checked : CheckState.Unchecked;
                 peopleCheckBoxList.SetItemCheckState(i, state);
             }
-        }
-
-        private void SaveCurrentPictureState(bool beforeSaveAction = false)
-        {
-            var selectedPeople = new List<string>();
-            foreach (var selectedPerson in peopleCheckBoxList.CheckedItems)
-            {
-                selectedPeople.Add(selectedPerson.ToString());
-            }
-
-            var hasBeenChanged = _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
-            //unsavedChanges = hasBeenChanged;
         }
 
         private void CheckMissingFiles()
@@ -229,7 +216,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private void exportFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveCurrentPictureState();
+            _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
             var bookCreator = new BookCreator(_model, _notificationService, _fileService)
             {
                 Visible = true,
@@ -239,7 +226,7 @@ namespace OuhmaniaPeopleRecognizer
         private void loadProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (projectLoaded)
-                SaveCurrentPictureState();
+                _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
 
             CheckUnsavedChangesDialog();
 
@@ -261,7 +248,7 @@ namespace OuhmaniaPeopleRecognizer
             CheckMissingFiles();
             /////////////
 
-            LoadTreeViewFromModel();
+            _treeViewManager.LoadTreeViewFromModel();
             UpdateFileCountersAndLoadedFileList();
             LoadCurrentPathImage();
             UpdatePeopleCheckboxes();
@@ -271,67 +258,18 @@ namespace OuhmaniaPeopleRecognizer
             projectLoaded = true;
         }
 
-        private void LoadTreeViewFromModel()
-        {
-            // scan for unique paths (shortest, then add longest that is extension to this node)
-            // 
-            // albo stworzyć drzewko guidów i w zależności od tego drzewka wczytywać wszystko
-            var rootBatches = new List<Batch>();
 
-            // podejście 2
-            // grupujemy po ilości ukośników
-            // pierwsza grupa z najmniejszą ilością \ to foldery główne
-            // pozostałe to podrzędne które należy dobrze dopasować do istniejących folderów głównych
-
-
-            // C:\\zdjecia
-            // C:\\wakacje
-            // C:\\zdjecia\morze
-            // D:\\rodzinne\pamiatki
-            // D:\\rodzinne\babcia
-
-
-            // podejście 3 - odsiewowe
-            // biorę pierwszego batcha i jego DirectoryPath
-            // splituję po \\ i szukam ile batchy zaczyna się od tego fragmentu
-            // jeżeli wszystkie za pierwszym razem zapisuję ten początek do zmiennej startPath
-            // jeżeli znowu wszystkie - dodaję to do startPath i zapisuję nazwę tego Node'a
-            // jeżeli już mniej tworzę tamtego Node'a i istniejące w tej grupie Nody (odcinając początek i dalszą część (tylko do nazwy obecnego noda)
-            // iteruję dalej i powtarzam operację
-            // jeżeli liczba istniejących tak samo zaczyznających się nodów  jest równa 1 (tylko ten node) to dodaj zawartość noda i przejdź do kolejnego
-
-            
-            // wystarczy wyszukać unikalne root node'y i dodać je. Następnie przeiterować po wszystkich batchach i dodawać brakujące nody i pliki
-
-            treeView1.Nodes.Clear();
-            var directoryPathBatch = _model.Batches.ToDictionary(b => b.DirectoryPath, b => b);
-            foreach (var batch in _model.Batches)
-            {
-                // zakładamy, że ścieżka C:\pliki\podfolder jest bardziej nadrzędna od C:\pliki\podfolder\zdjecia
-                // jeżeli jest częścią ścieżki już dodanej. W drugą stronę to nie zadziała
-                var moreRootBatch = rootBatches.FirstOrDefault(b => batch.DirectoryPath.Contains(b.DirectoryPath));
-                if (moreRootBatch != null)
-                {
-                    rootBatches.Remove(moreRootBatch);
-                    rootBatches.Add(batch);
-                }
-                else
-                {
-                    rootBatches.Add(batch);
-                    // dodaj
-                }
-            }
-        }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveCurrentPictureState(true);
+            _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
+            _commandFactory.Get(Command.SaveDataModel).Execute(null, null);
             SaveModel();
         }
 
         private void loadPhotosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _commandFactory.Get(Commands.Commands.LoadImagesCommand).Execute(sender, e);
+            _commandFactory.Get(Command.LoadImages).Execute(sender, e);
         }
 
         private void rescanDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -383,7 +321,7 @@ namespace OuhmaniaPeopleRecognizer
             if (treeView1.SelectedNode.Nodes.Count == 0)
             {
                 peopleCheckBoxList.Enabled = true;
-                SaveCurrentPictureState();
+                _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
 
                 // disposing
                 GC.Collect();

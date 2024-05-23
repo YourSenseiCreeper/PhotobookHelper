@@ -1,15 +1,16 @@
 ﻿using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace OuhmaniaPeopleRecognizer.Commands
 {
-    public class LoadCurrentImageCommand : ICommand
+    public class SaveCurrentPictureSelectionsCommand : ICommand
     {
         private readonly IFileService _fileService;
         private readonly DataModel _model;
         private readonly MainWindowViewModel _mainWindowViewModel;
 
-        public LoadCurrentImageCommand(IFileService fileService,
+        public SaveCurrentPictureSelectionsCommand(IFileService fileService,
             DataModel dataModel,
             MainWindowViewModel viewModel)
         {
@@ -20,8 +21,13 @@ namespace OuhmaniaPeopleRecognizer.Commands
 
         public void Execute(object sender, EventArgs args)
         {
-            var path = _model.GetSelectedImagePath();
-            _mainWindowViewModel.PictureBox1.Image = _fileService.LoadImage(path, 0.3d);
+            var selectedPeople = new List<string>();
+            foreach (var selectedPerson in _mainWindowViewModel.PeopleCheckBoxList.CheckedItems)
+            {
+                selectedPeople.Add(selectedPerson.ToString());
+            }
+
+            var hasBeenChanged = _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
         }
     }
 }

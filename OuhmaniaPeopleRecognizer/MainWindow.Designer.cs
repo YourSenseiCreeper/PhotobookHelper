@@ -144,9 +144,9 @@
             this.treeView1.HideSelection = false;
             this.treeView1.ItemHeight = 18;
             this.treeView1.Name = "treeView1";
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSelect);
+            //this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSelect);
             this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
-            this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
+            //this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
             this.treeView1.Enter += new System.EventHandler(this.treeView1_Enter);
             this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
             // 

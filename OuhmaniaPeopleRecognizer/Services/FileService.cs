@@ -12,6 +12,8 @@ namespace OuhmaniaPeopleRecognizer.Services
 {
     public class FileService : IFileService
     {
+        private const string FILES_FILTER = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
+
         private readonly INotificationService _notificationService;
         private readonly WebP webpWrapper;
 
@@ -39,7 +41,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             }
         }
 
-        public Image LoadImage(string path)
+        public System.Drawing.Image LoadImage(string path, double? thumbnailScaleFactor = null)
         {
             if (!File.Exists(path))
             {
@@ -52,12 +54,26 @@ namespace OuhmaniaPeopleRecognizer.Services
             }
             else
             {
+                System.Drawing.Image resultImage = null;
                 using (var stream = File.OpenRead(path))
+                using (var image = Image.FromStream(stream))
                 {
-                    var loadedImage = Image.FromStream(stream);
-                    loadedImage.RotateFlip(RotateFlipType.Rotate90FlipXY);
-                    return Image.FromStream(stream);
+                    //var loadedImage = System.Drawing.Image.FromStream(stream);
+                    //loadedImage.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                    //var image = System.Drawing.Image.FromStream(stream);
+                    if (thumbnailScaleFactor != null)
+                    {
+                        var desiredHeight = (int)(image.Height * thumbnailScaleFactor.Value);
+                        var desiredWidth = (int) (image.Width * thumbnailScaleFactor.Value);
+                        resultImage = image.GetThumbnailImage(desiredWidth, desiredHeight, default, default);
+                    }
+                    else
+                    {
+                        resultImage = image;
+                    }
                 }
+
+                return resultImage;
             }
         }
 
@@ -164,11 +180,11 @@ namespace OuhmaniaPeopleRecognizer.Services
             model.Batches.AddRange(batches);
         }
 
-        public bool SaveProject(string filesFilter, DataModel model)
+        public bool SaveProject(DataModel model)
         {
             var saveFileDialog = new SaveFileDialog
             {
-                Filter = filesFilter,
+                Filter = FILES_FILTER,
                 InitialDirectory = model.DirectoryPath
             };
 
@@ -182,7 +198,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             return false;
         }
 
-        public bool Autosave(string filesFilter, DataModel model)
+        public bool Autosave(DataModel model)
         {
             if (model.ProjectPath == null)
                 return false;
@@ -200,11 +216,11 @@ namespace OuhmaniaPeopleRecognizer.Services
             }
         }
 
-        public DataModel LoadModel(string filesFilter, string initialDirectory)
+        public DataModel LoadModel(string initialDirectory)
         {
             var openFileDialog = new OpenFileDialog
             {
-                Filter = filesFilter,
+                Filter = FILES_FILTER,
                 InitialDirectory = initialDirectory
             };
 

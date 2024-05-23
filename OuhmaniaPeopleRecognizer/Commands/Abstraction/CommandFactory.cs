@@ -1,22 +1,8 @@
 ﻿using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using System;
 
-namespace OuhmaniaPeopleRecognizer.Commands
+namespace OuhmaniaPeopleRecognizer.Commands.Abstraction
 {
-    public class CommandNames
-    {
-        public const string LoadCurrentImageCommand = nameof(Commands.LoadCurrentImageCommand);
-        public const string LoadImagesCommand = nameof(Commands.LoadImagesCommand);
-        public const string UpdateCategoryCheckboxesCommand = nameof(Commands.UpdateCategoryCheckboxesCommand);
-    }
-
-    public enum Commands
-    {
-        LoadCurrentImageCommand,
-        LoadImagesCommand,
-        UpdateCategoryCheckboxesCommand,
-    }
-
     public class CommandFactory : ICommandFactory
     {
         private readonly IFileService _fileService;
@@ -33,14 +19,16 @@ namespace OuhmaniaPeopleRecognizer.Commands
             _mainWindowViewModel = mainWindowViewModel;
         }
 
-        public ICommand Get(Commands command)
+        public ICommand Get(Command command)
         {
-            ICommand result = null;
+            ICommand result;
             switch (command)
             {
-                case Commands.LoadCurrentImageCommand: result = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel); break;
-                case Commands.LoadImagesCommand: result = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel, this); break;
-                case Commands.UpdateCategoryCheckboxesCommand: result = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel); break;
+                case Command.LoadCurrentImage: result = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel); break;
+                case Command.LoadImages: result = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel, this); break;
+                case Command.UpdateCategoryCheckboxes: result = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel); break;
+                case Command.SaveDataModel: result = new SaveDataModelCommand(_fileService, _model, _mainWindowViewModel); break;
+                case Command.SaveCurrentPictureSelections: result = new SaveCurrentPictureSelectionsCommand(_fileService, _model, _mainWindowViewModel); break;
                 default:
                     throw new ArgumentException($"Command '{command}' is not registered!");
             }

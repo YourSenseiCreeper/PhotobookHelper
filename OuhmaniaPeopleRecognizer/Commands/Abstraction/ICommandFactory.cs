@@ -1,7 +1,9 @@
-﻿namespace OuhmaniaPeopleRecognizer.Commands
+﻿using OuhmaniaPeopleRecognizer.Commands.Abstraction;
+
+namespace OuhmaniaPeopleRecognizer.Commands
 {
     public interface ICommandFactory
     {
-        ICommand Get(Commands command);
+        ICommand Get(Command command);
     }
 }

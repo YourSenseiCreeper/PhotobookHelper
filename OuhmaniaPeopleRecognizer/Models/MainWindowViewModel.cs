@@ -2,6 +2,7 @@
 {
     public class MainWindowViewModel
     {
+        public object FormTitle { get; set; }
         public System.Windows.Forms.TreeView TreeView1 { get; set; }
         public System.Windows.Forms.PictureBox PictureBox1 { get; set; }
         public System.Windows.Forms.CheckedListBox PeopleCheckBoxList { get; set; }
