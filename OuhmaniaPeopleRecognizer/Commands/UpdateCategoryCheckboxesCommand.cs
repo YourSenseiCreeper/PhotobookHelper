@@ -5,11 +5,11 @@ namespace OuhmaniaPeopleRecognizer.Commands
 {
     public class UpdateCategoryCheckboxesCommand : ICommand
     {
-        private readonly OuhmaniaModel _model;
+        private readonly DataModel _model;
         private readonly MainWindowViewModel _mainWindowViewModel;
 
         public UpdateCategoryCheckboxesCommand(
-            OuhmaniaModel dataModel,
+            DataModel dataModel,
             MainWindowViewModel viewModel)
         {
             _model = dataModel;

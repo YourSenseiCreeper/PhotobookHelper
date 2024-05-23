@@ -109,7 +109,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             return exportedFiles;
         }
 
-        public void LoadDirectory(TreeView treeView, OuhmaniaModel model, string directoryPath)
+        public void LoadDirectory(TreeView treeView, DataModel model, string directoryPath)
         {
             var stack = new Stack<TreeNode>();
 
@@ -164,7 +164,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             model.Batches.AddRange(batches);
         }
 
-        public bool SaveProject(string filesFilter, OuhmaniaModel model)
+        public bool SaveProject(string filesFilter, DataModel model)
         {
             var saveFileDialog = new SaveFileDialog
             {
@@ -182,7 +182,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             return false;
         }
 
-        public bool Autosave(string filesFilter, OuhmaniaModel model)
+        public bool Autosave(string filesFilter, DataModel model)
         {
             if (model.ProjectPath == null)
                 return false;
@@ -200,7 +200,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             }
         }
 
-        public OuhmaniaModel LoadModel(string filesFilter, string initialDirectory)
+        public DataModel LoadModel(string filesFilter, string initialDirectory)
         {
             var openFileDialog = new OpenFileDialog
             {
@@ -214,7 +214,7 @@ namespace OuhmaniaPeopleRecognizer.Services
             try
             {
                 var text = File.ReadAllText(openFileDialog.FileName);
-                var model = JsonConvert.DeserializeObject<OuhmaniaModel>(text);
+                var model = JsonConvert.DeserializeObject<DataModel>(text);
                 return model;
             }
             catch (IOException e)

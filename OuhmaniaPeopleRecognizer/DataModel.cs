@@ -1,25 +1,24 @@
 ﻿using OuhmaniaPeopleRecognizer.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace OuhmaniaPeopleRecognizer
 {
-    public class OuhmaniaModel
+    public class DataModel
     {
+        private const string VERSION = "1.0";
+        private const string PROGRAM_NAME = "PhotoCategorizer";
+
         private bool _dirty;
         private string _directoryPath;
         private string _projectPath;
 
-
-        public OuhmaniaModel(string version, string[] supportedFileExtensions, bool autoSave, int autoSaveIntervalInMinutes, string directoryPath)
+        public DataModel()
         {
-            Version = version;
-            SupportedFileExtensions = supportedFileExtensions;
-            AutoSave = autoSave;
-            AutoSaveIntervalInMinutes = autoSaveIntervalInMinutes;
-            DirectoryPath = directoryPath;
+            //IsAutoSaveActive = autoSave;
+            //AutoSaveIntervalInMinutes = autoSaveIntervalInMinutes;
+            //DirectoryPath = directoryPath;
             PersonAndIndex = new Dictionary<string, int>();
             Batches = new List<Batch>();
             PersonAndIndex = new Dictionary<string, int>();
@@ -27,13 +26,19 @@ namespace OuhmaniaPeopleRecognizer
             Dirty = false;
         }
 
+        public string GetFormTitle()
+        {
+            var projectPath = ProjectPath == null ? string.Empty : $"({ProjectPath})";
+            return $"{PROGRAM_NAME} v{VERSION} {projectPath}";
+        }
+
+        public string Version => VERSION;
+
         public bool Dirty
         {
             get => _dirty;
             set => _dirty = value;
         }
-
-        public string Version { get; set; }
 
         public string ProjectPath
         {
@@ -56,14 +61,14 @@ namespace OuhmaniaPeopleRecognizer
         }
 
         public string ExportPath { get; set; }
-        public bool AutoSave { get; set; }
+        public bool IsAutoSaveActive { get; set; }
         public int AutoSaveIntervalInMinutes { get; set; }
         public LastUserSelection LastUserSelection { get; set; }
         public int NextPersonId { get; set; }
         public Dictionary<string, int> PersonAndIndex { get; set; }
         public Dictionary<int, string> IndexAndPerson { get; set; }
         public List<Batch> Batches { get; set; }
-        public IEnumerable<string> SupportedFileExtensions { get; set; }
+        public IEnumerable<string> SupportedFileExtensions => new[] { "*.jpg", "*.png", "*.bmp" };
 
 
         public bool HasUserSelectedImage()

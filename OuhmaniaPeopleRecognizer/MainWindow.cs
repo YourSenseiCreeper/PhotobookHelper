@@ -20,14 +20,10 @@ namespace OuhmaniaPeopleRecognizer
 {
     public partial class MainWindow : Form
     {
-        private const string VERSION = "1.0";
-        private const string PROGRAM_NAME = "OuhmaniaPeopleRecognizer";
         private const string FILES_FILTER = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
 
-        public OuhmaniaModel _model;
+        public DataModel _model;
         private bool projectLoaded = false;
-        private bool unsavedChanges = false;
-        private string[] supportedExtensions = { "*.jpg", "*.png", "*.bmp" };
 
         public List<string> PeopleToDisplay = new List<string>();
 
@@ -35,18 +31,11 @@ namespace OuhmaniaPeopleRecognizer
 
         private DispatcherTimer AutoSaveTimer;
 
-
         private IFileService _fileService;
         private INotificationService _notificationService;
-        //private IDialogService _dialogService;
 
         private MainWindowViewModel _mainWindowViewModel;
         private ICommandFactory _commandFactory;
-
-        private string GetFormTitle()
-        {
-            return $"{PROGRAM_NAME} v{VERSION} " + (_model.ProjectPath != null ? $"({_model.ProjectPath})" : "");
-        }
 
         public MainWindow()
         {
@@ -57,7 +46,6 @@ namespace OuhmaniaPeopleRecognizer
             pictureBox1.Image = new Bitmap(20, 20);
 
             InitializeContext();
-            Text = GetFormTitle();
             CenterToScreen();
         }
 
@@ -79,28 +67,32 @@ namespace OuhmaniaPeopleRecognizer
 
             _notificationService = new NotificationService();
             _fileService = new FileService(_notificationService);
-            _model = new OuhmaniaModel(VERSION, supportedExtensions, true, 5, AppDomain.CurrentDomain.BaseDirectory);
+            _model = new DataModel
+            {
+                IsAutoSaveActive = true,
+                AutoSaveIntervalInMinutes = 5,
+                DirectoryPath = AppDomain.CurrentDomain.BaseDirectory
+            };
+
+            Text = _model.GetFormTitle();
 
             peopleBindingSource = new BindingSource { DataSource = PeopleToDisplay };
             peopleCheckBoxList.DataSource = peopleBindingSource;
 
             _commandFactory = new CommandFactory(_fileService, _model, _mainWindowViewModel);
-            //_loadImagesCommand = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel);
-            //_loadCurrentImageCommand = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel);
-            //_updateCategoryCheckboxesCommand = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel);
 
-            if (_model.AutoSave)
+            if (_model.IsAutoSaveActive)
                 SetTimer();
         }
 
         #region model management
         public void SaveModel()
         {
-            if (_fileService.SaveProject(FILES_FILTER, _model))
-            {
-                Text = GetFormTitle();
-                unsavedChanges = false;
-            }
+            if (!_fileService.SaveProject(FILES_FILTER, _model))
+                return;
+            
+            Text = _model.GetFormTitle();
+            unsavedChanges = false;
         }
 
         public bool LoadModel()
@@ -109,7 +101,7 @@ namespace OuhmaniaPeopleRecognizer
             if (loadedModel != null)
             {
                 _model = loadedModel;
-                Text = GetFormTitle();
+                Text = _model.GetFormTitle();
                 return true;
             }
             return false;
@@ -137,7 +129,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private string GetAutosaveLabel(bool autosaved = false)
         {
-            var autosave = _model.AutoSave ? Resources.MainWindow_Autosave_On : Resources.MainWindow_Autosave_Off;
+            var autosave = _model.IsAutoSaveActive ? Resources.MainWindow_Autosave_On : Resources.MainWindow_Autosave_Off;
             return autosaved ? string.Format(Resources.MainWindow_Autosave_Status, autosave, DateTime.Now.ToShortTimeString()) : autosave;
         }
         #endregion
@@ -169,8 +161,8 @@ namespace OuhmaniaPeopleRecognizer
                 ImageName = batch?.PicturePeople.FirstOrDefault().Key
             };
             //LoadCurrentPathImage();
-            _commandFactory.GetCommand(CommandNames.LoadCurrentImageCommand).Execute(null, null);
-            _commandFactory.GetCommand(CommandNames.UpdateCategoryCheckboxesCommand).Execute(null, null);
+            _commandFactory.Get(Commands.Commands.LoadCurrentImageCommand).Execute(null, null);
+            _commandFactory.Get(Commands.Commands.UpdateCategoryCheckboxesCommand).Execute(null, null);
             //UpdatePeopleCheckboxes();
         }
 
@@ -186,14 +178,8 @@ namespace OuhmaniaPeopleRecognizer
             for (var i = 0; i < peopleCheckBoxList.Items.Count; i++)
             {
                 var personName = peopleCheckBoxList.Items[i].ToString();
-                if (!currentPictureSelectedPeople.Contains(personName))
-                {
-                    peopleCheckBoxList.SetItemCheckState(i, CheckState.Unchecked);
-                }
-                else
-                {
-                    peopleCheckBoxList.SetItemCheckState(i, CheckState.Checked);
-                }
+                var state = currentPictureSelectedPeople.Contains(personName) ? CheckState.Checked : CheckState.Unchecked;
+                peopleCheckBoxList.SetItemCheckState(i, state);
             }
         }
 
@@ -206,7 +192,7 @@ namespace OuhmaniaPeopleRecognizer
             }
 
             var hasBeenChanged = _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
-            unsavedChanges = hasBeenChanged;
+            //unsavedChanges = hasBeenChanged;
         }
 
         private void CheckMissingFiles()
@@ -238,9 +224,6 @@ namespace OuhmaniaPeopleRecognizer
         private void beforeClose(object sender, FormClosingEventArgs e) => CheckUnsavedChangesDialog();
 
 
-
-
-
         #region topbar menu
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
@@ -268,7 +251,7 @@ namespace OuhmaniaPeopleRecognizer
             PeopleToDisplay = _model.PersonAndIndex.Keys.ToList();
             peopleBindingSource.ResetBindings(true);
             peopleBindingSource.DataSource = PeopleToDisplay;
-            if (_model.AutoSave)
+            if (_model.IsAutoSaveActive)
             {
                 AutoSaveTimer.Stop();
                 SetTimer();
@@ -283,9 +266,8 @@ namespace OuhmaniaPeopleRecognizer
             LoadCurrentPathImage();
             UpdatePeopleCheckboxes();
 
-            Text = GetFormTitle();
+            Text = _model.GetFormTitle(); // przenieść do komendy UpdateFormTitle
             loadedFilesCounttoolStripStatusLabel.Visible = true;
-            unsavedChanges = false;
             projectLoaded = true;
         }
 
@@ -349,7 +331,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private void loadPhotosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _commandFactory.GetCommand(CommandNames.LoadImagesCommand).Execute(sender, e);
+            _commandFactory.Get(Commands.Commands.LoadImagesCommand).Execute(sender, e);
         }
 
         private void rescanDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -430,7 +412,6 @@ namespace OuhmaniaPeopleRecognizer
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         }
         #endregion
-
 
 
         private void addPersonToolStripContextMenuItem_Click(object sender, EventArgs e)

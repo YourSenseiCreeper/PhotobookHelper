@@ -11,12 +11,12 @@ namespace OuhmaniaPeopleRecognizer.Commands
     public class LoadImagesCommand : ICommand
     {
         private readonly IFileService _fileService;
-        private readonly OuhmaniaModel _model;
+        private readonly DataModel _model;
         private readonly MainWindowViewModel _mainWindowViewModel;
         private readonly ICommandFactory _commandFactory;
 
         public LoadImagesCommand(IFileService fileService,
-            OuhmaniaModel dataModel,
+            DataModel dataModel,
             MainWindowViewModel viewModel, ICommandFactory commandFactory)
         {
             _fileService = fileService;
@@ -57,10 +57,8 @@ namespace OuhmaniaPeopleRecognizer.Commands
                 BatchId = batch?.Id,
                 ImageName = batch?.PicturePeople.FirstOrDefault().Key
             };
-            _commandFactory.GetCommand(CommandNames.LoadCurrentImageCommand).Execute(null, null);
-            _commandFactory.GetCommand(CommandNames.UpdateCategoryCheckboxesCommand).Execute(null, null);
-            //LoadCurrentPathImage();
-            //UpdatePeopleCheckboxes();
+            _commandFactory.Get(Commands.LoadCurrentImageCommand).Execute(null, null);
+            _commandFactory.Get(Commands.UpdateCategoryCheckboxesCommand).Execute(null, null);
         }
     }
 }

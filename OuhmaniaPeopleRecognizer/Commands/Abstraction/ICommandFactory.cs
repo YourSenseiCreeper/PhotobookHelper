@@ -2,6 +2,6 @@
 {
     public interface ICommandFactory
     {
-        ICommand GetCommand(string name);
+        ICommand Get(Commands command);
     }
 }

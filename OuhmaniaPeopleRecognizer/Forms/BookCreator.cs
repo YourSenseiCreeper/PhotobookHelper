@@ -8,13 +8,13 @@ namespace OuhmaniaPeopleRecognizer
 {
     public partial class BookCreator : Form
     {
-        private readonly OuhmaniaModel _model;
+        private readonly DataModel _model;
         private readonly INotificationService _notificationService;
         private readonly IFileService _fileService;
 
         private List<string> _peopleToExport;
 
-        public BookCreator(OuhmaniaModel model, INotificationService notificationService, IFileService fileService)
+        public BookCreator(DataModel model, INotificationService notificationService, IFileService fileService)
         {
             _model = model;
             _notificationService = notificationService;

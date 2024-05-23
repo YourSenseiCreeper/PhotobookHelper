@@ -10,15 +10,22 @@ namespace OuhmaniaPeopleRecognizer.Commands
         public const string UpdateCategoryCheckboxesCommand = nameof(Commands.UpdateCategoryCheckboxesCommand);
     }
 
+    public enum Commands
+    {
+        LoadCurrentImageCommand,
+        LoadImagesCommand,
+        UpdateCategoryCheckboxesCommand,
+    }
+
     public class CommandFactory : ICommandFactory
     {
         private readonly IFileService _fileService;
-        private readonly OuhmaniaModel _model;
+        private readonly DataModel _model;
         private readonly MainWindowViewModel _mainWindowViewModel;
 
         public CommandFactory(
             IFileService fileService,
-            OuhmaniaModel model,
+            DataModel model,
             MainWindowViewModel mainWindowViewModel)
         {
             _fileService = fileService;
@@ -26,16 +33,16 @@ namespace OuhmaniaPeopleRecognizer.Commands
             _mainWindowViewModel = mainWindowViewModel;
         }
 
-        public ICommand GetCommand(string name)
+        public ICommand Get(Commands command)
         {
             ICommand result = null;
-            switch (name)
+            switch (command)
             {
-                case CommandNames.LoadCurrentImageCommand: result = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel); break;
-                case CommandNames.LoadImagesCommand: result = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel, this); break;
-                case CommandNames.UpdateCategoryCheckboxesCommand: result = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel); break;
+                case Commands.LoadCurrentImageCommand: result = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel); break;
+                case Commands.LoadImagesCommand: result = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel, this); break;
+                case Commands.UpdateCategoryCheckboxesCommand: result = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel); break;
                 default:
-                    throw new ArgumentException($"Command '{name}' is not registered!");
+                    throw new ArgumentException($"Command '{command}' is not registered!");
             }
 
             return result;

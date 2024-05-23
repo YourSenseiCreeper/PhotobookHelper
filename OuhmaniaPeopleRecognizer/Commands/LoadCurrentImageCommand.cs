@@ -6,11 +6,11 @@ namespace OuhmaniaPeopleRecognizer.Commands
     public class LoadCurrentImageCommand : ICommand
     {
         private readonly IFileService _fileService;
-        private readonly OuhmaniaModel _model;
+        private readonly DataModel _model;
         private readonly MainWindowViewModel _mainWindowViewModel;
 
         public LoadCurrentImageCommand(IFileService fileService,
-            OuhmaniaModel dataModel,
+            DataModel dataModel,
             MainWindowViewModel viewModel)
         {
             _fileService = fileService;
