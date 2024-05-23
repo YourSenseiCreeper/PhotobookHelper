@@ -58,24 +58,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddPersonDialog.cs">
+    <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandFactory.cs" />
+    <Compile Include="Commands\UpdateCategoryCheckboxesCommand.cs" />
+    <Compile Include="Commands\LoadCurrentImageCommand.cs" />
+    <Compile Include="Commands\LoadImagesCommand.cs" />
+    <Compile Include="Dialogs\AddPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPersonDialog.Designer.cs">
+    <Compile Include="Dialogs\AddPersonDialog.Designer.cs">
       <DependentUpon>AddPersonDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="BookCreator.cs">
+    <Compile Include="Forms\BookCreator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookCreator.Designer.cs">
+    <Compile Include="Forms\BookCreator.Designer.cs">
       <DependentUpon>BookCreator.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Services\FileService.cs" />
-    <Compile Include="FilesNotFoundDialog.cs">
+    <Compile Include="Dialogs\FilesNotFoundDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FilesNotFoundDialog.Designer.cs">
+    <Compile Include="Dialogs\FilesNotFoundDialog.Designer.cs">
       <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
@@ -93,16 +100,16 @@
     <Compile Include="Services\Interfaces\INotificationService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="WebPWrapper.cs" />
-    <EmbeddedResource Include="AddPersonDialog.resx">
+    <EmbeddedResource Include="Dialogs\AddPersonDialog.resx">
       <DependentUpon>AddPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BookCreator.resx">
+    <EmbeddedResource Include="Forms\BookCreator.resx">
       <DependentUpon>BookCreator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FilesNotFoundDialog.en-us.resx">
+    <EmbeddedResource Include="Dialogs\FilesNotFoundDialog.en-us.resx">
       <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FilesNotFoundDialog.resx">
+    <EmbeddedResource Include="Dialogs\FilesNotFoundDialog.resx">
       <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.en-US.resx">

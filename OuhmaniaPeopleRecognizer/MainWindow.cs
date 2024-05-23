@@ -1,4 +1,9 @@
-﻿using System;
+﻿using OuhmaniaPeopleRecognizer.Commands;
+using OuhmaniaPeopleRecognizer.Models;
+using OuhmaniaPeopleRecognizer.Properties;
+using OuhmaniaPeopleRecognizer.Services;
+using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -7,14 +12,8 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Threading;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using Newtonsoft.Json;
-using OuhmaniaPeopleRecognizer.Models;
-using OuhmaniaPeopleRecognizer.Properties;
-using OuhmaniaPeopleRecognizer.Services;
-using OuhmaniaPeopleRecognizer.Services.Interfaces;
 
 [assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
@@ -32,14 +31,17 @@ namespace OuhmaniaPeopleRecognizer
 
         public List<string> PeopleToDisplay = new List<string>();
 
-        private readonly BindingSource peopleBindingSource;
+        private BindingSource peopleBindingSource;
 
         private DispatcherTimer AutoSaveTimer;
 
 
         private IFileService _fileService;
         private INotificationService _notificationService;
-        private IDialogService _dialogService;
+        //private IDialogService _dialogService;
+
+        private MainWindowViewModel _mainWindowViewModel;
+        private ICommandFactory _commandFactory;
 
         private string GetFormTitle()
         {
@@ -48,29 +50,73 @@ namespace OuhmaniaPeopleRecognizer
 
         public MainWindow()
         {
-            var newCulture = new CultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = newCulture;
-            Thread.CurrentThread.CurrentUICulture = newCulture;
-            _notificationService = new NotificationService();
-            _fileService = new FileService(_notificationService);
-
-            _model = new OuhmaniaModel(VERSION, supportedExtensions, true, 5, AppDomain.CurrentDomain.BaseDirectory);
-
-            peopleBindingSource = new BindingSource { DataSource = PeopleToDisplay };
-            
             InitializeComponent();
-            Text = GetFormTitle();
-            CenterToScreen();
-
-            peopleCheckBoxList.DataSource = peopleBindingSource;
 
             Trace.Listeners["textWriterListener"].Attributes["initializeData"] =
                 AppDomain.CurrentDomain.BaseDirectory + "\\" + DateTime.Now + ".log";
             pictureBox1.Image = new Bitmap(20, 20);
+
+            InitializeContext();
+            Text = GetFormTitle();
+            CenterToScreen();
+        }
+
+        private void InitializeContext()
+        {
+            var newCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = newCulture;
+            Thread.CurrentThread.CurrentUICulture = newCulture;
+
+            _mainWindowViewModel = new MainWindowViewModel
+            {
+                TreeView1 = treeView1,
+                AllFilesCounttoolStripStatusLabel = allFilesCounttoolStripStatusLabel,
+                LoadedFilesCounttoolStripStatusLabel = loadedFilesCounttoolStripStatusLabel,
+                FolderPathtoolStripStatusLabel = folderPathtoolStripStatusLabel,
+                PictureBox1 = pictureBox1,
+                PeopleCheckBoxList = peopleCheckBoxList,
+            };
+
+            _notificationService = new NotificationService();
+            _fileService = new FileService(_notificationService);
+            _model = new OuhmaniaModel(VERSION, supportedExtensions, true, 5, AppDomain.CurrentDomain.BaseDirectory);
+
+            peopleBindingSource = new BindingSource { DataSource = PeopleToDisplay };
+            peopleCheckBoxList.DataSource = peopleBindingSource;
+
+            _commandFactory = new CommandFactory(_fileService, _model, _mainWindowViewModel);
+            //_loadImagesCommand = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel);
+            //_loadCurrentImageCommand = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel);
+            //_updateCategoryCheckboxesCommand = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel);
+
             if (_model.AutoSave)
                 SetTimer();
         }
 
+        #region model management
+        public void SaveModel()
+        {
+            if (_fileService.SaveProject(FILES_FILTER, _model))
+            {
+                Text = GetFormTitle();
+                unsavedChanges = false;
+            }
+        }
+
+        public bool LoadModel()
+        {
+            var loadedModel = _fileService.LoadModel(FILES_FILTER, AppDomain.CurrentDomain.BaseDirectory);
+            if (loadedModel != null)
+            {
+                _model = loadedModel;
+                Text = GetFormTitle();
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region autosave
         private void SetTimer()
         {
             AutoSaveTimer = new DispatcherTimer(DispatcherPriority.SystemIdle);
@@ -94,6 +140,7 @@ namespace OuhmaniaPeopleRecognizer
             var autosave = _model.AutoSave ? Resources.MainWindow_Autosave_On : Resources.MainWindow_Autosave_Off;
             return autosaved ? string.Format(Resources.MainWindow_Autosave_Status, autosave, DateTime.Now.ToShortTimeString()) : autosave;
         }
+        #endregion
 
         private void treeView1_Enter(object sender, EventArgs e)
         {
@@ -121,20 +168,10 @@ namespace OuhmaniaPeopleRecognizer
                 BatchId = batch?.Id,
                 ImageName = batch?.PicturePeople.FirstOrDefault().Key
             };
-            LoadCurrentPathImage();
-            UpdatePeopleCheckboxes();
-        }
-
-        private void SaveCurrentPictureState(bool beforeSaveAction = false)
-        {
-            var selectedPeople = new List<string>();
-            foreach (var selectedPerson in peopleCheckBoxList.CheckedItems)
-            {
-                selectedPeople.Add(selectedPerson.ToString());
-            }
-
-            var hasBeenChanged = _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
-            unsavedChanges = hasBeenChanged;
+            //LoadCurrentPathImage();
+            _commandFactory.GetCommand(CommandNames.LoadCurrentImageCommand).Execute(null, null);
+            _commandFactory.GetCommand(CommandNames.UpdateCategoryCheckboxesCommand).Execute(null, null);
+            //UpdatePeopleCheckboxes();
         }
 
         private void LoadCurrentPathImage()
@@ -158,6 +195,18 @@ namespace OuhmaniaPeopleRecognizer
                     peopleCheckBoxList.SetItemCheckState(i, CheckState.Checked);
                 }
             }
+        }
+
+        private void SaveCurrentPictureState(bool beforeSaveAction = false)
+        {
+            var selectedPeople = new List<string>();
+            foreach (var selectedPerson in peopleCheckBoxList.CheckedItems)
+            {
+                selectedPeople.Add(selectedPerson.ToString());
+            }
+
+            var hasBeenChanged = _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
+            unsavedChanges = hasBeenChanged;
         }
 
         private void CheckMissingFiles()
@@ -188,56 +237,11 @@ namespace OuhmaniaPeopleRecognizer
 
         private void beforeClose(object sender, FormClosingEventArgs e) => CheckUnsavedChangesDialog();
 
-        public void SaveModel()
-        {
-            if (_fileService.SaveProject(FILES_FILTER, _model))
-            {
-                Text = GetFormTitle();
-                unsavedChanges = false;
-            }
-        }
 
-        public bool LoadModel()
-        {
-            var loadedModel = _fileService.LoadModel(FILES_FILTER, AppDomain.CurrentDomain.BaseDirectory);
-            if (loadedModel != null)
-            {
-                _model = loadedModel;
-                Text = GetFormTitle();
-                return true;
-            }
-            return false;
-        }
 
-        private void treeViewSelect(object sender, TreeViewEventArgs e)
-        {
-            if (treeView1.SelectedNode.Nodes.Count == 0)
-            {
-                peopleCheckBoxList.Enabled = true;
-                SaveCurrentPictureState();
 
-                // disposing
-                GC.Collect();
-                pictureBox1.Image.Dispose();
 
-                // load new picture
-                var allNodes = treeView1.Nodes;
-                var rootNode = allNodes[0];
-                var selectedNode = treeView1.SelectedNode;
-                var batchPath = selectedNode.FullPath.Replace($"\\{selectedNode.Text}", "");
-                var selectedBatch = _model.Batches.First(b => b.DirectoryPath.EndsWith(batchPath));
-                _model.LastUserSelection.BatchId = selectedBatch.Id;
-                _model.LastUserSelection.ImageName = $"\\{selectedNode.Text}";
-                LoadCurrentPathImage();
-                UpdatePeopleCheckboxes();
-            }
-            else
-            {
-                pictureBox1.Image = new Bitmap(20, 20);
-                peopleCheckBoxList.Enabled = false;
-            }
-        }
-
+        #region topbar menu
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
         private void exportFilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -345,16 +349,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private void loadPhotosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var dialog = new FolderBrowserDialog())
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    _fileService.LoadDirectory(treeView1, _model, dialog.SelectedPath);
-                    UpdateFileCountersAndLoadedFileList();
-                    //LoadInitialPicture();
-                    unsavedChanges = true;
-                }
-            }
+            _commandFactory.GetCommand(CommandNames.LoadImagesCommand).Execute(sender, e);
         }
 
         private void rescanDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -365,28 +360,6 @@ namespace OuhmaniaPeopleRecognizer
             // refresh pictures list
             // it can be anywhere
             UpdateFileCountersAndLoadedFileList();
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void treeView1_DragDrop(object sender, DragEventArgs e)
-        {
-            // Move the dragged node when the left mouse button is used.
-            var filepaths = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (filepaths.Length != 0)
-            {
-                _fileService.LoadDirectory(treeView1, _model, filepaths[0]);
-                UpdateFileCountersAndLoadedFileList();
-                LoadInitialPicture();
-            }
-        }
-
-        private void treeView1_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         }
 
         private void rotateRightToolStripMenuItem_Click(object sender, EventArgs e)
@@ -403,6 +376,63 @@ namespace OuhmaniaPeopleRecognizer
             pictureBox1.Image = currentImage;
         }
 
+        private void nowyProjektToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: Check if there are any changes in current project
+            // TODO: Clear all data
+        }
+        #endregion
+
+        private void treeView1_DragDrop(object sender, DragEventArgs e)
+        {
+            // Move the dragged node when the left mouse button is used.
+            var filepaths = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (filepaths.Length != 0)
+            {
+                _fileService.LoadDirectory(treeView1, _model, filepaths[0]);
+                UpdateFileCountersAndLoadedFileList();
+                LoadInitialPicture();
+            }
+        }
+
+        #region treeview
+        private void treeViewSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView1.SelectedNode.Nodes.Count == 0)
+            {
+                peopleCheckBoxList.Enabled = true;
+                SaveCurrentPictureState();
+
+                // disposing
+                GC.Collect();
+                pictureBox1.Image.Dispose();
+
+                // load new picture
+                var allNodes = treeView1.Nodes;
+                var rootNode = allNodes[0];
+                var selectedNode = treeView1.SelectedNode;
+                var batchPath = selectedNode.FullPath.Replace($"\\{selectedNode.Text}", "");
+                var selectedBatch = _model.Batches.First(b => b.DirectoryPath.EndsWith(batchPath));
+                _model.LastUserSelection.BatchId = selectedBatch.Id;
+                _model.LastUserSelection.ImageName = $"\\{selectedNode.Text}";
+                LoadCurrentPathImage();
+                UpdatePeopleCheckboxes();
+            }
+            else
+            {
+                pictureBox1.Image = new Bitmap(20, 20);
+                peopleCheckBoxList.Enabled = false;
+            }
+        }
+
+        private void treeView1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
+        }
+        #endregion
+
+
+
         private void addPersonToolStripContextMenuItem_Click(object sender, EventArgs e)
         {
             var personName = AddPersonDialog.ShowDialog(Resources.MainWindow_addPerson_Title, Resources.MainWindow_addPerson_Caption);
@@ -418,19 +448,15 @@ namespace OuhmaniaPeopleRecognizer
         private void deletePersonToolStripContextMenuItem_Click(object sender, EventArgs e)
         {
             var personToDelete = peopleCheckBoxList.SelectedItem.ToString();
-            if (_dialogService.ShowDeletePerson(personToDelete))
-            {
-                _model.RemovePerson(personToDelete);
-                PeopleToDisplay.Remove(personToDelete);
-                peopleBindingSource.ResetBindings(true);
-            }
+            //if (_dialogService.ShowDeletePerson(personToDelete))
+            //{
+            //    _model.RemovePerson(personToDelete);
+            //    PeopleToDisplay.Remove(personToDelete);
+            //    peopleBindingSource.ResetBindings(true);
+            //}
 
         }
 
-        private void nowyProjektToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // TODO: Check if there are any changes in current project
-            // TODO: Clear all data
-        }
+
     }
 }
