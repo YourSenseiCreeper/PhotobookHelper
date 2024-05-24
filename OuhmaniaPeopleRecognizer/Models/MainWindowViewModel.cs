@@ -1,7 +1,10 @@
-﻿namespace OuhmaniaPeopleRecognizer
+﻿using System.Windows.Forms;
+
+namespace OuhmaniaPeopleRecognizer
 {
     public class MainWindowViewModel
     {
+        public BindingSource CategoryBindingSource { get; set; }
         public object FormTitle { get; set; }
         public System.Windows.Forms.TreeView TreeView1 { get; set; }
         public System.Windows.Forms.PictureBox PictureBox1 { get; set; }

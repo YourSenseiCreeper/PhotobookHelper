@@ -29,6 +29,40 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         {
             _treeView.AfterSelect += TreeViewSelect;
             _treeView.DragEnter += treeView1_DragEnter;
+            _treeView.Enter += treeView1_Enter;
+            _treeView.Leave += treeView1_Leave;
+            _treeView.DragDrop += treeView1_DragDrop;
+        }
+
+        private void treeView1_Enter(object sender, EventArgs e)
+        {
+            if (_treeView.SelectedNode != null)
+            {
+                _treeView.SelectedNode.BackColor = Color.Empty;
+                _treeView.SelectedNode.ForeColor = Color.Empty;
+            }
+        }
+
+        private void treeView1_Leave(object sender, EventArgs e)
+        {
+            if (_treeView.SelectedNode != null)
+            {
+                _treeView.SelectedNode.BackColor = Color.Blue;
+                _treeView.SelectedNode.ForeColor = Color.White;
+            }
+        }
+
+        private void treeView1_DragDrop(object sender, DragEventArgs e)
+        {
+            // Move the dragged node when the left mouse button is used.
+            var filepaths = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (filepaths.Length != 0)
+            {
+                // TODO: implement fileservice and resolve other problems using commands?
+                //_fileService.LoadDirectory(treeView1, _model, filepaths[0]);
+                //UpdateFileCountersAndLoadedFileList();
+                //LoadInitialPicture();
+            }
         }
 
         private void TreeViewSelect(object sender, TreeViewEventArgs e)

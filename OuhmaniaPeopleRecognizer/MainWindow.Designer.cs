@@ -96,13 +96,13 @@
             // 
             this.rotateRightToolStripMenuItem.Name = "rotateRightToolStripMenuItem";
             resources.ApplyResources(this.rotateRightToolStripMenuItem, "rotateRightToolStripMenuItem");
-            this.rotateRightToolStripMenuItem.Click += new System.EventHandler(this.rotateRightToolStripMenuItem_Click);
+            //this.rotateRightToolStripMenuItem.Click += new System.EventHandler(this.rotateRightToolStripMenuItem_Click);
             // 
             // rotateLeftToolStripMenuItem
             // 
             this.rotateLeftToolStripMenuItem.Name = "rotateLeftToolStripMenuItem";
             resources.ApplyResources(this.rotateLeftToolStripMenuItem, "rotateLeftToolStripMenuItem");
-            this.rotateLeftToolStripMenuItem.Click += new System.EventHandler(this.rotateLeftToolStripMenuItem_Click);
+            //this.rotateLeftToolStripMenuItem.Click += new System.EventHandler(this.rotateLeftToolStripMenuItem_Click);
             // 
             // peopleCheckBoxList
             // 
@@ -128,13 +128,13 @@
             // 
             this.addPersonToolStripContextMenuItem.Name = "addPersonToolStripContextMenuItem";
             resources.ApplyResources(this.addPersonToolStripContextMenuItem, "addPersonToolStripContextMenuItem");
-            this.addPersonToolStripContextMenuItem.Click += new System.EventHandler(this.addPersonToolStripContextMenuItem_Click);
+            //this.addPersonToolStripContextMenuItem.Click += new System.EventHandler(this.addPersonToolStripContextMenuItem_Click);
             // 
             // deletePersonToolStripContextMenuItem
             // 
             this.deletePersonToolStripContextMenuItem.Name = "deletePersonToolStripContextMenuItem";
             resources.ApplyResources(this.deletePersonToolStripContextMenuItem, "deletePersonToolStripContextMenuItem");
-            this.deletePersonToolStripContextMenuItem.Click += new System.EventHandler(this.deletePersonToolStripContextMenuItem_Click);
+            //this.deletePersonToolStripContextMenuItem.Click += new System.EventHandler(this.deletePersonToolStripContextMenuItem_Click);
             // 
             // treeView1
             // 
@@ -145,10 +145,10 @@
             this.treeView1.ItemHeight = 18;
             this.treeView1.Name = "treeView1";
             //this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSelect);
-            this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
+            //this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
             //this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
-            this.treeView1.Enter += new System.EventHandler(this.treeView1_Enter);
-            this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
+            //this.treeView1.Enter += new System.EventHandler(this.treeView1_Enter);
+            //this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
             // 
             // menuStrip1
             // 
@@ -176,25 +176,25 @@
             // 
             this.nowyProjektToolStripMenuItem.Name = "nowyProjektToolStripMenuItem";
             resources.ApplyResources(this.nowyProjektToolStripMenuItem, "nowyProjektToolStripMenuItem");
-            this.nowyProjektToolStripMenuItem.Click += new System.EventHandler(this.nowyProjektToolStripMenuItem_Click);
+            //this.nowyProjektToolStripMenuItem.Click += new System.EventHandler(this.nowyProjektToolStripMenuItem_Click);
             // 
             // loadProjectToolStripMenuItem
             // 
             this.loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
             resources.ApplyResources(this.loadProjectToolStripMenuItem, "loadProjectToolStripMenuItem");
-            this.loadProjectToolStripMenuItem.Click += new System.EventHandler(this.loadProjectToolStripMenuItem_Click);
+            //this.loadProjectToolStripMenuItem.Click += new System.EventHandler(this.loadProjectToolStripMenuItem_Click);
             // 
             // saveProjectToolStripMenuItem
             // 
             this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
             resources.ApplyResources(this.saveProjectToolStripMenuItem, "saveProjectToolStripMenuItem");
-            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
+            //this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
             // 
             // exportFilesToolStripMenuItem
             // 
             this.exportFilesToolStripMenuItem.Name = "exportFilesToolStripMenuItem";
             resources.ApplyResources(this.exportFilesToolStripMenuItem, "exportFilesToolStripMenuItem");
-            this.exportFilesToolStripMenuItem.Click += new System.EventHandler(this.exportFilesToolStripMenuItem_Click);
+            //this.exportFilesToolStripMenuItem.Click += new System.EventHandler(this.exportFilesToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -219,13 +219,13 @@
             // 
             this.loadPhotosToolStripMenuItem.Name = "loadPhotosToolStripMenuItem";
             resources.ApplyResources(this.loadPhotosToolStripMenuItem, "loadPhotosToolStripMenuItem");
-            this.loadPhotosToolStripMenuItem.Click += new System.EventHandler(this.loadPhotosToolStripMenuItem_Click);
+            //this.loadPhotosToolStripMenuItem.Click += new System.EventHandler(this.loadPhotosToolStripMenuItem_Click);
             // 
             // rescanDirectoryToolStripMenuItem
             // 
             this.rescanDirectoryToolStripMenuItem.Name = "rescanDirectoryToolStripMenuItem";
             resources.ApplyResources(this.rescanDirectoryToolStripMenuItem, "rescanDirectoryToolStripMenuItem");
-            this.rescanDirectoryToolStripMenuItem.Click += new System.EventHandler(this.rescanDirectoryToolStripMenuItem_Click);
+            //this.rescanDirectoryToolStripMenuItem.Click += new System.EventHandler(this.rescanDirectoryToolStripMenuItem_Click);
             // 
             // personToolStripMenuItem
             // 

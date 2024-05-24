@@ -103,6 +103,10 @@
     <Compile Include="Services\Interfaces\INotificationService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\WebPWrapper.cs" />
+    <Compile Include="ViewManager\AutosaveManager.cs" />
+    <Compile Include="ViewManager\CategoryManager.cs" />
+    <Compile Include="ViewManager\FormMenuViewManager.cs" />
+    <Compile Include="ViewManager\PictureBoxManager.cs" />
     <Compile Include="ViewManager\TreeViewManager.cs" />
     <EmbeddedResource Include="Dialogs\AddPersonDialog.resx">
       <DependentUpon>AddPersonDialog.cs</DependentUpon>
