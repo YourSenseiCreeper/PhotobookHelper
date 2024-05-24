@@ -23,7 +23,6 @@ namespace OuhmaniaPeopleRecognizer
             //IsAutoSaveActive = autoSave;
             //AutoSaveIntervalInMinutes = autoSaveIntervalInMinutes;
             //DirectoryPath = directoryPath;
-            PersonAndIndex = new Dictionary<string, int>();
             Batches = new List<Batch>();
             PersonAndIndex = new Dictionary<string, int>();
             IndexAndPerson = new Dictionary<int, string>();
@@ -35,6 +34,9 @@ namespace OuhmaniaPeopleRecognizer
             var projectPath = ProjectPath == null ? string.Empty : $"({ProjectPath})";
             return $"{PROGRAM_NAME} v{VERSION} {projectPath}";
         }
+
+        [JsonIgnore]
+        public bool IsProjectLoaded { get; set; }
 
         public bool Dirty
         {

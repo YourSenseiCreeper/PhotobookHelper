@@ -1,7 +1,5 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
 using OuhmaniaPeopleRecognizer.Commands.Abstraction;
-using OuhmaniaPeopleRecognizer.Models;
-using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using OuhmaniaPeopleRecognizer.ViewManager;
@@ -10,12 +8,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Threading;
 
 [assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
@@ -23,9 +18,6 @@ namespace OuhmaniaPeopleRecognizer
     public partial class MainWindow : Form
     {
         public DataModel _model;
-        public List<string> PeopleToDisplay = new List<string>();
-
-        private BindingSource peopleBindingSource;
 
         private IFileService _fileService;
         private INotificationService _notificationService;
@@ -57,16 +49,7 @@ namespace OuhmaniaPeopleRecognizer
             Thread.CurrentThread.CurrentCulture = newCulture;
             Thread.CurrentThread.CurrentUICulture = newCulture;
 
-            _mainWindowViewModel = new MainWindowViewModel
-            {
-                TreeView1 = treeView1,
-                AllFilesCounttoolStripStatusLabel = allFilesCounttoolStripStatusLabel,
-                LoadedFilesCounttoolStripStatusLabel = loadedFilesCounttoolStripStatusLabel,
-                FolderPathtoolStripStatusLabel = folderPathtoolStripStatusLabel,
-                PictureBox1 = pictureBox1,
-                PeopleCheckBoxList = peopleCheckBoxList,
-            };
-
+            _mainWindowViewModel = LoadFromMainWindow();
             _notificationService = new NotificationService();
             _fileService = new FileService(_notificationService);
             _model = new DataModel
@@ -79,9 +62,6 @@ namespace OuhmaniaPeopleRecognizer
             // jak z tego zrobić binding source?
             Text = _model.GetFormTitle();
 
-            peopleBindingSource = new BindingSource { DataSource = PeopleToDisplay };
-            peopleCheckBoxList.DataSource = peopleBindingSource;
-
             _commandFactory = new CommandFactory(_fileService, _model, _mainWindowViewModel);
             _autosaveManager = new AutosaveManager(_fileService, _mainWindowViewModel, _model);
 
@@ -91,7 +71,7 @@ namespace OuhmaniaPeopleRecognizer
             _treeViewManager = new TreeViewManager(_mainWindowViewModel, _model, _commandFactory);
             _treeViewManager.SubscribeOnEvents();
 
-            _formMenuViewManager = new FormMenuViewManager(_fileService, _notificationService, _commandFactory, _mainWindowViewModel, _model);
+            _formMenuViewManager = new FormMenuViewManager(_fileService, _notificationService, _commandFactory, _mainWindowViewModel, _model, _treeViewManager);
             _formMenuViewManager.SubscribeOnEvents();
 
             _categoryManager = new CategoryManager(_mainWindowViewModel, _model);
@@ -109,5 +89,49 @@ namespace OuhmaniaPeopleRecognizer
             }
         }
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
+        private MainWindowViewModel LoadFromMainWindow()
+        {
+            // TODO: refactor
+            var peopleToDisplay = new List<string>();
+            var bindingSource = new BindingSource { DataSource = peopleToDisplay };
+            peopleCheckBoxList.DataSource = bindingSource;
+
+            return new MainWindowViewModel
+            {
+                CategoryBindingSource = bindingSource,
+
+                TreeView1 = treeView1,
+                AddPersonToolStripContextMenuItem = addPersonToolStripMenuItem,
+                AddPersonToolStripMenuItem = addPersonToolStripMenuItem,
+                AutosaveToolStripStatusLabel = autosaveToolStripStatusLabel,
+                CloseProgramToolStripMenuItem = closeProgramToolStripMenuItem,
+                DeletePersonToolStripContextMenuItem = deletePersonToolStripContextMenuItem,
+                ExportFilesToolStripMenuItem = exportFilesToolStripMenuItem,
+                FileToolStripMenuItem = fileToolStripMenuItem,
+                LoadPhotosToolStripMenuItem = loadPhotosToolStripMenuItem,
+                LoadProjectToolStripMenuItem = loadProjectToolStripMenuItem,
+                MenuStrip1 = menuStrip1,
+                PeopleListMenuStrip = peopleListMenuStrip,
+                NowyProjektToolStripMenuItem = nowyProjektToolStripMenuItem,
+                PersonToolStripMenuItem = personToolStripMenuItem,
+                PhotosToolStripMenuItem = photosToolStripMenuItem,
+                PictureMenuStrip = pictureMenuStrip,
+                RemovePersonToolStripMenuItem = removePersonToolStripMenuItem,
+                RescanDirectoryToolStripMenuItem = rescanDirectoryToolStripMenuItem,
+                RotateRightToolStripMenuItem = rotateRightToolStripMenuItem,
+                RotateLeftToolStripMenuItem = rotateLeftToolStripMenuItem,
+                SaveProjectToolStripMenuItem = saveProjectToolStripMenuItem,
+                SplitContainer1 = splitContainer1,
+                SplitContainer2 = splitContainer2,
+                StatusStrip1 = statusStrip1,
+                ToolStripSeparator1 = toolStripSeparator1,
+                AllFilesCounttoolStripStatusLabel = allFilesCounttoolStripStatusLabel,
+                LoadedFilesCounttoolStripStatusLabel = loadedFilesCounttoolStripStatusLabel,
+                FolderPathtoolStripStatusLabel = folderPathtoolStripStatusLabel,
+                PictureBox1 = pictureBox1,
+                PeopleCheckBoxList = peopleCheckBoxList,
+            };
+        }
     }
 }

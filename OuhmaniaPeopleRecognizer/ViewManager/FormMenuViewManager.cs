@@ -3,14 +3,9 @@ using OuhmaniaPeopleRecognizer.Commands.Abstraction;
 using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
@@ -21,13 +16,15 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         private readonly ICommandFactory _commandFactory;
         private readonly MainWindowViewModel _viewModel;
         private readonly DataModel _model;
+        private readonly TreeViewManager _treeViewManager;
 
         public FormMenuViewManager(
             IFileService fileService,
             INotificationService notificationService,
             ICommandFactory commandFactory,
             MainWindowViewModel viewModel,
-            DataModel dataModel
+            DataModel dataModel,
+            TreeViewManager treeViewManager
         )
         {
             _fileService = fileService;
@@ -35,6 +32,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             _commandFactory = commandFactory;
             _viewModel = viewModel;
             _model = dataModel;
+            _treeViewManager = treeViewManager;
         }
 
         public void SubscribeOnEvents()
@@ -86,7 +84,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         private void loadProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // move variable to Model
-            if (projectLoaded)
+            if (_model.IsProjectLoaded)
                 _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
 
             CheckUnsavedChangesDialog();
@@ -100,12 +98,13 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             _viewModel.CategoryBindingSource.ResetBindings(true);
             _viewModel.CategoryBindingSource.DataSource = _model.PersonAndIndex.Keys.ToList();
             
-            if (_model.IsAutoSaveActive)
-            {
-                AutoSaveTimer.Stop();
-                SetTimer();
-                autosaveToolStripStatusLabel.Text = GetAutosaveLabel();
-            }
+
+            //if (_model.IsAutoSaveActive)
+            //{
+            //    AutoSaveTimer.Stop();
+            //    SetTimer();
+            //    _viewModel.AutosaveToolStripStatusLabel.Text = GetAutosaveLabel();
+            //}
 
             //////// IO section
             CheckMissingFiles();
@@ -118,7 +117,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
             //Text = _model.GetFormTitle(); // przenieść do komendy UpdateFormTitle
             _viewModel.LoadedFilesCounttoolStripStatusLabel.Visible = true;
-            //projectLoaded = true;
+            _model.IsProjectLoaded = true;
         }
 
         public bool LoadModel()
@@ -152,17 +151,18 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         private void LoadCurrentPathImage()
         {
             var path = _model.GetSelectedImagePath();
-            pictureBox1.Image = _fileService.LoadImage(path);
+            _viewModel.PictureBox1.Image = _fileService.LoadImage(path);
         }
 
         private void UpdatePeopleCheckboxes()
         {
+            var categoryBoxList = _viewModel.PeopleCheckBoxList;
             var currentPictureSelectedPeople = _model.GetSelectedPeopleForCurrentPicture();
-            for (var i = 0; i < peopleCheckBoxList.Items.Count; i++)
+            for (var i = 0; i < categoryBoxList.Items.Count; i++)
             {
-                var personName = peopleCheckBoxList.Items[i].ToString();
+                var personName = categoryBoxList.Items[i].ToString();
                 var state = currentPictureSelectedPeople.Contains(personName) ? CheckState.Checked : CheckState.Unchecked;
-                peopleCheckBoxList.SetItemCheckState(i, state);
+                categoryBoxList.SetItemCheckState(i, state);
             }
         }
 

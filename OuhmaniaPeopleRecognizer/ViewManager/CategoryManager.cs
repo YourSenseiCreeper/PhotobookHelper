@@ -1,10 +1,5 @@
 ﻿using OuhmaniaPeopleRecognizer.Properties;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
@@ -35,8 +30,8 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
                 return;
 
             _model.AddPerson(personName);
-            PeopleToDisplay.Add(personName);
-            peopleBindingSource.ResetBindings(true);
+            PeopleToDisplay.Add(personName); // TODO: move it somewhere
+            _viewModel.CategoryBindingSource.ResetBindings(true);
         }
 
         private void deletePersonToolStripContextMenuItem_Click(object sender, EventArgs e)
