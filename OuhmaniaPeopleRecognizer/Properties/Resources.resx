@@ -156,4 +156,10 @@
   <data name="AllFiles" xml:space="preserve">
     <value>Wszystkie pliki: {0}</value>
   </data>
+  <data name="RotateLeft" xml:space="preserve">
+    <value>Obróć w lewo</value>
+  </data>
+  <data name="RotateRight" xml:space="preserve">
+    <value>Obróć w prawo</value>
+  </data>
 </root>

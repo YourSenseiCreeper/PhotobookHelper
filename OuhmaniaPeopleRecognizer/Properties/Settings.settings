@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OuhmaniaPeopleRecognizer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="languageOptionToolMenuItem" Type="System.String" Scope="User">
+      <Value Profile="(Default)">languageToolStripMenuItem</Value>
+    </Setting>
+    <Setting Name="languageMenuItemBinding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">languageToolStripMenuItem</Value>
+    </Setting>
+    <Setting Name="exportToDirectoriesMenuItemLabel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Stwórz fotoksiążki</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

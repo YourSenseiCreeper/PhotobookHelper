@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.polishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.rotateRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +64,7 @@
             this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderPathtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.autosaveToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pictureMenuStrip.SuspendLayout();
             this.peopleListMenuStrip.SuspendLayout();
@@ -74,6 +79,31 @@
             this.splitContainer2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // optionsToolStripMenuItem
+            // 
+            optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.languageToolStripMenuItem});
+            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            resources.ApplyResources(optionsToolStripMenuItem, "optionsToolStripMenuItem");
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.polishToolStripMenuItem,
+            this.englishToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = global::OuhmaniaPeopleRecognizer.Properties.Settings.Default.languageMenuItemBinding;
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
+            // 
+            // polishToolStripMenuItem
+            // 
+            this.polishToolStripMenuItem.Name = "polishToolStripMenuItem";
+            resources.ApplyResources(this.polishToolStripMenuItem, "polishToolStripMenuItem");
+            // 
+            // englishToolStripMenuItem
+            // 
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             // 
             // pictureBox1
             // 
@@ -96,13 +126,11 @@
             // 
             this.rotateRightToolStripMenuItem.Name = "rotateRightToolStripMenuItem";
             resources.ApplyResources(this.rotateRightToolStripMenuItem, "rotateRightToolStripMenuItem");
-            //this.rotateRightToolStripMenuItem.Click += new System.EventHandler(this.rotateRightToolStripMenuItem_Click);
             // 
             // rotateLeftToolStripMenuItem
             // 
             this.rotateLeftToolStripMenuItem.Name = "rotateLeftToolStripMenuItem";
             resources.ApplyResources(this.rotateLeftToolStripMenuItem, "rotateLeftToolStripMenuItem");
-            //this.rotateLeftToolStripMenuItem.Click += new System.EventHandler(this.rotateLeftToolStripMenuItem_Click);
             // 
             // peopleCheckBoxList
             // 
@@ -128,13 +156,11 @@
             // 
             this.addPersonToolStripContextMenuItem.Name = "addPersonToolStripContextMenuItem";
             resources.ApplyResources(this.addPersonToolStripContextMenuItem, "addPersonToolStripContextMenuItem");
-            //this.addPersonToolStripContextMenuItem.Click += new System.EventHandler(this.addPersonToolStripContextMenuItem_Click);
             // 
             // deletePersonToolStripContextMenuItem
             // 
             this.deletePersonToolStripContextMenuItem.Name = "deletePersonToolStripContextMenuItem";
             resources.ApplyResources(this.deletePersonToolStripContextMenuItem, "deletePersonToolStripContextMenuItem");
-            //this.deletePersonToolStripContextMenuItem.Click += new System.EventHandler(this.deletePersonToolStripContextMenuItem_Click);
             // 
             // treeView1
             // 
@@ -144,11 +170,6 @@
             this.treeView1.HideSelection = false;
             this.treeView1.ItemHeight = 18;
             this.treeView1.Name = "treeView1";
-            //this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewSelect);
-            //this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
-            //this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
-            //this.treeView1.Enter += new System.EventHandler(this.treeView1_Enter);
-            //this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
             // 
             // menuStrip1
             // 
@@ -156,7 +177,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.photosToolStripMenuItem,
-            this.personToolStripMenuItem});
+            this.personToolStripMenuItem,
+            optionsToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -176,25 +198,22 @@
             // 
             this.nowyProjektToolStripMenuItem.Name = "nowyProjektToolStripMenuItem";
             resources.ApplyResources(this.nowyProjektToolStripMenuItem, "nowyProjektToolStripMenuItem");
-            //this.nowyProjektToolStripMenuItem.Click += new System.EventHandler(this.nowyProjektToolStripMenuItem_Click);
             // 
             // loadProjectToolStripMenuItem
             // 
             this.loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
             resources.ApplyResources(this.loadProjectToolStripMenuItem, "loadProjectToolStripMenuItem");
-            //this.loadProjectToolStripMenuItem.Click += new System.EventHandler(this.loadProjectToolStripMenuItem_Click);
             // 
             // saveProjectToolStripMenuItem
             // 
             this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
             resources.ApplyResources(this.saveProjectToolStripMenuItem, "saveProjectToolStripMenuItem");
-            //this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
             // 
             // exportFilesToolStripMenuItem
             // 
             this.exportFilesToolStripMenuItem.Name = "exportFilesToolStripMenuItem";
             resources.ApplyResources(this.exportFilesToolStripMenuItem, "exportFilesToolStripMenuItem");
-            //this.exportFilesToolStripMenuItem.Click += new System.EventHandler(this.exportFilesToolStripMenuItem_Click);
+            this.exportFilesToolStripMenuItem.Text = global::OuhmaniaPeopleRecognizer.Properties.Settings.Default.exportToDirectoriesMenuItemLabel;
             // 
             // toolStripSeparator1
             // 
@@ -219,13 +238,11 @@
             // 
             this.loadPhotosToolStripMenuItem.Name = "loadPhotosToolStripMenuItem";
             resources.ApplyResources(this.loadPhotosToolStripMenuItem, "loadPhotosToolStripMenuItem");
-            //this.loadPhotosToolStripMenuItem.Click += new System.EventHandler(this.loadPhotosToolStripMenuItem_Click);
             // 
             // rescanDirectoryToolStripMenuItem
             // 
             this.rescanDirectoryToolStripMenuItem.Name = "rescanDirectoryToolStripMenuItem";
             resources.ApplyResources(this.rescanDirectoryToolStripMenuItem, "rescanDirectoryToolStripMenuItem");
-            //this.rescanDirectoryToolStripMenuItem.Click += new System.EventHandler(this.rescanDirectoryToolStripMenuItem_Click);
             // 
             // personToolStripMenuItem
             // 
@@ -337,7 +354,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckedListBox peopleCheckBoxList;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadProjectToolStripMenuItem;
@@ -365,6 +381,10 @@
         private System.Windows.Forms.ToolStripMenuItem rotateLeftToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel autosaveToolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem nowyProjektToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem polishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
+        public System.Windows.Forms.TreeView treeView1;
     }
 }
 

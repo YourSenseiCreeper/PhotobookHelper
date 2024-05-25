@@ -36,5 +36,7 @@ namespace OuhmaniaPeopleRecognizer
         public ToolStripStatusLabel AllFilesCounttoolStripStatusLabel { get; set; }
         public ToolStripStatusLabel FolderPathtoolStripStatusLabel { get; set; }
         public ToolStripStatusLabel AutosaveToolStripStatusLabel { get; set; }
+        public ToolStripMenuItem PolishLanguageToolStripMenuItem { get; set; }
+        public ToolStripMenuItem EnglishLanguageToolStripMenuItem { get; set; } 
     }
 }

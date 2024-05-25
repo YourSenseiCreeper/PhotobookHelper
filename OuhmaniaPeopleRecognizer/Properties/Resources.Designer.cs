@@ -160,6 +160,24 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Obróć w lewo.
+        /// </summary>
+        internal static string RotateLeft {
+            get {
+                return ResourceManager.GetString("RotateLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obróć w prawo.
+        /// </summary>
+        internal static string RotateRight {
+            get {
+                return ResourceManager.GetString("RotateRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?.
         /// </summary>
         internal static string UnsavedChangesDialog_Text {

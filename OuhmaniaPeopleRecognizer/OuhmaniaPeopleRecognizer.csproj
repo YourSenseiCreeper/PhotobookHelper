@@ -106,6 +106,7 @@
     <Compile Include="ViewManager\AutosaveManager.cs" />
     <Compile Include="ViewManager\CategoryManager.cs" />
     <Compile Include="ViewManager\FormMenuViewManager.cs" />
+    <Compile Include="ViewManager\LanguageManager.cs" />
     <Compile Include="ViewManager\PictureBoxManager.cs" />
     <Compile Include="ViewManager\TreeViewManager.cs" />
     <EmbeddedResource Include="Dialogs\AddPersonDialog.resx">

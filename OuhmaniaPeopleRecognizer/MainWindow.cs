@@ -1,15 +1,18 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
 using OuhmaniaPeopleRecognizer.Commands.Abstraction;
+using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using OuhmaniaPeopleRecognizer.ViewManager;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 [assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
@@ -27,6 +30,7 @@ namespace OuhmaniaPeopleRecognizer
         private AutosaveManager _autosaveManager;
         private CategoryManager _categoryManager;
         private PictureBoxManager _pictureBoxManager;
+        private LanguageManager _languageManager;
 
         private ICommandFactory _commandFactory;
 
@@ -77,6 +81,9 @@ namespace OuhmaniaPeopleRecognizer
 
             _pictureBoxManager = new PictureBoxManager(_mainWindowViewModel);
             _pictureBoxManager.SubscriveOnEvents();
+
+            _languageManager = new LanguageManager(_mainWindowViewModel);
+            _languageManager.SubscribeOnEvents();
         }
 
         private void beforeClose(object sender, FormClosingEventArgs e)
@@ -89,7 +96,27 @@ namespace OuhmaniaPeopleRecognizer
 
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
-        private MainWindowViewModel LoadFromMainWindow()
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            var stringKeyData = keyData.ToString();
+            // handle switching images with cmdKeys
+            if (!stringKeyData.StartsWith("D") || stringKeyData.Length != 2)
+                return base.ProcessCmdKey(ref msg, keyData);
+
+            var number = int.Parse(stringKeyData.Replace("D", ""));
+            //var item = _mainWindowViewModel.PeopleCheckBoxList.Items[number - 1];
+            _mainWindowViewModel.PeopleCheckBoxList.SetItemChecked(number - 1, true);
+            return true;
+            //switch (keyData)
+            //{
+            //    case Keys.D1:
+            //        var item = _mainWindowViewModel.PeopleCheckBoxList.Items[0];
+            //        return true;
+            //}
+            //return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public MainWindowViewModel LoadFromMainWindow()
         {
             // TODO: refactor
             var bindingSource = new BindingSource { DataSource = _model.PeopleToDisplay };
@@ -99,6 +126,8 @@ namespace OuhmaniaPeopleRecognizer
             return new MainWindowViewModel
             {
                 CategoryBindingSource = bindingSource,
+                PolishLanguageToolStripMenuItem = polishToolStripMenuItem,
+                EnglishLanguageToolStripMenuItem = englishToolStripMenuItem,
                 TreeView1 = treeView1,
                 AddPersonToolStripContextMenuItem = addPersonToolStripContextMenuItem,
                 AddPersonToolStripMenuItem = addPersonToolStripMenuItem,

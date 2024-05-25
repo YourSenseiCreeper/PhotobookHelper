@@ -1,6 +1,8 @@
 using System.Windows.Forms;
 using OuhmaniaPeopleRecognizer;
+using OuhmaniaPeopleRecognizer.Commands.Abstraction;
 using OuhmaniaPeopleRecognizer.Models;
+using OuhmaniaPeopleRecognizer.ViewManager;
 
 namespace PhotobookHelperTests
 {
@@ -11,16 +13,23 @@ namespace PhotobookHelperTests
         public void LoadTreeView_CorrectTree_WhenListOfUnrelatedDirectories()
         {
             var treeView = new TreeView();
-            var mainWindow = new MainWindow();
-            var model = new OuhmaniaModel("0", Array.Empty<string>(), false, 5, "");
+            var mainWindowViewModel = new MainWindow().LoadFromMainWindow();
+            var model = new DataModel
+            {
+                IsAutoSaveActive = false,
+                ExportPath = string.Empty,
+                AutoSaveIntervalInMinutes = 5,
+            };
+            var commandFactory = new CommandFactory(null, model, mainWindowViewModel);
+            var treeViewManager = new TreeViewManager(mainWindowViewModel, model, commandFactory);
             model.Batches = new List<Batch>
             {
-                new Batch("C:\\zdjecia"),
-                new Batch("C:\\test"),
-                new Batch("C:\\nowe\\zdjecia")
+                new("C:\\zdjecia"),
+                new("C:\\test"),
+                new("C:\\nowe\\zdjecia")
             };
 
-            mainWindow.LoadTreeViewFromModel(treeView, model);
+            treeViewManager.LoadTreeViewFromModel();
             Assert.AreEqual(treeView.Nodes.Count, 3);
         }
     }
