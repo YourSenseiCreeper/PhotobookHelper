@@ -96,7 +96,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
             //PeopleToDisplay = _model.PersonAndIndex.Keys.ToList();
             _viewModel.CategoryBindingSource.ResetBindings(true);
-            _viewModel.CategoryBindingSource.DataSource = _model.PersonAndIndex.Keys.ToList();
+            _viewModel.CategoryBindingSource.DataSource = _model.CategoryAndIndex.Keys.ToList();
             
 
             //if (_model.IsAutoSaveActive)
@@ -157,7 +157,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         private void UpdatePeopleCheckboxes()
         {
             var categoryBoxList = _viewModel.PeopleCheckBoxList;
-            var currentPictureSelectedPeople = _model.GetSelectedPeopleForCurrentPicture();
+            var currentPictureSelectedPeople = _model.GetSelectedCategoriesForCurrentPicture();
             for (var i = 0; i < categoryBoxList.Items.Count; i++)
             {
                 var personName = categoryBoxList.Items[i].ToString();

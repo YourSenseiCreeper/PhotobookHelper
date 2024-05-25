@@ -4,7 +4,6 @@ using OuhmaniaPeopleRecognizer.Services;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using OuhmaniaPeopleRecognizer.ViewManager;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -36,8 +35,7 @@ namespace OuhmaniaPeopleRecognizer
             InitializeComponent();
 
             Trace.Listeners["textWriterListener"].Attributes["initializeData"] =
-                AppDomain.CurrentDomain.BaseDirectory + "\\" + DateTime.Now + ".log";
-            pictureBox1.Image = new Bitmap(20, 20);
+                $"{AppDomain.CurrentDomain.BaseDirectory}\\{DateTime.Now}.log";
 
             InitializeContext();
             CenterToScreen();
@@ -49,15 +47,15 @@ namespace OuhmaniaPeopleRecognizer
             Thread.CurrentThread.CurrentCulture = newCulture;
             Thread.CurrentThread.CurrentUICulture = newCulture;
 
-            _mainWindowViewModel = LoadFromMainWindow();
-            _notificationService = new NotificationService();
-            _fileService = new FileService(_notificationService);
             _model = new DataModel
             {
                 IsAutoSaveActive = true,
                 AutoSaveIntervalInMinutes = 5,
                 DirectoryPath = AppDomain.CurrentDomain.BaseDirectory
             };
+            _mainWindowViewModel = LoadFromMainWindow();
+            _notificationService = new NotificationService();
+            _fileService = new FileService(_notificationService);
 
             // jak z tego zrobić binding source?
             Text = _model.GetFormTitle();
@@ -74,7 +72,7 @@ namespace OuhmaniaPeopleRecognizer
             _formMenuViewManager = new FormMenuViewManager(_fileService, _notificationService, _commandFactory, _mainWindowViewModel, _model, _treeViewManager);
             _formMenuViewManager.SubscribeOnEvents();
 
-            _categoryManager = new CategoryManager(_mainWindowViewModel, _model);
+            _categoryManager = new CategoryManager(_notificationService, _mainWindowViewModel, _model);
             _categoryManager.SubscriveOnEvents();
 
             _pictureBoxManager = new PictureBoxManager(_mainWindowViewModel);
@@ -88,14 +86,15 @@ namespace OuhmaniaPeopleRecognizer
                 _commandFactory.Get(Command.SaveDataModel).Execute(null, null);
             }
         }
+
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
         private MainWindowViewModel LoadFromMainWindow()
         {
             // TODO: refactor
-            var peopleToDisplay = new List<string>();
-            var bindingSource = new BindingSource { DataSource = peopleToDisplay };
+            var bindingSource = new BindingSource { DataSource = _model.PeopleToDisplay };
             peopleCheckBoxList.DataSource = bindingSource;
+            pictureBox1.Image = new Bitmap(20, 20);
 
             return new MainWindowViewModel
             {

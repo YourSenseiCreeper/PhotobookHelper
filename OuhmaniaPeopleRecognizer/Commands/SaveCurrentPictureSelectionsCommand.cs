@@ -27,7 +27,7 @@ namespace OuhmaniaPeopleRecognizer.Commands
                 selectedPeople.Add(selectedPerson.ToString());
             }
 
-            var hasBeenChanged = _model.SetSelectedPeopleForCurrentPicture(selectedPeople);
+            var hasBeenChanged = _model.SetSelectedCategoriesForCurrentPicture(selectedPeople);
         }
     }
 }

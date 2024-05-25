@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace OuhmaniaPeopleRecognizer.Models
 {
+    /// <summary>
+    /// Is an abstraction for dictionary containing pictures
+    /// </summary>
     public class Batch
     {
         public Batch(string directoryPath)

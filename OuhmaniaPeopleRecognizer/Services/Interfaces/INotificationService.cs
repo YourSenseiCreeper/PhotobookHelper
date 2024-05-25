@@ -11,5 +11,6 @@ namespace OuhmaniaPeopleRecognizer.Services.Interfaces
         void Error(string title, string message);
         DialogResult ShowUnsavedFilesDialog();
         void ShowMissingFiles(string directoryPath, List<string> missingFiles, Action<string> removeCallback);
+        bool ShowDeletePerson(string personToDelete);
     }
 }

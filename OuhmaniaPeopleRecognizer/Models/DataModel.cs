@@ -24,10 +24,13 @@ namespace OuhmaniaPeopleRecognizer
             //AutoSaveIntervalInMinutes = autoSaveIntervalInMinutes;
             //DirectoryPath = directoryPath;
             Batches = new List<Batch>();
-            PersonAndIndex = new Dictionary<string, int>();
-            IndexAndPerson = new Dictionary<int, string>();
+            CategoryAndIndex = new Dictionary<string, int>();
+            IndexAndCategory = new Dictionary<int, string>();
             Dirty = false;
+            PeopleToDisplay = new List<string>();
         }
+
+        public List<string> PeopleToDisplay { get; set; }
 
         public string GetFormTitle()
         {
@@ -69,8 +72,8 @@ namespace OuhmaniaPeopleRecognizer
         public int AutoSaveIntervalInMinutes { get; set; }
         public LastUserSelection LastUserSelection { get; set; }
         public int NextPersonId { get; set; }
-        public Dictionary<string, int> PersonAndIndex { get; set; }
-        public Dictionary<int, string> IndexAndPerson { get; set; }
+        public Dictionary<string, int> CategoryAndIndex { get; set; }
+        public Dictionary<int, string> IndexAndCategory { get; set; }
         public List<Batch> Batches { get; set; }
 
         public bool HasUserSelectedImage()
@@ -90,11 +93,6 @@ namespace OuhmaniaPeopleRecognizer
         public Batch GetBatch(Guid batchId)
         {
             return Batches.FirstOrDefault(b => b.Id == batchId);
-        }
-
-        public bool HasAlreadyLoadedBatch(string path)
-        {
-            return Batches.Any(b => b.DirectoryPath == path);
         }
 
         public Batch GetBatchByDirectoryPath(string path)
@@ -118,18 +116,18 @@ namespace OuhmaniaPeopleRecognizer
             return picturesPaths;
         }
 
-        public List<string> GetSelectedPeopleForCurrentPicture()
+        public List<string> GetSelectedCategoriesForCurrentPicture()
         {
             var batch = GetBatch(LastUserSelection.BatchId.Value);
-            var selectedPeople = batch.PicturePeople[LastUserSelection.ImageName].Select(i => IndexAndPerson[i]).ToList();
+            var selectedPeople = batch.PicturePeople[LastUserSelection.ImageName].Select(i => IndexAndCategory[i]).ToList();
             return selectedPeople;
         }
 
-        public bool SetSelectedPeopleForCurrentPicture(List<string> selectedCategories)
+        public bool SetSelectedCategoriesForCurrentPicture(List<string> selectedCategories)
         {
             var batch = GetBatch(LastUserSelection.BatchId.Value);
             var currentImagePeople = batch.PicturePeople[LastUserSelection.ImageName];
-            var mappedSelectedPeople = selectedCategories.Select(p => PersonAndIndex[p]).ToHashSet();
+            var mappedSelectedPeople = selectedCategories.Select(p => CategoryAndIndex[p]).ToHashSet();
 
             if (currentImagePeople != mappedSelectedPeople)
             {
@@ -140,19 +138,21 @@ namespace OuhmaniaPeopleRecognizer
             return false;
         }
 
-        public void AddPerson(string personName)
+        public void AddCategory(string categoryName)
         {
-            PersonAndIndex.Add(personName, ++NextPersonId);
-            IndexAndPerson.Add(NextPersonId, personName);
+            PeopleToDisplay.Add(categoryName);
+            CategoryAndIndex.Add(categoryName, ++NextPersonId);
+            IndexAndCategory.Add(NextPersonId, categoryName);
 
             _dirty = true;
         }
 
-        public void RemovePerson(string personName)
+        public void RemoveCategory(string categoryName)
         {
-            var personIndex = PersonAndIndex[personName];
-            PersonAndIndex.Remove(personName);
-            IndexAndPerson.Remove(personIndex);
+            var personIndex = CategoryAndIndex[categoryName];
+            PeopleToDisplay.Remove(categoryName);
+            CategoryAndIndex.Remove(categoryName);
+            IndexAndCategory.Remove(personIndex);
 
             _dirty = true;
         }

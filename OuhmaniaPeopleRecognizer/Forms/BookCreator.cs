@@ -19,7 +19,7 @@ namespace OuhmaniaPeopleRecognizer
             _model = model;
             _notificationService = notificationService;
             _fileService = fileService;
-            _peopleToExport = model.PersonAndIndex.Keys.ToList();
+            _peopleToExport = model.CategoryAndIndex.Keys.ToList();
 
             InitializeComponent();
 
@@ -70,7 +70,7 @@ namespace OuhmaniaPeopleRecognizer
         private int ExportPerson(string exportPath, string personName)
         {
             var exportImagePaths = new List<string>();
-            var personIndex = _model.PersonAndIndex[personName];
+            var personIndex = _model.CategoryAndIndex[personName];
 
             foreach(var batch in _model.Batches)
             {

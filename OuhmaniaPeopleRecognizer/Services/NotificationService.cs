@@ -47,5 +47,12 @@ namespace OuhmaniaPeopleRecognizer.Services
                 }
             }
         }
+
+        public bool ShowDeletePerson(string personToDelete)
+        {
+            var dialogInfo = string.Format(Resources.MainWindow_deletePersonToolStripContextMenuItem_Confirm, personToDelete);
+            var dialogTitle = Resources.MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle;
+            return MessageBox.Show(dialogInfo, dialogTitle, MessageBoxButtons.YesNo) == DialogResult.Yes;
+        }
     }
 }
