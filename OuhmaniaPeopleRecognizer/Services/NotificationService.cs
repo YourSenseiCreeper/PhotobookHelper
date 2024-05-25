@@ -26,8 +26,8 @@ namespace OuhmaniaPeopleRecognizer.Services
         public DialogResult ShowUnsavedFilesDialog()
         {
             return MessageBox.Show(
-                    Resources.MainWindow_CheckUnsavedChangesDialog_Caption,
-                    Resources.MainWindow_CheckUnsavedChangesDialog_Title,
+                    Resources.UnsavedChangesDialog_Text,
+                    Resources.UnsavedChangesDialog_Title,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
         }
@@ -35,8 +35,8 @@ namespace OuhmaniaPeopleRecognizer.Services
         public void ShowMissingFiles(string directoryPath, List<string> missingFiles, Action<string> removeCallback)
         {
             var filesNotFoundDialog = FilesNotFoundDialog.ShowDialog(
-                Resources.MainWindow_CheckMissingFiles_FoundMissingFiles_Title,
-                string.Format(Resources.MainWindow_CheckMissingFiles_FoundMissingFiles, missingFiles.Count),
+                Resources.CheckMissingFilesDialog_FoundMissingFiles_Title,
+                string.Format(Resources.CheckMissingFilesDialog_FoundMissingFiles, missingFiles.Count),
                 missingFiles.ToArray());
 
             if (filesNotFoundDialog == DialogResult.Yes)
@@ -50,8 +50,8 @@ namespace OuhmaniaPeopleRecognizer.Services
 
         public bool ShowDeletePerson(string personToDelete)
         {
-            var dialogInfo = string.Format(Resources.MainWindow_deletePersonToolStripContextMenuItem_Confirm, personToDelete);
-            var dialogTitle = Resources.MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle;
+            var dialogInfo = string.Format(Resources.RemoveCategoryDialog_Text, personToDelete);
+            var dialogTitle = Resources.RemoveCategoryDialog_Title;
             return MessageBox.Show(dialogInfo, dialogTitle, MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
     }

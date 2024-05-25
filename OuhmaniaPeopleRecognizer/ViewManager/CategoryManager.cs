@@ -28,7 +28,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         private void AddPersonToolStripContextMenuItem_Click(object sender, EventArgs e)
         {
-            var personName = AddPersonDialog.ShowDialog(Resources.MainWindow_addPerson_Title, Resources.MainWindow_addPerson_Caption);
+            var personName = AddPersonDialog.ShowDialog(Resources.AddCategoryDialog_Title, Resources.AddCategoryDialog_Text);
 
             if (string.IsNullOrWhiteSpace(personName))
                 return;

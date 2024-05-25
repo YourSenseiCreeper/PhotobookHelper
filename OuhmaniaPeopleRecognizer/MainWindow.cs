@@ -99,9 +99,8 @@ namespace OuhmaniaPeopleRecognizer
             return new MainWindowViewModel
             {
                 CategoryBindingSource = bindingSource,
-
                 TreeView1 = treeView1,
-                AddPersonToolStripContextMenuItem = addPersonToolStripMenuItem,
+                AddPersonToolStripContextMenuItem = addPersonToolStripContextMenuItem,
                 AddPersonToolStripMenuItem = addPersonToolStripMenuItem,
                 AutosaveToolStripStatusLabel = autosaveToolStripStatusLabel,
                 CloseProgramToolStripMenuItem = closeProgramToolStripMenuItem,

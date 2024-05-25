@@ -45,8 +45,8 @@ namespace OuhmaniaPeopleRecognizer.Commands
             var loadedFilesCount = _model.Batches.Sum(b => b.PicturePeople.Count);
             var allFilesCount = _model.Batches.Sum(b => Directory.GetFiles(b.DirectoryPath, "*.*", SearchOption.TopDirectoryOnly).Length);
 
-            _mainWindowViewModel.AllFilesCounttoolStripStatusLabel.Text = string.Format(Resources.MainWindow_allFilesCounttoolStripStatusLabel, allFilesCount);
-            _mainWindowViewModel.LoadedFilesCounttoolStripStatusLabel.Text = string.Format(Resources.MainWindow_loadedFilesCounttoolStripStatusLabel, loadedFilesCount);
+            _mainWindowViewModel.AllFilesCounttoolStripStatusLabel.Text = string.Format(Resources.AllFiles, allFilesCount);
+            _mainWindowViewModel.LoadedFilesCounttoolStripStatusLabel.Text = string.Format(Resources.LoadedFilesLabel, loadedFilesCount);
             _mainWindowViewModel.FolderPathtoolStripStatusLabel.Text = _model.ProjectPath;
         }
 

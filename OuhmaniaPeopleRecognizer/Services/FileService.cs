@@ -12,7 +12,8 @@ namespace OuhmaniaPeopleRecognizer.Services
 {
     public class FileService : IFileService
     {
-        private const string FILES_FILTER = "Ouhmania reco files (*.opr)|*.opr|All files (*.*)|*.*";
+        private const string FILES_FILTER = "PhotoCategorizer project files (*.pcproj)|*.pcproj|All files (*.*)|*.*";
+        private const string WEBP_EXTENSION = ".webp";
 
         private readonly INotificationService _notificationService;
         private readonly WebP webpWrapper;
@@ -48,7 +49,7 @@ namespace OuhmaniaPeopleRecognizer.Services
                 return new Bitmap(20, 20);
             }
 
-            if (path.EndsWith(".webp"))
+            if (path.EndsWith(WEBP_EXTENSION))
             {
                 return webpWrapper.Load(path);
             }

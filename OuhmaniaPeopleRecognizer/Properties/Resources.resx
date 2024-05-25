@@ -117,49 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="HelloString" xml:space="preserve">
-    <value>Hello Photobook</value>
-  </data>
-  <data name="MainWindow_Save" xml:space="preserve">
-    <value />
-  </data>
-  <data name="MainWindow_deletePersonToolStripContextMenuItem_Confirm" xml:space="preserve">
+  <data name="RemoveCategoryDialog_Text" xml:space="preserve">
     <value>Czy chcesz usunąć '{0}'?</value>
   </data>
-  <data name="MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle" xml:space="preserve">
+  <data name="RemoveCategoryDialog_Title" xml:space="preserve">
     <value>Usuń osobę</value>
   </data>
-  <data name="MainWindow_addPerson_Caption" xml:space="preserve">
-    <value>Wpisz imię i nazwisko</value>
+  <data name="AddCategoryDialog_Text" xml:space="preserve">
+    <value>Podaj nazwę kategorii</value>
   </data>
-  <data name="MainWindow_addPerson_Title" xml:space="preserve">
-    <value>Dodaj osobę</value>
+  <data name="AddCategoryDialog_Title" xml:space="preserve">
+    <value>Dodaj kategorię</value>
   </data>
-  <data name="MainWindow_CheckUnsavedChangesDialog_Caption" xml:space="preserve">
+  <data name="UnsavedChangesDialog_Text" xml:space="preserve">
     <value>Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?</value>
   </data>
-  <data name="MainWindow_CheckUnsavedChangesDialog_Title" xml:space="preserve">
+  <data name="UnsavedChangesDialog_Title" xml:space="preserve">
     <value>Niezapisane zmiany</value>
   </data>
-  <data name="MainWindow_CheckMissingFiles_FoundMissingFiles" xml:space="preserve">
+  <data name="CheckMissingFilesDialog_FoundMissingFiles" xml:space="preserve">
     <value>Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?</value>
   </data>
-  <data name="MainWindow_CheckMissingFiles_FoundMissingFiles_Title" xml:space="preserve">
+  <data name="CheckMissingFilesDialog_FoundMissingFiles_Title" xml:space="preserve">
     <value>Brakujące pliki</value>
   </data>
-  <data name="MainWindow_Autosave_Off" xml:space="preserve">
+  <data name="Autosave_Off" xml:space="preserve">
     <value>Autozapis: Wyłączony</value>
   </data>
-  <data name="MainWindow_Autosave_On" xml:space="preserve">
+  <data name="Autosave_On" xml:space="preserve">
     <value>Autozapis: Włączony</value>
   </data>
-  <data name="MainWindow_Autosave_Status" xml:space="preserve">
+  <data name="Autosave_Status" xml:space="preserve">
     <value>{0}. ostatni: {1}</value>
   </data>
-  <data name="MainWindow_loadedFilesCounttoolStripStatusLabel" xml:space="preserve">
+  <data name="LoadedFilesLabel" xml:space="preserve">
     <value>Wczytanych plików: {0}</value>
   </data>
-  <data name="MainWindow_allFilesCounttoolStripStatusLabel" xml:space="preserve">
+  <data name="AllFiles" xml:space="preserve">
     <value>Wszystkie pliki: {0}</value>
   </data>
 </root>

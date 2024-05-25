@@ -39,8 +39,8 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         private string GetAutosaveLabel(bool autosaved = false)
         {
-            var autosave = _model.IsAutoSaveActive ? Resources.MainWindow_Autosave_On : Resources.MainWindow_Autosave_Off;
-            return autosaved ? string.Format(Resources.MainWindow_Autosave_Status, autosave, DateTime.Now.ToShortTimeString()) : autosave;
+            var autosave = _model.IsAutoSaveActive ? Resources.Autosave_On : Resources.Autosave_Off;
+            return autosaved ? string.Format(Resources.Autosave_Status, autosave, DateTime.Now.ToShortTimeString()) : autosave;
         }
     }
 }

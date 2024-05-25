@@ -61,137 +61,119 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello Photobook.
+        ///   Looks up a localized string similar to Podaj nazwę kategorii.
         /// </summary>
-        internal static string HelloString {
+        internal static string AddCategoryDialog_Text {
             get {
-                return ResourceManager.GetString("HelloString", resourceCulture);
+                return ResourceManager.GetString("AddCategoryDialog_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wpisz imię i nazwisko.
+        ///   Looks up a localized string similar to Dodaj kategorię.
         /// </summary>
-        internal static string MainWindow_addPerson_Caption {
+        internal static string AddCategoryDialog_Title {
             get {
-                return ResourceManager.GetString("MainWindow_addPerson_Caption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dodaj osobę.
-        /// </summary>
-        internal static string MainWindow_addPerson_Title {
-            get {
-                return ResourceManager.GetString("MainWindow_addPerson_Title", resourceCulture);
+                return ResourceManager.GetString("AddCategoryDialog_Title", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Wszystkie pliki: {0}.
         /// </summary>
-        internal static string MainWindow_allFilesCounttoolStripStatusLabel {
+        internal static string AllFiles {
             get {
-                return ResourceManager.GetString("MainWindow_allFilesCounttoolStripStatusLabel", resourceCulture);
+                return ResourceManager.GetString("AllFiles", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Autozapis: Wyłączony.
         /// </summary>
-        internal static string MainWindow_Autosave_Off {
+        internal static string Autosave_Off {
             get {
-                return ResourceManager.GetString("MainWindow_Autosave_Off", resourceCulture);
+                return ResourceManager.GetString("Autosave_Off", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Autozapis: Włączony.
         /// </summary>
-        internal static string MainWindow_Autosave_On {
+        internal static string Autosave_On {
             get {
-                return ResourceManager.GetString("MainWindow_Autosave_On", resourceCulture);
+                return ResourceManager.GetString("Autosave_On", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {0}. ostatni: {1}.
         /// </summary>
-        internal static string MainWindow_Autosave_Status {
+        internal static string Autosave_Status {
             get {
-                return ResourceManager.GetString("MainWindow_Autosave_Status", resourceCulture);
+                return ResourceManager.GetString("Autosave_Status", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?.
         /// </summary>
-        internal static string MainWindow_CheckMissingFiles_FoundMissingFiles {
+        internal static string CheckMissingFilesDialog_FoundMissingFiles {
             get {
-                return ResourceManager.GetString("MainWindow_CheckMissingFiles_FoundMissingFiles", resourceCulture);
+                return ResourceManager.GetString("CheckMissingFilesDialog_FoundMissingFiles", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Brakujące pliki.
         /// </summary>
-        internal static string MainWindow_CheckMissingFiles_FoundMissingFiles_Title {
+        internal static string CheckMissingFilesDialog_FoundMissingFiles_Title {
             get {
-                return ResourceManager.GetString("MainWindow_CheckMissingFiles_FoundMissingFiles_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?.
-        /// </summary>
-        internal static string MainWindow_CheckUnsavedChangesDialog_Caption {
-            get {
-                return ResourceManager.GetString("MainWindow_CheckUnsavedChangesDialog_Caption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Niezapisane zmiany.
-        /// </summary>
-        internal static string MainWindow_CheckUnsavedChangesDialog_Title {
-            get {
-                return ResourceManager.GetString("MainWindow_CheckUnsavedChangesDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Czy chcesz usunąć &apos;{0}&apos;?.
-        /// </summary>
-        internal static string MainWindow_deletePersonToolStripContextMenuItem_Confirm {
-            get {
-                return ResourceManager.GetString("MainWindow_deletePersonToolStripContextMenuItem_Confirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Usuń osobę.
-        /// </summary>
-        internal static string MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle {
-            get {
-                return ResourceManager.GetString("MainWindow_deletePersonToolStripContextMenuItem_ConfirmTitle", resourceCulture);
+                return ResourceManager.GetString("CheckMissingFilesDialog_FoundMissingFiles_Title", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Wczytanych plików: {0}.
         /// </summary>
-        internal static string MainWindow_loadedFilesCounttoolStripStatusLabel {
+        internal static string LoadedFilesLabel {
             get {
-                return ResourceManager.GetString("MainWindow_loadedFilesCounttoolStripStatusLabel", resourceCulture);
+                return ResourceManager.GetString("LoadedFilesLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Czy chcesz usunąć &apos;{0}&apos;?.
         /// </summary>
-        internal static string MainWindow_Save {
+        internal static string RemoveCategoryDialog_Text {
             get {
-                return ResourceManager.GetString("MainWindow_Save", resourceCulture);
+                return ResourceManager.GetString("RemoveCategoryDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuń osobę.
+        /// </summary>
+        internal static string RemoveCategoryDialog_Title {
+            get {
+                return ResourceManager.GetString("RemoveCategoryDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?.
+        /// </summary>
+        internal static string UnsavedChangesDialog_Text {
+            get {
+                return ResourceManager.GetString("UnsavedChangesDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niezapisane zmiany.
+        /// </summary>
+        internal static string UnsavedChangesDialog_Title {
+            get {
+                return ResourceManager.GetString("UnsavedChangesDialog_Title", resourceCulture);
             }
         }
     }
