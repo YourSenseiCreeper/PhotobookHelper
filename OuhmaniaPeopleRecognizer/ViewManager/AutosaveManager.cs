@@ -1,5 +1,6 @@
 ﻿using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using PhotoCategorizer.i18N;
 using System;
 using System.Windows.Threading;
 

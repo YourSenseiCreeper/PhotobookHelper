@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OuhmaniaPeopleRecognizer.Properties {
+namespace PhotoCategorizer.i18N {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OuhmaniaPeopleRecognizer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PhotoCategorizer.i18N.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,36 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assign key.
+        /// </summary>
+        public static string AddCategoryDialog_AssignCategoryKey {
+            get {
+                return ResourceManager.GetString("AddCategoryDialog_AssignCategoryKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assigned: {0}.
+        /// </summary>
+        public static string AddCategoryDialog_AssignedKey {
+            get {
+                return ResourceManager.GetString("AddCategoryDialog_AssignedKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string AddCategoryDialog_Ok {
+            get {
+                return ResourceManager.GetString("AddCategoryDialog_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Podaj nazwę kategorii.
         /// </summary>
-        internal static string AddCategoryDialog_Text {
+        public static string AddCategoryDialog_Text {
             get {
                 return ResourceManager.GetString("AddCategoryDialog_Text", resourceCulture);
             }
@@ -72,16 +99,25 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Dodaj kategorię.
         /// </summary>
-        internal static string AddCategoryDialog_Title {
+        public static string AddCategoryDialog_Title {
             get {
                 return ResourceManager.GetString("AddCategoryDialog_Title", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Waiting for input....
+        /// </summary>
+        public static string AddCategoryDialog_WaitingForKey {
+            get {
+                return ResourceManager.GetString("AddCategoryDialog_WaitingForKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wszystkie pliki: {0}.
         /// </summary>
-        internal static string AllFiles {
+        public static string AllFiles {
             get {
                 return ResourceManager.GetString("AllFiles", resourceCulture);
             }
@@ -90,7 +126,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Autozapis: Wyłączony.
         /// </summary>
-        internal static string Autosave_Off {
+        public static string Autosave_Off {
             get {
                 return ResourceManager.GetString("Autosave_Off", resourceCulture);
             }
@@ -99,7 +135,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Autozapis: Włączony.
         /// </summary>
-        internal static string Autosave_On {
+        public static string Autosave_On {
             get {
                 return ResourceManager.GetString("Autosave_On", resourceCulture);
             }
@@ -108,7 +144,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0}. ostatni: {1}.
         /// </summary>
-        internal static string Autosave_Status {
+        public static string Autosave_Status {
             get {
                 return ResourceManager.GetString("Autosave_Status", resourceCulture);
             }
@@ -117,7 +153,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?.
         /// </summary>
-        internal static string CheckMissingFilesDialog_FoundMissingFiles {
+        public static string CheckMissingFilesDialog_FoundMissingFiles {
             get {
                 return ResourceManager.GetString("CheckMissingFilesDialog_FoundMissingFiles", resourceCulture);
             }
@@ -126,7 +162,7 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Brakujące pliki.
         /// </summary>
-        internal static string CheckMissingFilesDialog_FoundMissingFiles_Title {
+        public static string CheckMissingFilesDialog_FoundMissingFiles_Title {
             get {
                 return ResourceManager.GetString("CheckMissingFilesDialog_FoundMissingFiles_Title", resourceCulture);
             }
@@ -135,61 +171,70 @@ namespace OuhmaniaPeopleRecognizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wczytanych plików: {0}.
         /// </summary>
-        internal static string LoadedFilesLabel {
+        public static string LoadedFilesLabel {
             get {
                 return ResourceManager.GetString("LoadedFilesLabel", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new category.
+        /// </summary>
+        public static string MainWindow_AddNewCategory {
+            get {
+                return ResourceManager.GetString("MainWindow_AddNewCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Czy chcesz usunąć &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemoveCategoryDialog_Text {
+        public static string RemoveCategoryDialog_Text {
             get {
                 return ResourceManager.GetString("RemoveCategoryDialog_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuń osobę.
+        ///   Looks up a localized string similar to Remove category.
         /// </summary>
-        internal static string RemoveCategoryDialog_Title {
+        public static string RemoveCategoryDialog_Title {
             get {
                 return ResourceManager.GetString("RemoveCategoryDialog_Title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obróć w lewo.
+        ///   Looks up a localized string similar to Rotate left.
         /// </summary>
-        internal static string RotateLeft {
+        public static string RotateLeft {
             get {
                 return ResourceManager.GetString("RotateLeft", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obróć w prawo.
+        ///   Looks up a localized string similar to Rotate right.
         /// </summary>
-        internal static string RotateRight {
+        public static string RotateRight {
             get {
                 return ResourceManager.GetString("RotateRight", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?.
+        ///   Looks up a localized string similar to You have unsaved in your project! Do you want to save them?.
         /// </summary>
-        internal static string UnsavedChangesDialog_Text {
+        public static string UnsavedChangesDialog_Text {
             get {
                 return ResourceManager.GetString("UnsavedChangesDialog_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Niezapisane zmiany.
+        ///   Looks up a localized string similar to Unsaved changes.
         /// </summary>
-        internal static string UnsavedChangesDialog_Title {
+        public static string UnsavedChangesDialog_Title {
             get {
                 return ResourceManager.GetString("UnsavedChangesDialog_Title", resourceCulture);
             }

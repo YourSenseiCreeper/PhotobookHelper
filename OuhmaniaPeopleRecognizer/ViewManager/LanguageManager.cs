@@ -1,15 +1,18 @@
-﻿using OuhmaniaPeopleRecognizer.Properties;
+﻿using PhotoCategorizer.i18N;
 using System.ComponentModel;
 using System.Globalization;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
     public class LanguageManager
     {
         private readonly MainWindowViewModel _viewModel;
-
-        public LanguageManager(MainWindowViewModel viewModel)
+        private readonly MainWindow _window;
+        public LanguageManager(MainWindow window, MainWindowViewModel viewModel)
         {
+            _window = window;
             _viewModel = viewModel;
         }
 
@@ -24,22 +27,23 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         private void LoadLanguage(string lang)
         {
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
-            CultureInfo cultureInfo = new CultureInfo(lang);
+            var cultureInfo = CultureInfo.GetCultureInfo(lang);
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Resources.Culture = new CultureInfo(lang);
 
-            var rotateLeft = resources.GetString(nameof(Resources.RotateLeft), cultureInfo);
-            resources.ApplyResources(_viewModel.RotateLeftToolStripMenuItem, nameof(Resources.RotateLeft), cultureInfo);
-            //doRecursiveLoading(this, cultureInfo, resources);
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
+            doRecursiveLoading(_window, cultureInfo, resources);
         }
 
-        //private void doRecursiveLoading(Control parent, CultureInfo cultureInfo, ComponentResourceManager resources)
-        //{
-        //    foreach (Control c in parent.Controls)
-        //    {
-        //        resources.ApplyResources(c, c.Name, cultureInfo);
-        //        if (c.Controls.Count > 0)
-        //            doRecursiveLoading(c, cultureInfo, resources);
-        //    }
-        //}
+        private void doRecursiveLoading(Control parent, CultureInfo cultureInfo, ComponentResourceManager resources)
+        {
+            // it does not access MenuStrips and do not translate them
+            foreach (Control c in parent.Controls)
+            {
+                resources.ApplyResources(c, c.Name, cultureInfo);
+                if (c.Controls.Count > 0)
+                    doRecursiveLoading(c, cultureInfo, resources);
+            }
+        }
     }
 }

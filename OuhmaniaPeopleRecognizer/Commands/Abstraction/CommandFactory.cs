@@ -19,21 +19,25 @@ namespace OuhmaniaPeopleRecognizer.Commands.Abstraction
             _mainWindowViewModel = mainWindowViewModel;
         }
 
-        public ICommand Get(Command command)
+        public ICommand Get<T>() where T : class, ICommand
         {
-            ICommand result;
-            switch (command)
+            var commandName = typeof(T).Name;
+            switch (commandName)
             {
-                case Command.LoadCurrentImage: result = new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel); break;
-                case Command.LoadImages: result = new LoadImagesCommand(_fileService, _model, _mainWindowViewModel, this); break;
-                case Command.UpdateCategoryCheckboxes: result = new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel); break;
-                case Command.SaveDataModel: result = new SaveDataModelCommand(_fileService, _model, _mainWindowViewModel); break;
-                case Command.SaveCurrentPictureSelections: result = new SaveCurrentPictureSelectionsCommand(_fileService, _model, _mainWindowViewModel); break;
+                case LoadCurrentImage: return new LoadCurrentImageCommand(_fileService, _model, _mainWindowViewModel);
+                case LoadImages: return new LoadImagesCommand(_fileService, _model, _mainWindowViewModel, this);
+                case UpdateCategoryCheckboxes: return new UpdateCategoryCheckboxesCommand(_model, _mainWindowViewModel);
+                case SaveDataModel: return new SaveDataModelCommand(_fileService, _model, _mainWindowViewModel);
+                case SaveCurrentPictureSelections: return new SaveCurrentPictureSelectionsCommand(_fileService, _model, _mainWindowViewModel);
                 default:
-                    throw new ArgumentException($"Command '{command}' is not registered!");
+                    throw new ArgumentException($"Command '{commandName}' is not registered!");
             }
-
-            return result;
         }
+
+        private const string LoadCurrentImage = nameof(LoadCurrentImageCommand);
+        private const string LoadImages = nameof(LoadImagesCommand);
+        private const string UpdateCategoryCheckboxes = nameof(UpdateCategoryCheckboxesCommand);
+        private const string SaveDataModel = nameof(SaveDataModelCommand);
+        private const string SaveCurrentPictureSelections = nameof(SaveCurrentPictureSelectionsCommand);
     }
 }

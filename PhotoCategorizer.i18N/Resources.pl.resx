@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,48 +118,69 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RemoveCategoryDialog_Text" xml:space="preserve">
-    <value>Do you want to delete '{0}'?</value>
+    <value>Czy chcesz usunąć '{0}'?</value>
   </data>
   <data name="RemoveCategoryDialog_Title" xml:space="preserve">
-    <value>Delete category</value>
-  </data>
-  <data name="AddCategoryDialog_Title" xml:space="preserve">
-    <value>Add category</value>
+    <value>Usuń osobę</value>
   </data>
   <data name="AddCategoryDialog_Text" xml:space="preserve">
-    <value>Type in category name</value>
+    <value>Podaj nazwę kategorii</value>
+  </data>
+  <data name="AddCategoryDialog_Title" xml:space="preserve">
+    <value>Dodaj kategorię</value>
   </data>
   <data name="UnsavedChangesDialog_Text" xml:space="preserve">
-    <value>You have unsaved changes in project! Do you want to save them?</value>
+    <value>Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?</value>
   </data>
   <data name="UnsavedChangesDialog_Title" xml:space="preserve">
-    <value>Unsaved changes</value>
+    <value>Niezapisane zmiany</value>
   </data>
   <data name="CheckMissingFilesDialog_FoundMissingFiles" xml:space="preserve">
-    <value>{0} files was not found. Do you want to remove them from the project? \n {1}</value>
+    <value>Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?</value>
   </data>
   <data name="CheckMissingFilesDialog_FoundMissingFiles_Title" xml:space="preserve">
-    <value>Missing files</value>
+    <value>Brakujące pliki</value>
   </data>
   <data name="Autosave_Off" xml:space="preserve">
-    <value>Autosave: Off</value>
+    <value>Autozapis: Wyłączony</value>
   </data>
   <data name="Autosave_On" xml:space="preserve">
-    <value>Autosave: On</value>
+    <value>Autozapis: Włączony</value>
   </data>
   <data name="Autosave_Status" xml:space="preserve">
-    <value>{0}, last: {1}</value>
+    <value>{0}. ostatni: {1}</value>
   </data>
   <data name="LoadedFilesLabel" xml:space="preserve">
-    <value>Loaded files: {0}</value>
+    <value>Wczytanych plików: {0}</value>
   </data>
   <data name="AllFiles" xml:space="preserve">
-    <value>All files: {0}</value>
+    <value>Wszystkie pliki: {0}</value>
   </data>
   <data name="RotateLeft" xml:space="preserve">
-    <value>Rotate left</value>
+    <value>Obróć w lewo</value>
   </data>
   <data name="RotateRight" xml:space="preserve">
-    <value>Rotate right</value>
+    <value>Obróć w prawo</value>
+  </data>
+  <data name="MainWindow_AddNewCategory" xml:space="preserve">
+    <value>Dodaj nową kategorię</value>
+  </data>
+  <data name="AddCategoryDialog_AssignCategoryKey" xml:space="preserve">
+    <value>Przypisz klawisz</value>
+  </data>
+  <data name="AddCategoryDialog_AssignedKey" xml:space="preserve">
+    <value>Przypisano: {0}</value>
+  </data>
+  <data name="AddCategoryDialog_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddCategoryDialog_WaitingForKey" xml:space="preserve">
+    <value>Oczekiwanie...</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Język</value>
   </data>
 </root>

@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Abstraction\CommandFactory.cs" />
-    <Compile Include="Commands\Abstraction\Command.cs" />
     <Compile Include="Commands\Abstraction\ICommand.cs" />
     <Compile Include="Commands\Abstraction\ICommandFactory.cs" />
     <Compile Include="Commands\SaveCurrentPictureSelectionsCommand.cs" />
@@ -67,13 +66,16 @@
     <Compile Include="Commands\UpdateCategoryCheckboxesCommand.cs" />
     <Compile Include="Commands\LoadCurrentImageCommand.cs" />
     <Compile Include="Commands\LoadImagesCommand.cs" />
-    <Compile Include="Dialogs\AddPersonDialog.cs">
+    <Compile Include="Dialogs\AddCategoryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\AddPersonDialog.Designer.cs">
-      <DependentUpon>AddPersonDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\AddCategoryDialog.Designer.cs">
+      <DependentUpon>AddCategoryDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
+    <EmbeddedResource Include="Dialogs\AddCategoryDialog.resx">
+      <DependentUpon>AddCategoryDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Forms\BookCreator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,14 +111,8 @@
     <Compile Include="ViewManager\LanguageManager.cs" />
     <Compile Include="ViewManager\PictureBoxManager.cs" />
     <Compile Include="ViewManager\TreeViewManager.cs" />
-    <EmbeddedResource Include="Dialogs\AddPersonDialog.resx">
-      <DependentUpon>AddPersonDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BookCreator.resx">
       <DependentUpon>BookCreator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\FilesNotFoundDialog.en-us.resx">
-      <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FilesNotFoundDialog.resx">
       <DependentUpon>FilesNotFoundDialog.cs</DependentUpon>
@@ -127,17 +123,6 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.en-us.resx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -157,6 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoCategorizer.i18N\PhotoCategorizer.i18N.csproj">
+      <Project>{0efaddde-c0c8-4746-94ac-a212d1a1b6fe}</Project>
+      <Name>PhotoCategorizer.i18N</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

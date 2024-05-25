@@ -1,7 +1,7 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
-using OuhmaniaPeopleRecognizer.Commands.Abstraction;
 using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using PhotoCategorizer.i18N;
 using System;
 using System.IO;
 using System.Linq;
@@ -47,7 +47,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         private void ExportFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
+            _commandFactory.Get<SaveCurrentPictureSelectionsCommand>().Execute(null, null);
             var bookCreator = new BookCreator(_model, _notificationService, _fileService)
             {
                 Visible = true,
@@ -56,13 +56,13 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         private void SaveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
-            _commandFactory.Get(Command.SaveDataModel).Execute(null, null);
+            _commandFactory.Get<SaveCurrentPictureSelectionsCommand>().Execute(null, null);
+            _commandFactory.Get<SaveDataModelCommand>().Execute(null, null);
         }
 
         private void LoadPhotosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _commandFactory.Get(Command.LoadImages).Execute(sender, e);
+            _commandFactory.Get<LoadImagesCommand>().Execute(sender, e);
         }
 
         private void nowyProjektToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         {
             // move variable to Model
             if (_model.IsProjectLoaded)
-                _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
+                _commandFactory.Get<SaveCurrentPictureSelectionsCommand>().Execute(null, null);
 
             CheckUnsavedChangesDialog();
 
@@ -144,7 +144,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         {
             if (_model.Dirty && _notificationService.ShowUnsavedFilesDialog() == DialogResult.Yes)
             {
-                _commandFactory.Get(Command.SaveDataModel).Execute(null, null);
+                _commandFactory.Get<SaveDataModelCommand>().Execute(null, null);
             }
         }
 

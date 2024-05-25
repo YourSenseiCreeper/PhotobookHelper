@@ -1,5 +1,4 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
-using OuhmaniaPeopleRecognizer.Commands.Abstraction;
 using OuhmaniaPeopleRecognizer.Models;
 using System;
 using System.Collections.Generic;
@@ -75,11 +74,11 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             }
 
             _viewModel.PeopleCheckBoxList.Enabled = true;
-            _commandFactory.Get(Command.SaveCurrentPictureSelections).Execute(null, null);
+            _commandFactory.Get<SaveCurrentPictureSelectionsCommand>().Execute(null, null);
 
             // disposing
-            GC.Collect();
             _viewModel.PictureBox1.Image.Dispose();
+            GC.Collect();
 
             // load new picture
             var allNodes = _treeView.Nodes;
@@ -90,8 +89,8 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             _dataModel.LastUserSelection.BatchId = selectedBatch.Id;
             _dataModel.LastUserSelection.ImageName = $"\\{selectedNode.Text}";
             
-            _commandFactory.Get(Command.LoadCurrentImage).Execute(null, null);
-            _commandFactory.Get(Command.UpdateCategoryCheckboxes).Execute(null, null);
+            _commandFactory.Get<LoadCurrentImageCommand>().Execute(null, null);
+            _commandFactory.Get<UpdateCategoryCheckboxesCommand>().Execute(null, null);
         }
 
         private void treeView1_DragEnter(object sender, DragEventArgs e)

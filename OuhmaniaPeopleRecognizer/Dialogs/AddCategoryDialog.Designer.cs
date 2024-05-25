@@ -1,6 +1,6 @@
 ﻿namespace OuhmaniaPeopleRecognizer
 {
-    partial class AddPersonDialog
+    partial class AddCategoryDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.descriptionLabel = new System.Windows.Forms.Label();
+            this.assignActivationKey = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // okButton
@@ -60,20 +61,31 @@
             this.descriptionLabel.TabIndex = 2;
             this.descriptionLabel.Text = "label1";
             // 
-            // AddPersonDialog
+            // assignActivationKey
+            // 
+            this.assignActivationKey.Location = new System.Drawing.Point(12, 95);
+            this.assignActivationKey.Name = "assignActivationKey";
+            this.assignActivationKey.Size = new System.Drawing.Size(102, 23);
+            this.assignActivationKey.TabIndex = 3;
+            this.assignActivationKey.Text = "Assign key";
+            this.assignActivationKey.UseVisualStyleBackColor = true;
+            this.assignActivationKey.Click += new System.EventHandler(this.assignActivationKey_Click);
+            // 
+            // AddCategoryDialog
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(237, 130);
+            this.Controls.Add(this.assignActivationKey);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.inputTextBox);
             this.Controls.Add(this.okButton);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddPersonDialog";
+            this.Name = "AddCategoryDialog";
             this.ShowIcon = false;
-            this.Text = "AddPersonDialog";
+            this.Text = "AddCategoryDialog";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,5 +96,6 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.Label descriptionLabel;
+        private System.Windows.Forms.Button assignActivationKey;
     }
 }

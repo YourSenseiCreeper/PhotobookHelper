@@ -1,9 +1,7 @@
-﻿using OuhmaniaPeopleRecognizer.Commands.Abstraction;
-
-namespace OuhmaniaPeopleRecognizer.Commands
+﻿namespace OuhmaniaPeopleRecognizer.Commands
 {
     public interface ICommandFactory
     {
-        ICommand Get(Command command);
+        ICommand Get<T>() where T : class, ICommand;
     }
 }

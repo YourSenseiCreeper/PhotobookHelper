@@ -1,20 +1,17 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
 using OuhmaniaPeopleRecognizer.Commands.Abstraction;
-using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using OuhmaniaPeopleRecognizer.ViewManager;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-[assembly: NeutralResourcesLanguage("en-US")]
+//[assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
 {
     public partial class MainWindow : Form
@@ -47,9 +44,10 @@ namespace OuhmaniaPeopleRecognizer
 
         private void InitializeContext()
         {
-            var newCulture = new CultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = newCulture;
-            Thread.CurrentThread.CurrentUICulture = newCulture;
+            //var newCulture = new CultureInfo("pl-PL");
+            //var newCulture = new CultureInfo("en-us");
+            //Thread.CurrentThread.CurrentCulture = newCulture;
+            //Thread.CurrentThread.CurrentUICulture = newCulture;
 
             _model = new DataModel
             {
@@ -82,7 +80,7 @@ namespace OuhmaniaPeopleRecognizer
             _pictureBoxManager = new PictureBoxManager(_mainWindowViewModel);
             _pictureBoxManager.SubscriveOnEvents();
 
-            _languageManager = new LanguageManager(_mainWindowViewModel);
+            _languageManager = new LanguageManager(this, _mainWindowViewModel);
             _languageManager.SubscribeOnEvents();
         }
 
@@ -90,7 +88,7 @@ namespace OuhmaniaPeopleRecognizer
         {
             if (_model.Dirty && _notificationService.ShowUnsavedFilesDialog() == DialogResult.Yes)
             {
-                _commandFactory.Get(Command.SaveDataModel).Execute(null, null);
+                _commandFactory.Get<SaveDataModelCommand>().Execute(null, null);
             }
         }
 

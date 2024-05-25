@@ -28,12 +28,15 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         private void AddPersonToolStripContextMenuItem_Click(object sender, EventArgs e)
         {
-            var personName = AddPersonDialog.ShowDialog(Resources.AddCategoryDialog_Title, Resources.AddCategoryDialog_Text);
+            var dialog = new AddCategoryDialog();
 
-            if (string.IsNullOrWhiteSpace(personName))
+            //var result = dialog.ShowDialog(Resources.AddCategoryDialog_Title, Resources.AddCategoryDialog_Text);
+            var result = dialog.ShowCategoryDialog();
+
+            if (result == null)
                 return;
 
-            _model.AddCategory(personName);
+            _model.AddCategory(result.CategoryName);
             _viewModel.CategoryBindingSource.ResetBindings(true);
         }
 

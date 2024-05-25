@@ -120,20 +120,11 @@
   <data name="RemoveCategoryDialog_Text" xml:space="preserve">
     <value>Czy chcesz usunąć '{0}'?</value>
   </data>
-  <data name="RemoveCategoryDialog_Title" xml:space="preserve">
-    <value>Usuń osobę</value>
-  </data>
   <data name="AddCategoryDialog_Text" xml:space="preserve">
     <value>Podaj nazwę kategorii</value>
   </data>
   <data name="AddCategoryDialog_Title" xml:space="preserve">
     <value>Dodaj kategorię</value>
-  </data>
-  <data name="UnsavedChangesDialog_Text" xml:space="preserve">
-    <value>Masz niezapisane zmiany w projekcie! Czy chcesz je zapisać?</value>
-  </data>
-  <data name="UnsavedChangesDialog_Title" xml:space="preserve">
-    <value>Niezapisane zmiany</value>
   </data>
   <data name="CheckMissingFilesDialog_FoundMissingFiles" xml:space="preserve">
     <value>Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?</value>
@@ -156,10 +147,34 @@
   <data name="AllFiles" xml:space="preserve">
     <value>Wszystkie pliki: {0}</value>
   </data>
+  <data name="MainWindow_AddNewCategory" xml:space="preserve">
+    <value>Add new category</value>
+  </data>
+  <data name="AddCategoryDialog_AssignCategoryKey" xml:space="preserve">
+    <value>Assign key</value>
+  </data>
+  <data name="AddCategoryDialog_AssignedKey" xml:space="preserve">
+    <value>Assigned: {0}</value>
+  </data>
+  <data name="AddCategoryDialog_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddCategoryDialog_WaitingForKey" xml:space="preserve">
+    <value>Waiting for input...</value>
+  </data>
+  <data name="RemoveCategoryDialog_Title" xml:space="preserve">
+    <value>Remove category</value>
+  </data>
   <data name="RotateLeft" xml:space="preserve">
-    <value>Obróć w lewo</value>
+    <value>Rotate left</value>
   </data>
   <data name="RotateRight" xml:space="preserve">
-    <value>Obróć w prawo</value>
+    <value>Rotate right</value>
+  </data>
+  <data name="UnsavedChangesDialog_Text" xml:space="preserve">
+    <value>You have unsaved in your project! Do you want to save them?</value>
+  </data>
+  <data name="UnsavedChangesDialog_Title" xml:space="preserve">
+    <value>Unsaved changes</value>
   </data>
 </root>
