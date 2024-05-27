@@ -169,6 +169,24 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ErrorDialog_Close {
+            get {
+                return ResourceManager.GetString("ErrorDialog_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An expected error occured :(.
+        /// </summary>
+        public static string ErrorDialog_Title {
+            get {
+                return ResourceManager.GetString("ErrorDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wczytanych plików: {0}.
         /// </summary>
         public static string LoadedFilesLabel {

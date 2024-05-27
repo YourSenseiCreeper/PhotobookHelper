@@ -183,4 +183,10 @@
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Język</value>
   </data>
+  <data name="ErrorDialog_Close" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="ErrorDialog_Title" xml:space="preserve">
+    <value>Nastąpił nieoczekiwany błąd :(</value>
+  </data>
 </root>

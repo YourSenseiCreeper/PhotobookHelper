@@ -177,4 +177,10 @@
   <data name="UnsavedChangesDialog_Title" xml:space="preserve">
     <value>Unsaved changes</value>
   </data>
+  <data name="ErrorDialog_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ErrorDialog_Title" xml:space="preserve">
+    <value>An expected error occured :(</value>
+  </data>
 </root>
