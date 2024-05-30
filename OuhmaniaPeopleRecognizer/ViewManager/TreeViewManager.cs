@@ -64,6 +64,24 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             }
         }
 
+        public void SelectNextNode()
+        {
+            // overflow?
+            _treeView.SelectedNode = _treeView.SelectedNode.NextNode;
+            TreeViewSelect(null, null);
+        }
+
+        public void SelectPreviousNode()
+        {
+            var topNodeIndex = _treeView.TopNode.Index;
+            var previousNodeIndex = _treeView.SelectedNode.Index - 1;
+            if (previousNodeIndex < topNodeIndex)
+                return;
+
+            _treeView.SelectedNode = _treeView.Nodes[previousNodeIndex];
+            TreeViewSelect(null, null);
+        }
+
         private void TreeViewSelect(object sender, TreeViewEventArgs e)
         {
             if (_treeView.SelectedNode.Nodes.Count != 0)

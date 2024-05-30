@@ -36,7 +36,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             if (result == null)
                 return;
 
-            _model.AddCategory(result.CategoryName);
+            _model.AddCategory(result.CategoryName, result.AssignedKey);
             _viewModel.CategoryBindingSource.ResetBindings(true);
         }
 

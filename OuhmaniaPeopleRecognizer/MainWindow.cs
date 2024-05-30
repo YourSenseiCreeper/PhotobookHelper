@@ -6,17 +6,13 @@ using OuhmaniaPeopleRecognizer.ViewManager;
 using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
-using System.Resources;
-using System.Threading;
 using System.Windows.Forms;
 
-//[assembly: NeutralResourcesLanguage("en-US")]
 namespace OuhmaniaPeopleRecognizer
 {
     public partial class MainWindow : Form
     {
-        public DataModel _model;
+        private DataModel _model;
 
         private IFileService _fileService;
         private INotificationService _notificationService;
@@ -44,11 +40,6 @@ namespace OuhmaniaPeopleRecognizer
 
         private void InitializeContext()
         {
-            //var newCulture = new CultureInfo("pl-PL");
-            //var newCulture = new CultureInfo("en-us");
-            //Thread.CurrentThread.CurrentCulture = newCulture;
-            //Thread.CurrentThread.CurrentUICulture = newCulture;
-
             _model = new DataModel
             {
                 IsAutoSaveActive = true,
@@ -94,24 +85,31 @@ namespace OuhmaniaPeopleRecognizer
 
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
+        /// <summary>
+        /// Use arrows to switch images
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            var stringKeyData = keyData.ToString();
-            // handle switching images with cmdKeys
-            if (!stringKeyData.StartsWith("D") || stringKeyData.Length != 2)
-                return base.ProcessCmdKey(ref msg, keyData);
+            if (keyData == Keys.Left)
+            {
+                _treeViewManager.SelectPreviousNode();
+                return true;
+            }
 
-            var number = int.Parse(stringKeyData.Replace("D", ""));
-            //var item = _mainWindowViewModel.PeopleCheckBoxList.Items[number - 1];
-            _mainWindowViewModel.PeopleCheckBoxList.SetItemChecked(number - 1, true);
-            return true;
-            //switch (keyData)
-            //{
-            //    case Keys.D1:
-            //        var item = _mainWindowViewModel.PeopleCheckBoxList.Items[0];
-            //        return true;
-            //}
-            //return base.ProcessCmdKey(ref msg, keyData);
+            if (keyData == Keys.Right)
+            {
+               _treeViewManager.SelectNextNode();
+               return true;
+            }
+
+            //handle user mappings
+            //var number = int.Parse(stringKeyData.Replace("D", ""));
+            //_mainWindowViewModel.PeopleCheckBoxList.SetItemChecked(number - 1, true);
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         public MainWindowViewModel LoadFromMainWindow()
