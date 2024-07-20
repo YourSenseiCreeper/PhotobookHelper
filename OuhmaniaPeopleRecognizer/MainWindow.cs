@@ -3,7 +3,9 @@ using OuhmaniaPeopleRecognizer.Commands.Abstraction;
 using OuhmaniaPeopleRecognizer.Services;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using OuhmaniaPeopleRecognizer.ViewManager;
+using OuhmaniaPeopleRecognizer.ViewManager.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
@@ -60,19 +62,23 @@ namespace OuhmaniaPeopleRecognizer
                 _autosaveManager.SetTimer();
 
             _treeViewManager = new TreeViewManager(_mainWindowViewModel, _model, _commandFactory);
-            _treeViewManager.SubscribeOnEvents();
-
             _formMenuViewManager = new FormMenuViewManager(_fileService, _notificationService, _commandFactory, _mainWindowViewModel, _model, _treeViewManager);
-            _formMenuViewManager.SubscribeOnEvents();
-
             _categoryManager = new CategoryManager(_notificationService, _mainWindowViewModel, _model);
-            _categoryManager.SubscriveOnEvents();
-
             _pictureBoxManager = new PictureBoxManager(_mainWindowViewModel);
-            _pictureBoxManager.SubscriveOnEvents();
-
             _languageManager = new LanguageManager(this, _mainWindowViewModel);
-            _languageManager.SubscribeOnEvents();
+
+            var managers = new List<IHasSubscribeOnEvents>
+            {
+                _treeViewManager,
+                _formMenuViewManager,
+                _categoryManager,
+                _pictureBoxManager,
+                _languageManager
+            };
+            foreach (var manager in managers)
+            {
+                manager.SubscribeOnEvents();
+            }
         }
 
         private void beforeClose(object sender, FormClosingEventArgs e)

@@ -1,4 +1,5 @@
-﻿using PhotoCategorizer.i18N;
+﻿using OuhmaniaPeopleRecognizer.ViewManager.Interfaces;
+using PhotoCategorizer.i18N;
 using System.ComponentModel;
 using System.Globalization;
 using System.Threading;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
-    public class LanguageManager
+    public class LanguageManager : IHasSubscribeOnEvents
     {
         private readonly MainWindowViewModel _viewModel;
         private readonly MainWindow _window;

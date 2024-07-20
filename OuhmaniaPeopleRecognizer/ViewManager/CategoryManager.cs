@@ -1,10 +1,10 @@
-﻿using OuhmaniaPeopleRecognizer.Properties;
-using OuhmaniaPeopleRecognizer.Services.Interfaces;
+﻿using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using OuhmaniaPeopleRecognizer.ViewManager.Interfaces;
 using System;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
-    public class CategoryManager
+    public class CategoryManager : IHasSubscribeOnEvents
     {
         private readonly MainWindowViewModel _viewModel;
         private readonly DataModel _model;
@@ -20,7 +20,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             _model = dataModel;
         }
 
-        public void SubscriveOnEvents()
+        public void SubscribeOnEvents()
         {
             _viewModel.AddPersonToolStripContextMenuItem.Click += AddPersonToolStripContextMenuItem_Click;
             _viewModel.DeletePersonToolStripContextMenuItem.Click += DeletePersonToolStripContextMenuItem_Click;

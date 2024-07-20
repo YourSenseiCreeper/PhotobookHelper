@@ -1,5 +1,6 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
 using OuhmaniaPeopleRecognizer.Models;
+using OuhmaniaPeopleRecognizer.ViewManager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
-    public class TreeViewManager
+    public class TreeViewManager : IHasSubscribeOnEvents
     {
         private readonly MainWindowViewModel _viewModel;
         private readonly DataModel _dataModel;

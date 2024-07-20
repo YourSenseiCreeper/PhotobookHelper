@@ -1,5 +1,4 @@
 ﻿using OuhmaniaPeopleRecognizer.Models;
-using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
 using PhotoCategorizer.i18N;
 using System;
@@ -35,6 +34,8 @@ namespace OuhmaniaPeopleRecognizer.Commands
                     _fileService.LoadDirectory(_mainWindowViewModel.TreeView1, _model, dialog.SelectedPath);
                     UpdateFileCountersAndLoadedFileList();
                     LoadInitialPicture();
+                    _mainWindowViewModel.TreeView1.ExpandAll();
+                    _mainWindowViewModel.TreeView1.SelectedNode = _mainWindowViewModel.TreeView1.Nodes[0];
                     //unsavedChanges = true;
                 }
             }

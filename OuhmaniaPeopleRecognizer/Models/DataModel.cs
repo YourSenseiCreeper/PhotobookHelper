@@ -3,6 +3,7 @@ using OuhmaniaPeopleRecognizer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer
 {
@@ -13,6 +14,9 @@ namespace OuhmaniaPeopleRecognizer
         private const string PROGRAM_NAME = "PhotoCategorizer";
         [JsonIgnore]
         public IEnumerable<string> SupportedFileExtensions => new[] { "*.jpg", "*.png", "*.bmp" };
+
+        [JsonIgnore]
+        public bool IsProjectLoaded { get; set; }
 
         private bool _dirty;
         private string _directoryPath;
@@ -37,9 +41,6 @@ namespace OuhmaniaPeopleRecognizer
             var projectPath = ProjectPath == null ? string.Empty : $"({ProjectPath})";
             return $"{PROGRAM_NAME} v{VERSION} {projectPath}";
         }
-
-        [JsonIgnore]
-        public bool IsProjectLoaded { get; set; }
 
         public bool Dirty
         {
@@ -74,6 +75,7 @@ namespace OuhmaniaPeopleRecognizer
         public int NextPersonId { get; set; }
         public Dictionary<string, int> CategoryAndIndex { get; set; }
         public Dictionary<int, string> IndexAndCategory { get; set; }
+        public Dictionary<int, string> IndexAndKeyBindings { get; set; }
         public List<Batch> Batches { get; set; }
 
         public bool HasUserSelectedImage()
@@ -138,7 +140,7 @@ namespace OuhmaniaPeopleRecognizer
             return false;
         }
 
-        public void AddCategory(string categoryName)
+        public void AddCategory(string categoryName, Keys? keyBinding)
         {
             PeopleToDisplay.Add(categoryName);
             CategoryAndIndex.Add(categoryName, ++NextPersonId);

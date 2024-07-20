@@ -1,9 +1,10 @@
-﻿using System;
+﻿using OuhmaniaPeopleRecognizer.ViewManager.Interfaces;
+using System;
 using System.Drawing;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
-    public class PictureBoxManager
+    public class PictureBoxManager : IHasSubscribeOnEvents
     {
         private readonly MainWindowViewModel _viewModel;
         public PictureBoxManager(MainWindowViewModel viewModel)
@@ -11,7 +12,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             _viewModel = viewModel;
         }
 
-        public void SubscriveOnEvents()
+        public void SubscribeOnEvents()
         {
             _viewModel.RotateLeftToolStripMenuItem.Click += rotateLeftToolStripMenuItem_Click;
             _viewModel.RotateRightToolStripMenuItem.Click += rotateRightToolStripMenuItem_Click;

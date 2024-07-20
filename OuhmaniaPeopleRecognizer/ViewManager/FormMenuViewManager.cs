@@ -1,6 +1,6 @@
 ﻿using OuhmaniaPeopleRecognizer.Commands;
-using OuhmaniaPeopleRecognizer.Properties;
 using OuhmaniaPeopleRecognizer.Services.Interfaces;
+using OuhmaniaPeopleRecognizer.ViewManager.Interfaces;
 using PhotoCategorizer.i18N;
 using System;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
-    public class FormMenuViewManager
+    public class FormMenuViewManager : IHasSubscribeOnEvents
     {
         private readonly IFileService _fileService;
         private readonly INotificationService _notificationService;
