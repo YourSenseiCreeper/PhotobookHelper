@@ -24,6 +24,27 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         {
             _viewModel.AddPersonToolStripContextMenuItem.Click += AddPersonToolStripContextMenuItem_Click;
             _viewModel.DeletePersonToolStripContextMenuItem.Click += DeletePersonToolStripContextMenuItem_Click;
+            _viewModel.EditPersonToolStripContextMenuItem.Click += EditPersonToolStripContextMenuItem_Click;
+        }
+
+        private void EditPersonToolStripContextMenuItem_Click(object sender, EventArgs e)
+        {
+            // take index of currently selected item
+            // get info about it
+            // pass it to constructor
+            var existingCategory = _model.CategoryAndIndex["Liście"];
+            var dialog = new AddCategoryDialog("Liście", null);
+
+            //var result = dialog.ShowDialog(Resources.AddCategoryDialog_Title, Resources.AddCategoryDialog_Text);
+            var result = dialog.ShowCategoryDialog();
+
+            // cancel
+            if (result == null)
+                return;
+
+            //
+            _model.EditCategory(result.CategoryName, result.CategoryName + "A", result.AssignedKey);
+            _viewModel.CategoryBindingSource.ResetBindings(true);
         }
 
         private void AddPersonToolStripContextMenuItem_Click(object sender, EventArgs e)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using TreeView = System.Windows.Forms.TreeView;
 
 namespace OuhmaniaPeopleRecognizer.ViewManager
 {
@@ -67,10 +68,29 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
 
         public void SelectNextNode()
         {
-            // overflow?
-            _treeView.SelectedNode = _treeView.SelectedNode.NextNode;
+            _treeView.SelectedNode = _treeView.SelectedNode.NextNode == null
+                ? GetPictureNode(_treeView.Nodes[0], 0)
+                : _treeView.SelectedNode.NextNode;
             TreeViewSelect(null, null);
         }
+
+        /// <summary>
+        /// Tries to get first picture node
+        /// </summary>
+        /// <param name="parentNode"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        private TreeNode GetPictureNode(TreeNode parentNode, int level)
+        {
+            if (level > 5) return null;
+            if (parentNode.Nodes.Count > 0)
+            {
+                return GetPictureNode(parentNode.Nodes[0], level++);
+            } else
+            {
+                return parentNode;
+            }
+        } 
 
         public void SelectPreviousNode()
         {
@@ -82,6 +102,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
             _treeView.SelectedNode = _treeView.Nodes[previousNodeIndex];
             TreeViewSelect(null, null);
         }
+
 
         private void TreeViewSelect(object sender, TreeViewEventArgs e)
         {

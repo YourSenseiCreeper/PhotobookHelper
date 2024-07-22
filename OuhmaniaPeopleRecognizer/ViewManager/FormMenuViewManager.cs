@@ -48,7 +48,7 @@ namespace OuhmaniaPeopleRecognizer.ViewManager
         private void ExportFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _commandFactory.Get<SaveCurrentPictureSelectionsCommand>().Execute(null, null);
-            var bookCreator = new BookCreator(_model, _notificationService, _fileService)
+            var bookCreator = new Exporter(_model, _notificationService, _fileService)
             {
                 Visible = true,
             };

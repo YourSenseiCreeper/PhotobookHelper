@@ -149,6 +149,19 @@ namespace OuhmaniaPeopleRecognizer
             _dirty = true;
         }
 
+        public void EditCategory(string categoryName, string newCategoryName, Keys? keyBinding)
+        {
+            var categoryId = CategoryAndIndex[categoryName];
+
+            IndexAndCategory[NextPersonId] = newCategoryName;
+            CategoryAndIndex.Remove(categoryName);
+            CategoryAndIndex.Add(newCategoryName, categoryId);
+
+            PeopleToDisplay.Remove(categoryName);
+            PeopleToDisplay.Add(newCategoryName);
+            _dirty = true;
+        }
+
         public void RemoveCategory(string categoryName)
         {
             var personIndex = CategoryAndIndex[categoryName];

@@ -54,7 +54,7 @@ namespace OuhmaniaPeopleRecognizer
 
             // jak z tego zrobić binding source?
             Text = _model.GetFormTitle();
-
+            
             _commandFactory = new CommandFactory(_fileService, _model, _mainWindowViewModel);
             _autosaveManager = new AutosaveManager(_fileService, _mainWindowViewModel, _model);
 
@@ -132,6 +132,7 @@ namespace OuhmaniaPeopleRecognizer
                 EnglishLanguageToolStripMenuItem = englishToolStripMenuItem,
                 TreeView1 = treeView1,
                 AddPersonToolStripContextMenuItem = addPersonToolStripContextMenuItem,
+                EditPersonToolStripContextMenuItem = editPersonToolStripMenuItem,
                 AddPersonToolStripMenuItem = addPersonToolStripMenuItem,
                 AutosaveToolStripStatusLabel = autosaveToolStripStatusLabel,
                 CloseProgramToolStripMenuItem = closeProgramToolStripMenuItem,

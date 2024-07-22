@@ -64,6 +64,8 @@
             this.allFilesCounttoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderPathtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.autosaveToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.singleCategoryContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pictureMenuStrip.SuspendLayout();
@@ -78,6 +80,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.singleCategoryContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // optionsToolStripMenuItem
@@ -320,6 +323,19 @@
             resources.ApplyResources(this.autosaveToolStripStatusLabel, "autosaveToolStripStatusLabel");
             this.autosaveToolStripStatusLabel.Name = "autosaveToolStripStatusLabel";
             // 
+            // singleCategoryContextMenuStrip
+            // 
+            this.singleCategoryContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.singleCategoryContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editPersonToolStripMenuItem});
+            this.singleCategoryContextMenuStrip.Name = "singleCategoryContextMenuStrip";
+            resources.ApplyResources(this.singleCategoryContextMenuStrip, "singleCategoryContextMenuStrip");
+            // 
+            // editPersonToolStripMenuItem
+            // 
+            this.editPersonToolStripMenuItem.Name = "editPersonToolStripMenuItem";
+            resources.ApplyResources(this.editPersonToolStripMenuItem, "editPersonToolStripMenuItem");
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -345,6 +361,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.singleCategoryContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,6 +402,8 @@
         private System.Windows.Forms.ToolStripMenuItem polishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         public System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ContextMenuStrip singleCategoryContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem editPersonToolStripMenuItem;
     }
 }
 

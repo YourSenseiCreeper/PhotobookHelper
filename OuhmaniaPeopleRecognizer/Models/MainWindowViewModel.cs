@@ -28,6 +28,7 @@ namespace OuhmaniaPeopleRecognizer
         public ToolStripMenuItem AddPersonToolStripMenuItem { get; set; }
         public ToolStripMenuItem RemovePersonToolStripMenuItem { get; set; }
         public ToolStripMenuItem AddPersonToolStripContextMenuItem { get; set; }
+        public ToolStripMenuItem EditPersonToolStripContextMenuItem { get; set; }
         public ToolStripMenuItem DeletePersonToolStripContextMenuItem { get; set; }
         public ToolStripMenuItem RotateRightToolStripMenuItem { get; set; }
         public ToolStripMenuItem RotateLeftToolStripMenuItem { get; set; }

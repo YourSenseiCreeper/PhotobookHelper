@@ -122,19 +122,19 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="polishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>112, 22</value>
   </data>
   <data name="polishToolStripMenuItem.Text" xml:space="preserve">
     <value>Polish</value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>112, 22</value>
   </data>
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>101, 22</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Język</value>
@@ -208,19 +208,19 @@
     <value>248, 3</value>
   </metadata>
   <data name="addPersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="addPersonToolStripContextMenuItem.Text" xml:space="preserve">
-    <value>Dodaj osobę</value>
+    <value>Dodaj kategorię</value>
   </data>
   <data name="deletePersonToolStripContextMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="deletePersonToolStripContextMenuItem.Text" xml:space="preserve">
-    <value>Usuń wybraną osobę</value>
+    <value>Usuń wybraną kategorię</value>
   </data>
   <data name="peopleListMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 48</value>
+    <value>202, 48</value>
   </data>
   <data name="&gt;&gt;peopleListMenuStrip.Name" xml:space="preserve">
     <value>peopleListMenuStrip</value>
@@ -292,31 +292,31 @@
     <value>17, 17</value>
   </metadata>
   <data name="nowyProjektToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="nowyProjektToolStripMenuItem.Text" xml:space="preserve">
     <value>Nowy projekt</value>
   </data>
   <data name="loadProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="loadProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>Wczytaj projekt</value>
   </data>
   <data name="saveProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="saveProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>Zapisz projekt</value>
   </data>
   <data name="exportFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 6</value>
+    <value>163, 6</value>
   </data>
   <data name="closeProgramToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="closeProgramToolStripMenuItem.Text" xml:space="preserve">
     <value>Zamknij program</value>
@@ -388,7 +388,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -502,7 +502,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -553,7 +553,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <metadata name="singleCategoryContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>557, 3</value>
+  </metadata>
+  <data name="editPersonToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="editPersonToolStripMenuItem.Text" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="singleCategoryContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 48</value>
+  </data>
+  <data name="&gt;&gt;singleCategoryContextMenuStrip.Name" xml:space="preserve">
+    <value>singleCategoryContextMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;singleCategoryContextMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -795,6 +813,12 @@
   </data>
   <data name="&gt;&gt;autosaveToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editPersonToolStripMenuItem.Name" xml:space="preserve">
+    <value>editPersonToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;editPersonToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainWindow</value>

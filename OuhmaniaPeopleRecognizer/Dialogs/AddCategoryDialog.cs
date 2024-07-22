@@ -17,6 +17,13 @@ namespace OuhmaniaPeopleRecognizer
             assignActivationKey.Text = Resources.AddCategoryDialog_AssignCategoryKey;
         }
 
+        public AddCategoryDialog(string categoryName, Keys? assignedKey) : base()
+        {
+            inputTextBox.Text = categoryName;
+            _assignedKey = assignedKey;
+            assignActivationKey.Text = string.Format(Resources.AddCategoryDialog_AssignedKey, _assignedKey);
+        }
+
         private string GetInputValue() => inputTextBox.Text;
 
         public AddCategoryDialogResult ShowCategoryDialog()
