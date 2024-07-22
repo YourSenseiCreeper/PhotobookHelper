@@ -9,7 +9,7 @@ namespace OuhmaniaPeopleRecognizer.Services.Interfaces
     {
         void CheckMissingFilesForBatch(Batch batch);
         Image LoadImage(string path, double? thumbnailScaleFactor = null);
-        int CopyFilesForPerson(string exportPath, string person, List<string> files);
+        int CopyFilesForCategory(string exportPath, string person, List<string> files);
 
         /// <summary>
         /// Shows SaveProjectDialog to user and saves current state of model to .opr file at

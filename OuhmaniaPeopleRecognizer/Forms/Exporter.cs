@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace OuhmaniaPeopleRecognizer
 {
-    public partial class BookCreator : Form
+    public partial class Exporter : Form
     {
         private readonly DataModel _model;
         private readonly INotificationService _notificationService;
@@ -14,7 +14,7 @@ namespace OuhmaniaPeopleRecognizer
 
         private List<string> _peopleToExport;
 
-        public BookCreator(DataModel model, INotificationService notificationService, IFileService fileService)
+        public Exporter(DataModel model, INotificationService notificationService, IFileService fileService)
         {
             _model = model;
             _notificationService = notificationService;
@@ -49,43 +49,41 @@ namespace OuhmaniaPeopleRecognizer
 
         private void exportButton_Click(object sender, EventArgs e)
         {
-            var selectedPeople = peopleChechboxList.CheckedItems;
+            var selectedCategories = peopleChechboxList.CheckedItems;
 
-            if (selectedPeople.Count == 0)
+            if (selectedCategories.Count == 0)
             {
-                _notificationService.Warning("Nie zaznaczono żadnej osoby, której chcesz utworzyć książkę.", "Czekaj, czekaj...");
+                _notificationService.Warning("Nie zaznaczono żadnej kategorii.", "Czekaj, czekaj...");
                 return;
             }
 
             var exportedFilesCount = 0;
-            foreach (var person in selectedPeople)
+            foreach (var category in selectedCategories)
             {
-                var personName = person as string;
-                exportedFilesCount += ExportPerson(_model.ExportPath, personName);
+                exportedFilesCount += ExportCategory(_model.ExportPath, category as string);
             }
 
-            _notificationService.Info($"Wyeksportowano ogółem {exportedFilesCount} zdjęć dla {selectedPeople.Count} osób", "Eksport");
+            _notificationService.Info($"Wyeksportowano ogółem {exportedFilesCount} zdjęć w ramach {selectedCategories.Count} kategorii", "Eksport");
         }
 
-        private int ExportPerson(string exportPath, string personName)
+        private int ExportCategory(string exportPath, string categoryName)
         {
             var exportImagePaths = new List<string>();
-            var personIndex = _model.CategoryAndIndex[personName];
+            var categoryIndex = _model.CategoryAndIndex[categoryName];
 
             foreach(var batch in _model.Batches)
             {
                 foreach(var imageAndPeople in batch.PicturePeople)
                 {
-                    if (imageAndPeople.Value.Contains(personIndex))
-                    {
-                        exportImagePaths.Add(batch.DirectoryPath + imageAndPeople.Key);
-                    }
+                    if (!imageAndPeople.Value.Contains(categoryIndex))
+                        continue;
+
+                    exportImagePaths.Add(batch.DirectoryPath + imageAndPeople.Key);
                 }
             }
 
-            _fileService.CopyFilesForPerson(exportPath, personName, exportImagePaths);
+            _fileService.CopyFilesForCategory(exportPath, categoryName, exportImagePaths);
             return exportImagePaths.Count;
         }
-
     }
 }

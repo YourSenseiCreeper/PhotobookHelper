@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RemoveCategoryDialog_Text" xml:space="preserve">
-    <value>Czy chcesz usunąć '{0}'?</value>
+    <value>Do you want to remove '{0}'?</value>
   </data>
   <data name="AddCategoryDialog_Text" xml:space="preserve">
-    <value>Podaj nazwę kategorii</value>
+    <value>Type category name</value>
   </data>
   <data name="AddCategoryDialog_Title" xml:space="preserve">
-    <value>Dodaj kategorię</value>
+    <value>Add category</value>
   </data>
   <data name="CheckMissingFilesDialog_FoundMissingFiles" xml:space="preserve">
-    <value>Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?</value>
+    <value>Could not found {0} files. Do you want to remove them from project?</value>
   </data>
   <data name="CheckMissingFilesDialog_FoundMissingFiles_Title" xml:space="preserve">
-    <value>Brakujące pliki</value>
+    <value>Missing files</value>
   </data>
   <data name="Autosave_Off" xml:space="preserve">
-    <value>Autozapis: Wyłączony</value>
+    <value>Autosave: Off</value>
   </data>
   <data name="Autosave_On" xml:space="preserve">
-    <value>Autozapis: Włączony</value>
+    <value>Autosave: On</value>
   </data>
   <data name="Autosave_Status" xml:space="preserve">
-    <value>{0}. ostatni: {1}</value>
+    <value>{0}. last: {1}</value>
   </data>
   <data name="LoadedFilesLabel" xml:space="preserve">
-    <value>Wczytanych plików: {0}</value>
+    <value>Loaded files: {0}</value>
   </data>
   <data name="AllFiles" xml:space="preserve">
-    <value>Wszystkie pliki: {0}</value>
+    <value>All files: {0}</value>
   </data>
   <data name="MainWindow_AddNewCategory" xml:space="preserve">
     <value>Add new category</value>

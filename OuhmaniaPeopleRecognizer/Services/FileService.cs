@@ -78,52 +78,61 @@ namespace OuhmaniaPeopleRecognizer.Services
             }
         }
 
-        public int CopyFilesForPerson(string exportPath, string person, List<string> files)
+        public int CopyFilesForCategory(string exportPath, string categoryName, List<string> filesPaths)
         {
             var exportedFiles = 0;
-            var folderPath = exportPath + "\\Fotoksiążka_" + person.Replace(" ", "_");
+            var folderPath = Path.Combine(exportPath, categoryName.Replace(" ", "_"));
             // it's better to not overwrite
+            // todo: throw exception and ask user to choose wheather delete folder or abort
             if (Directory.Exists(folderPath))
                 Directory.Delete(folderPath, true);
 
             Directory.CreateDirectory(folderPath);
 
+            if (!HasAvailableSpaceForFiles(exportPath, filesPaths))
+                return 0;
+
+            foreach (var filePath in filesPaths)
+            {
+                // TODO: Make a tool for comparing images with identical names and show them side by side.
+                //var filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+                var testFile = Path.GetFileName(filePath);
+                //var filepath = folderPath + "\\" + testFile;
+                var newfilePath = Path.Combine(folderPath, testFile);
+                if (File.Exists(newfilePath))
+                {
+                    //var duplicatesDirectoryPath = folderPath + "\\Duplikaty";
+                    var duplicateDirectoryPath = Path.Combine(folderPath, "Duplikaty"); //filepath = folderPath + "\\Duplikaty\\" + filename;
+                    _notificationService.Warning("Powtórzony plik!", $"Znaleziono powtórkę zdjęcia ({testFile}). Zostanie dodane do folderu Duplikaty");
+
+                    if (!Directory.Exists(duplicateDirectoryPath))
+                        Directory.CreateDirectory(duplicateDirectoryPath);
+
+                    newfilePath = Path.Combine(duplicateDirectoryPath, filePath);
+                }
+
+                File.Copy(filePath, newfilePath);
+                exportedFiles++;
+            }
+
+            return exportedFiles;
+        }
+
+        private bool HasAvailableSpaceForFiles(string exportPath, List<string> files)
+        {
             long allSize = 0;
             files.ForEach(f => allSize += new FileInfo(f).Length);
             var currentDriveLetter = exportPath.Substring(0, 3);
             var currentDrive = DriveInfo.GetDrives().FirstOrDefault(d => d.Name == currentDriveLetter);
             // let's have at least 5mb more free space
-            if (allSize + 1000000 * 5 >= currentDrive.AvailableFreeSpace)
+            if (allSize + 1_000_000 * 5 >= currentDrive.AvailableFreeSpace)
             {
                 _notificationService.Warning(
-                    "Brak wolnego miejsca!", $"Nie masz już więcej wolnego miejsca w folderze, do którego chcesz eksportować zdjęcia ({folderPath})");
-                return 0;
+                    "Brak wolnego miejsca!", $"Nie masz już więcej wolnego miejsca w folderze, do którego chcesz eksportować zdjęcia ({exportPath})");
+                return false;
             }
 
-            foreach (var file in files)
-            {
-                // TODO: Make a tool for comparing images with identical names and show them side by side.
-                var filename = file.Substring(file.LastIndexOf("\\") + 1);
-
-                var filepath = folderPath + "\\" + filename;
-                if (File.Exists(filepath))
-                {
-                    var duplicatesDirectoryPath = folderPath + "\\Duplikaty";
-                    filepath = folderPath + "\\Duplikaty\\" + filename;
-                    _notificationService.Warning("Powtórzony plik!", $"Znaleziono powtórkę zdjęcia ({filepath}). Zostanie dodane do folderu Duplikaty");
-
-                    if (!Directory.Exists(duplicatesDirectoryPath))
-                    {
-                        Directory.CreateDirectory(duplicatesDirectoryPath);
-                    }
-
-                }
-
-                File.Copy(file, filepath);
-                exportedFiles++;
-            }
-
-            return exportedFiles;
+            return true;
         }
 
         public void LoadDirectory(TreeView treeView, DataModel model, string directoryPath)

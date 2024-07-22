@@ -9,7 +9,7 @@
       <Value Profile="(Default)">languageToolStripMenuItem</Value>
     </Setting>
     <Setting Name="exportToDirectoriesMenuItemLabel" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Stwórz fotoksiążki</Value>
+      <Value Profile="(Default)">Eksportuj</Value>
     </Setting>
   </Settings>
 </SettingsFile>

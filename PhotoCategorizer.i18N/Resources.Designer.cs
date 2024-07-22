@@ -88,7 +88,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podaj nazwę kategorii.
+        ///   Looks up a localized string similar to Type category name.
         /// </summary>
         public static string AddCategoryDialog_Text {
             get {
@@ -97,7 +97,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dodaj kategorię.
+        ///   Looks up a localized string similar to Add category.
         /// </summary>
         public static string AddCategoryDialog_Title {
             get {
@@ -115,7 +115,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wszystkie pliki: {0}.
+        ///   Looks up a localized string similar to All files: {0}.
         /// </summary>
         public static string AllFiles {
             get {
@@ -124,7 +124,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autozapis: Wyłączony.
+        ///   Looks up a localized string similar to Autosave: Off.
         /// </summary>
         public static string Autosave_Off {
             get {
@@ -133,7 +133,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autozapis: Włączony.
+        ///   Looks up a localized string similar to Autosave: On.
         /// </summary>
         public static string Autosave_On {
             get {
@@ -142,7 +142,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}. ostatni: {1}.
+        ///   Looks up a localized string similar to {0}. last: {1}.
         /// </summary>
         public static string Autosave_Status {
             get {
@@ -151,7 +151,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nie znaleziono {0} plików. Czy chcesz je usunąć z projektu?.
+        ///   Looks up a localized string similar to Could not found {0} files. Do you want to remove them from project?.
         /// </summary>
         public static string CheckMissingFilesDialog_FoundMissingFiles {
             get {
@@ -160,7 +160,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brakujące pliki.
+        ///   Looks up a localized string similar to Missing files.
         /// </summary>
         public static string CheckMissingFilesDialog_FoundMissingFiles_Title {
             get {
@@ -187,7 +187,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wczytanych plików: {0}.
+        ///   Looks up a localized string similar to Loaded files: {0}.
         /// </summary>
         public static string LoadedFilesLabel {
             get {
@@ -205,7 +205,7 @@ namespace PhotoCategorizer.i18N {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Czy chcesz usunąć &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Do you want to remove &apos;{0}&apos;?.
         /// </summary>
         public static string RemoveCategoryDialog_Text {
             get {
