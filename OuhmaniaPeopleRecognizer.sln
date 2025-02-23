@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OuhmaniaPeopleRecognizer", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotobookHelperTests", "PhotobookHelperTests\PhotobookHelperTests.csproj", "{4EF3701D-54E3-42CE-B593-8848CD4AD915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoCategorizer.i18N", "PhotoCategorizer.i18N\PhotoCategorizer.i18N.csproj", "{0EFADDDE-C0C8-4746-94AC-A212D1A1B6FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoCategorizer.i18N", "PhotoCategorizer.i18N\PhotoCategorizer.i18N.csproj", "{0EFADDDE-C0C8-4746-94AC-A212D1A1B6FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A07BC652-BFE0-44C1-A297-F14B43243DC4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

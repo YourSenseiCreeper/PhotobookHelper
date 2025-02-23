@@ -63,7 +63,7 @@ namespace OuhmaniaPeopleRecognizer
                 exportedFilesCount += ExportCategory(_model.ExportPath, category as string);
             }
 
-            _notificationService.Info($"Wyeksportowano ogółem {exportedFilesCount} zdjęć w ramach {selectedCategories.Count} kategorii", "Eksport");
+            _notificationService.Info("Eksport", $"Wyeksportowano ogółem {exportedFilesCount} zdjęć w ramach {selectedCategories.Count} kategorii");
         }
 
         private int ExportCategory(string exportPath, string categoryName)
